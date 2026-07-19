@@ -1,0 +1,57 @@
+/**
+ * 전체 화면 이미지 페이지 공통 규격 (인트로 배경과 동일)
+ * 새 이미지 전용 페이지는 .vf > .vf__stage > .vf__img 구조를 그대로 쓰면 됩니다.
+ */
+.vf {
+  --headline-top: 40%;
+  --cta-top: 52%;
+  width: 100%;
+  min-height: 100dvh;
+  height: 100%;
+  position: relative;
+  background: #0b0f14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vf__stage {
+  position: relative;
+  width: min(100vw, var(--app-max-width));
+  height: min(100dvh, var(--app-max-height));
+  flex-shrink: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.vf__img,
+.vf__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  z-index: 0;
+}
+
+.vf__back {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  left: max(12px, env(safe-area-inset-left));
+  z-index: 10;
+  padding: 8px 10px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vf__back:active {
+  opacity: 0.75;
+}

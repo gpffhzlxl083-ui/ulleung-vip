@@ -1,0 +1,189 @@
+.premium-landing .vf__stage {
+  padding: 0;
+  background: #0a1620;
+}
+
+.premium-landing__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 0;
+}
+
+.premium-landing__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding:
+    max(72px, calc(env(safe-area-inset-top) + 56px))
+    clamp(22px, 6vw, 28px)
+    max(28px, env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  animation: premium-landing-in 0.85s cubic-bezier(0.33, 1, 0.45, 1) both;
+}
+
+@keyframes premium-landing-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.premium-landing__hero {
+  margin-top: clamp(96px, 26vh, 140px);
+}
+
+.premium-landing__eyebrow {
+  margin: 0 0 24px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(0.62rem, 2.6vw, 0.72rem);
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+
+.premium-landing__title {
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22em;
+  color: #fff;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.42);
+}
+
+.premium-landing__title-line {
+  display: block;
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(1.55rem, 7.2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+.premium-landing__title-line--main {
+  font-size: clamp(2.35rem, 11vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.premium-landing__desc {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(0.88rem, 3.8vw, 1rem);
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.38);
+}
+
+.premium-landing__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  padding-bottom: clamp(40px, 10vh, 72px);
+}
+
+.premium-landing__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 18px 0 22px;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.premium-landing__cta:active {
+  transform: scale(0.985);
+  opacity: 0.92;
+}
+
+.premium-landing__cta--light {
+  background: rgba(235, 238, 242, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.premium-landing__cta--dark {
+  background: rgba(18, 22, 28, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.premium-landing__cta-en {
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(0.95rem, 4vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(18, 20, 24, 0.88);
+}
+
+.premium-landing__cta--dark .premium-landing__cta-en {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.premium-landing__cta-ko {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(0.82rem, 3.4vw, 0.92rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(22, 24, 28, 0.82);
+}
+
+.premium-landing__cta--dark .premium-landing__cta-ko {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.premium-landing__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.premium-landing__cta-arrow--dark {
+  background: rgba(22, 24, 28, 0.88);
+  color: #fff;
+}
+
+.premium-landing__cta-arrow--light {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgba(18, 20, 24, 0.88);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-landing__content {
+    animation: none;
+  }
+}

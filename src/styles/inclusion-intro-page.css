@@ -1,0 +1,166 @@
+.inclusion-intro-page.vf {
+  align-items: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100dvh;
+  -webkit-overflow-scrolling: touch;
+}
+
+.inclusion-intro-page .vf__stage,
+.inclusion-intro-page__stage {
+  --inclusion-footer-h: clamp(116px, 15.5vh, 138px);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: min(100dvh, var(--app-max-height));
+  overflow: visible;
+  background: #fff;
+}
+
+.inclusion-intro-page__hero {
+  position: relative;
+  flex: none;
+  height: calc(min(100dvh, var(--app-max-height)) - var(--inclusion-footer-h));
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.inclusion-intro-page__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 0;
+}
+
+.inclusion-intro-page__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:
+    max(56px, calc(env(safe-area-inset-top) + 48px))
+    max(14px, env(safe-area-inset-right))
+    12px
+    max(14px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+
+.inclusion-intro-page__nav {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.94);
+  text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.inclusion-intro-page__nav--next {
+  padding-right: 44px;
+}
+
+.inclusion-intro-page__nav:active {
+  opacity: 0.75;
+}
+
+.inclusion-intro-page__copy {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  margin-top: -8%;
+  text-align: center;
+}
+
+.inclusion-intro-page__title {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(1.35rem, 5.8vw, 1.62rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+}
+
+.inclusion-intro-page__subtitle {
+  margin: 14px 0 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(0.98rem, 4vw, 1.08rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.24);
+}
+
+.inclusion-intro-page__credit {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0 24px 18px;
+  text-align: center;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.inclusion-intro-page__footer {
+  flex-shrink: 0;
+  height: var(--inclusion-footer-h);
+  min-height: var(--inclusion-footer-h);
+  padding: 22px 24px 18px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.inclusion-intro-page__footer-label {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(0.82rem, 3.4vw, 0.88rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #666;
+}
+
+.inclusion-intro-page__footer-place {
+  margin: 5px 0 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(0.94rem, 3.9vw, 1.02rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #777;
+}
+
+.inclusion-intro-page__footer-line {
+  display: block;
+  width: clamp(112px, 34vw, 132px);
+  height: 1px;
+  margin-top: 16px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.inclusion-intro-page__detail-wrap {
+  flex-shrink: 0;
+  width: 100%;
+  background: #fff;
+  padding-bottom: env(safe-area-inset-bottom);
+}

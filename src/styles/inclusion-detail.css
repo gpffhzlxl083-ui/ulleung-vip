@@ -1,0 +1,178 @@
+.inclusion-detail {
+  padding: 8px 0 0;
+  background: #fff;
+  color: #222;
+}
+
+.inclusion-detail__intro {
+  padding: 4px 24px 32px;
+}
+
+.inclusion-detail__intro-lead {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  letter-spacing: -0.02em;
+  color: #333;
+}
+
+.inclusion-detail__intro-sub {
+  margin: 16px 0 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  letter-spacing: -0.02em;
+  color: #555;
+}
+
+.inclusion-detail__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  align-items: start;
+  margin: 0 0 26px;
+  padding: 0 24px;
+}
+
+.inclusion-detail__photos img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center;
+}
+
+.inclusion-detail__photos img:last-child {
+  margin-top: 44px;
+}
+
+.inclusion-detail__culture {
+  padding: 0 24px 22px;
+}
+
+.inclusion-detail__culture-en {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(0.88rem, 3.7vw, 0.96rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.inclusion-detail__culture-ko {
+  margin: 8px 0 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: -0.02em;
+  color: #888;
+}
+
+.inclusion-detail__divider {
+  width: clamp(112px, 34vw, 132px);
+  height: 1px;
+  margin: 0 24px 20px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.inclusion-detail__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 0 30px;
+  padding: 0 24px;
+}
+
+.inclusion-detail__summary-line {
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: clamp(1rem, 4.3vw, 1.1rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  color: #4a6e6e;
+}
+
+.inclusion-detail__section {
+  padding: 0 24px 28px;
+}
+
+.inclusion-detail__section-title {
+  margin: 0 0 12px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: #333;
+}
+
+.inclusion-detail__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inclusion-detail__list li {
+  position: relative;
+  margin: 0 0 6px;
+  padding-left: 12px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  letter-spacing: -0.02em;
+  color: #777;
+}
+
+.inclusion-detail__list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: #999;
+}
+
+.inclusion-detail__list li:last-child {
+  margin-bottom: 0;
+}
+
+.inclusion-detail__note {
+  margin: 0;
+  padding: 0 24px 24px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+  color: #999;
+}
+
+.inclusion-detail__cta-wrap {
+  padding: 4px 20px 32px;
+}
+
+.inclusion-detail__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 52px;
+  border-radius: 14px;
+  background: #1a3638;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.inclusion-detail__cta-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.inclusion-detail__cta:active {
+  opacity: 0.88;
+}
