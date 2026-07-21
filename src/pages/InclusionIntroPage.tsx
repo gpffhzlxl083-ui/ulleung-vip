@@ -50,18 +50,27 @@ export default function InclusionIntroPage() {
           </header>
 
           <div className="inclusion-intro-page__copy">
-            <h1 className="inclusion-intro-page__title">PREMIUM OF ULLEUNGDO</h1>
-            <p className="inclusion-intro-page__subtitle">프리미엄 포함사항</p>
+            <h1 className="inclusion-intro-page__headline">
+              <span className="inclusion-intro-page__title">PREMIUM&nbsp;&nbsp;OF&nbsp;&nbsp;ULLEUNGDO</span>
+              <span className="inclusion-intro-page__subtitle">프리미엄 포함사항</span>
+            </h1>
           </div>
 
           <p className="inclusion-intro-page__credit">Premium by ulleung_sketch</p>
         </section>
 
-        <footer className="inclusion-intro-page__footer">
-          <p className="inclusion-intro-page__footer-label">PREMIUM</p>
-          <p className="inclusion-intro-page__footer-place">Ulleung, Dokdo</p>
-          <span className="inclusion-intro-page__footer-line" aria-hidden="true" />
-        </footer>
+        <section className="inclusion-intro-page__intro-group" aria-label="프리미엄 소개">
+          <div className="inclusion-intro-page__intro-heading">
+            <p className="inclusion-intro-page__footer-label">PREMIUM</p>
+            <p className="inclusion-intro-page__footer-place">Ulleung, Dokdo</p>
+          </div>
+          <p className="inclusion-intro-page__intro-sub">
+            화산섬으로 떠나는 당신의 소중한 여행의 파트너
+          </p>
+          <p className="inclusion-intro-page__intro-lead">
+            울릉스케치의 프리미엄 패키지는 고객의 모든 편의 시설, 제반 사항이 포함되어 있습니다.
+          </p>
+        </section>
 
         <div className="inclusion-intro-page__detail-wrap">
           <InclusionDetailContent />

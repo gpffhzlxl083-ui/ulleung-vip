@@ -1,3 +1,12 @@
+.inclusion-intro-page,
+.inclusion-intro-page * {
+  font-family: var(--font-pretendard);
+}
+
+body:has(.inclusion-intro-page) .global-nav__drawer {
+  font-family: var(--font-pretendard);
+}
+
 .inclusion-intro-page.vf {
   align-items: flex-start;
   overflow-x: hidden;
@@ -8,7 +17,6 @@
 
 .inclusion-intro-page .vf__stage,
 .inclusion-intro-page__stage {
-  --inclusion-footer-h: clamp(116px, 15.5vh, 138px);
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -21,7 +29,7 @@
 .inclusion-intro-page__hero {
   position: relative;
   flex: none;
-  height: calc(min(100dvh, var(--app-max-height)) - var(--inclusion-footer-h));
+  height: min(100dvh, var(--app-max-height));
   min-height: 420px;
   display: flex;
   flex-direction: column;
@@ -58,7 +66,6 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -82,32 +89,49 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 0 24px;
+  padding: 0 24px 0 60px;
   margin-top: -8%;
-  text-align: center;
+  text-align: left;
 }
 
-.inclusion-intro-page__title {
+.inclusion-intro-page__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   margin: 0;
-  font-family: "Times New Roman", Times, serif;
-  font-size: clamp(1.35rem, 5.8vw, 1.62rem);
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+  text-align: left;
 }
 
-.inclusion-intro-page__subtitle {
-  margin: 14px 0 0;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.98rem, 4vw, 1.08rem);
+.inclusion-intro-page .inclusion-intro-page__title {
+  margin: 0;
+  max-width: 284px;
+  font-family: var(--font-editors-note);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  line-height: 1.48;
+  color: #cbcbcb;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.inclusion-intro-page .inclusion-intro-page__subtitle {
+  display: block;
+  margin: 0;
+  width: fit-content;
+  max-width: 145px;
+  height: 18px;
+  font-family: var(--font-baskerville-old-face);
+  font-size: 18px;
   font-weight: 400;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.94);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.24);
+  letter-spacing: 0.05em;
+  line-height: 18px;
+  color: #cbcbcb;
+  text-shadow: none;
+  white-space: nowrap;
 }
 
 .inclusion-intro-page__credit {
@@ -116,46 +140,66 @@
   margin: 0;
   padding: 0 24px 18px;
   text-align: center;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-size: 0.62rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.42);
 }
 
-.inclusion-intro-page__footer {
+.inclusion-intro-page__intro-group {
   flex-shrink: 0;
-  height: var(--inclusion-footer-h);
-  min-height: var(--inclusion-footer-h);
-  padding: 22px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 33px;
+  width: min(254px, calc(100% - 52px));
+  margin: 0 0 33px 52px;
+  padding: 22px 0 0;
   box-sizing: border-box;
   background: #fff;
+  color: #595547;
+}
+
+.inclusion-intro-page__intro-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
 }
 
 .inclusion-intro-page__footer-label {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.82rem, 3.4vw, 0.88rem);
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #666;
+  color: #595547;
 }
 
 .inclusion-intro-page__footer-place {
-  margin: 5px 0 0;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.94rem, 3.9vw, 1.02rem);
+  margin: 0;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: -0.01em;
-  color: #777;
+  color: #595547;
 }
 
-.inclusion-intro-page__footer-line {
-  display: block;
-  width: clamp(112px, 34vw, 132px);
-  height: 1px;
-  margin-top: 16px;
-  background: rgba(0, 0, 0, 0.12);
+.inclusion-intro-page__intro-sub,
+.inclusion-intro-page__intro-lead {
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #595547;
+}
+
+.inclusion-intro-page__intro-sub {
+  line-height: 1.65;
+}
+
+.inclusion-intro-page__intro-lead {
+  line-height: 1.7;
 }
 
 .inclusion-intro-page__detail-wrap {
