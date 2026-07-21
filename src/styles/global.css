@@ -10,6 +10,12 @@
   --app-max-width: 426px;
   --app-max-height: 1098px;
   --font-nanum-barun: "NanumBarunGothic", "나눔바른고딕 OTF", sans-serif;
+  --font-pretendard: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    sans-serif;
+  --font-editors-note: "Editor's Note", "Times New Roman", Times, serif;
+  --font-baskerville-old-face: "Baskerville Old Face", Baskerville, "Libre Baskerville", Georgia,
+    serif;
 }
 
 *,

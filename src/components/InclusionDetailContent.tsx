@@ -79,15 +79,6 @@ function DetailSection({ title, items }: { title: string; items: readonly string
 export default function InclusionDetailContent() {
   return (
     <article className="inclusion-detail" aria-label="프리미엄 포함사항 상세">
-      <header className="inclusion-detail__intro">
-        <p className="inclusion-detail__intro-lead">
-          울릉스케치의 프리미엄 패키지는 고객의 모든 편의 시설, 제반 사항이 포함되어 있습니다.
-        </p>
-        <p className="inclusion-detail__intro-sub">
-          화산섬으로 떠나는 당신의 소중한 여행의 파트너
-        </p>
-      </header>
-
       <div className="inclusion-detail__photos">
         <img
           src={`${INCLUSION_BASE}/inclusion-sea-sparkle.webp`}
@@ -105,27 +96,29 @@ export default function InclusionDetailContent() {
         />
       </div>
 
-      <div className="inclusion-detail__culture">
-        <p className="inclusion-detail__culture-en">
-          Humanity &amp;
-          <br />
-          Culture
-        </p>
-        <p className="inclusion-detail__culture-ko">울릉도 문화와 삶 해설</p>
+      <div className="inclusion-detail__culture-block">
+        <div className="inclusion-detail__culture">
+          <p className="inclusion-detail__culture-en">Humanity &amp; Culture</p>
+          <p className="inclusion-detail__culture-ko">울릉도 문화와 삶 해설</p>
+        </div>
+
+        <div className="inclusion-detail__divider" aria-hidden="true" />
       </div>
 
-      <div className="inclusion-detail__divider" aria-hidden="true" />
+      <div className="inclusion-detail__content">
+        <p className="inclusion-detail__summary">
+          <span className="inclusion-detail__summary-line">프리미엄 패키지는</span>
+          <span className="inclusion-detail__summary-line">여행의 모든 경비를 포함하고 있습니다</span>
+        </p>
 
-      <p className="inclusion-detail__summary">
-        <span className="inclusion-detail__summary-line">프리미엄 패키지는</span>
-        <span className="inclusion-detail__summary-line">여행의 모든 경비를 포함하고 있습니다</span>
-      </p>
+        <div className="inclusion-detail__sections">
+          {SECTIONS.map((section) => (
+            <DetailSection key={section.title} title={section.title} items={section.items} />
+          ))}
+        </div>
 
-      {SECTIONS.map((section) => (
-        <DetailSection key={section.title} title={section.title} items={section.items} />
-      ))}
-
-      <p className="inclusion-detail__note">단, 개인 구매경비는 불포함입니다.</p>
+        <p className="inclusion-detail__note">단, 개인 구매경비는 불포함입니다.</p>
+      </div>
 
       <div className="inclusion-detail__cta-wrap">
         <Link className="inclusion-detail__cta" to="/reservations">
