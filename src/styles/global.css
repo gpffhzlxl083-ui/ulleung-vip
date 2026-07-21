@@ -1,7 +1,15 @@
+@font-face {
+  font-family: "NanumBarunGothic";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/NanumBarunGothic.otf") format("opentype");
+}
+
 :root {
   /* 앱 카드 기준 뷰포트 (브라우저 반응형 426×1098과 맞춤) */
   --app-max-width: 426px;
   --app-max-height: 1098px;
+  --font-nanum-barun: "NanumBarunGothic", "나눔바른고딕 OTF", sans-serif;
 }
 
 *,

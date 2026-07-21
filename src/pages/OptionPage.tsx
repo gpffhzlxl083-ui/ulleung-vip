@@ -7,45 +7,51 @@ const OPTION_BASE = "/Image/option";
 const OPTION_CARDS = [
   {
     image: `${OPTION_BASE}/inroom-service-book.webp`,
+    imagePosition: "center 72%",
     eyebrow: "Food of Ulleung",
     subtitle: "산해진미",
     title: "울릉도의 미식",
-    desc: "제철음식으로 가득한 울릉도 특식을 제공합니다",
+    descLines: ["제철음식으로 가득한", "울릉도 특식을 제공합니다"],
   },
   {
     image: `${OPTION_BASE}/buffet-station.webp`,
+    imagePosition: "center bottom",
     eyebrow: "Premium Dining",
     subtitle: "조식 뷔페",
     title: "섬바디의 아침",
-    desc: "신선한 재료로 준비하는 프리미엄 뷔페를 제공합니다",
+    descLines: ["신선한 재료로 준비하는", "프리미엄 뷔페를 제공합니다"],
   },
   {
     image: `${OPTION_BASE}/pumpkin-bath.webp`,
+    imagePosition: "center bottom",
     eyebrow: "Rest & Spa",
     subtitle: "족욕 스파",
     title: "노을 속 휴식",
-    desc: "바다를 바라보며 즐기는 아로마 족욕 서비스",
+    descLines: ["바다를 바라보며 즐기는 아로마 족욕", "서비스"],
   },
   {
     image: `${OPTION_BASE}/ulleung-staff.webp`,
+    imagePosition: "center 88%",
     eyebrow: "Ulleung Experience",
     subtitle: "현지 가이드",
     title: "울릉의 풍경",
-    desc: "섬의 명소와 이야기를 전해드리는 프리미엄 투어",
+    descLines: ["섬의 명소와 이야기를 전해드리는", "프리미엄 투어"],
   },
   {
     image: `${OPTION_BASE}/vip-van.webp`,
+    imagePosition: "center bottom",
     eyebrow: "VIP Transport",
     subtitle: "프리미엄 이동",
     title: "편안한 이동",
-    desc: "항구부터 숙소까지 VIP 전용 차량을 제공합니다",
+    descLines: ["항구부터 숙소까지 VIP", "전용 차량을 제공합니다"],
   },
   {
     image: `${OPTION_BASE}/latte-by-sea.webp`,
+    imagePosition: "center bottom",
     eyebrow: "Ocean Lounge",
     subtitle: "바다 뷰 카페",
     title: "일몰 커피",
-    desc: "노을과 함께 즐기는 울릉 스케치의 커피 타임",
+    descLines: ["노을과 함께 즐기는 울릉 스케치의", "커피 타임"],
   },
 ] as const;
 
@@ -66,7 +72,13 @@ function OptionCard({ index }: { index: number }) {
   return (
     <article className="option-page__card" aria-label={`${index + 1}번째 옵션`}>
       <div className="option-page__media">
-        <img src={card.image} alt="" decoding="async" draggable={false} />
+        <img
+          src={card.image}
+          alt=""
+          decoding="async"
+          draggable={false}
+          style={{ objectPosition: card.imagePosition }}
+        />
       </div>
 
       <div className="option-page__sheet">
@@ -84,20 +96,35 @@ function OptionCard({ index }: { index: number }) {
           <p className="option-page__page-label">{index + 1} PAGE</p>
 
           <div className="option-page__copy">
-            <p className="option-page__eyebrow">{card.eyebrow}</p>
-            <div className="option-page__headline">
-              <p className="option-page__subtitle">{card.subtitle}</p>
-              <h2 className="option-page__title">{card.title}</h2>
+            <div className="option-page__copy-main">
+              <p className="option-page__eyebrow">{card.eyebrow}</p>
+              <div className="option-page__headline">
+                <p className="option-page__subtitle">{card.subtitle}</p>
+                <h2 className="option-page__title">{card.title}</h2>
+              </div>
             </div>
             <div className="option-page__bottom">
-              <p className="option-page__desc">{card.desc}</p>
+              <p className="option-page__desc">
+                {card.descLines.map((line, lineIndex) => (
+                  <span key={`${line}-${lineIndex}`} className="option-page__desc-line">
+                    {line}
+                  </span>
+                ))}
+              </p>
               <span className="option-page__more">
                 more
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <svg
+                  className="option-page__more-arrow"
+                  width="18"
+                  height="8"
+                  viewBox="0 0 18 8"
+                  fill="none"
+                  aria-hidden="true"
+                >
                   <path
-                    d="M5 12h12M13 7l5 5-5 5"
+                    d="M0 4h12M9 1.5 14.5 4 9 6.5"
                     stroke="currentColor"
-                    strokeWidth="1.8"
+                    strokeWidth="1.15"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />

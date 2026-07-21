@@ -5,6 +5,8 @@
   overflow: hidden;
   background: #1a1412;
   color: #111;
+  font-family: var(--font-nanum-barun);
+  font-weight: 400;
 }
 
 .option-page__shell {
@@ -55,9 +57,8 @@
   min-width: 44px;
   height: 40px;
   padding: 0 4px;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.14em;
   color: rgba(255, 255, 255, 0.92);
   text-decoration: none;
@@ -111,7 +112,8 @@
 }
 
 .option-page__card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -119,8 +121,10 @@
 }
 
 .option-page__media {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
   z-index: 0;
 }
 
@@ -128,15 +132,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center bottom;
   display: block;
 }
 
 .option-page__sheet {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  flex: 0 0 auto;
   z-index: 2;
   width: 100%;
   aspect-ratio: 375 / 361;
@@ -156,93 +158,104 @@
 
 .option-page__page-label {
   position: absolute;
-  top: 3.2%;
+  top: 3.5%;
   left: 6.4%;
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.92);
 }
 
 .option-page__copy {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 19%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4.8% 8.2% 9.2%;
+  box-sizing: border-box;
+}
+
+.option-page__copy-main {
+  flex: 0 0 auto;
 }
 
 .option-page__eyebrow {
-  position: absolute;
-  top: 20.8%;
-  left: 8%;
-  right: 8%;
   margin: 0;
-  font-family: "Times New Roman", Times, serif;
-  font-size: clamp(0.82rem, 3.4vw, 0.9rem);
+  font-size: clamp(0.68rem, 2.85vw, 0.74rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   color: rgba(59, 38, 36, 0.58);
 }
 
 .option-page__headline {
-  position: absolute;
-  top: 38.5%;
-  left: 8%;
-  right: 8%;
+  margin: clamp(22px, 6vw, 28px) 0 0;
 }
 
 .option-page__subtitle {
-  margin: 0 0 6px;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.98rem, 4.2vw, 1.08rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  color: #241714;
+  margin: 0;
+  font-size: clamp(0.84rem, 3.5vw, 0.92rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.28;
+  color: #32221f;
 }
 
 .option-page__title {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(1.55rem, 7.2vw, 1.82rem);
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.04em;
-  color: #241714;
+  padding-top: 3px;
+  font-size: clamp(1.54rem, 6.9vw, 1.74rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  color: #1a100e;
 }
 
 .option-page__bottom {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 10.5%;
+  flex: 0 0 auto;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
 .option-page__desc {
   margin: 0;
-  max-width: 58%;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.74rem, 3vw, 0.8rem);
-  line-height: 1.65;
-  letter-spacing: -0.03em;
-  color: rgba(36, 23, 20, 0.72);
+  max-width: 64%;
+}
+
+.option-page__desc-line {
+  display: block;
+  font-size: clamp(0.7rem, 2.85vw, 0.76rem);
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: -0.028em;
+  color: rgba(36, 23, 20, 0.7);
+}
+
+.option-page__desc-line + .option-page__desc-line {
+  margin-top: 0;
 }
 
 .option-page__more {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   padding-bottom: 2px;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.76rem, 3vw, 0.82rem);
-  font-weight: 500;
+  font-size: clamp(0.7rem, 2.85vw, 0.76rem);
+  font-weight: 400;
   letter-spacing: 0.01em;
-  color: rgba(36, 23, 20, 0.78);
+  color: rgba(36, 23, 20, 0.76);
+}
+
+.option-page__more-arrow {
+  display: block;
+  flex-shrink: 0;
 }
 
 .option-page__dots {
