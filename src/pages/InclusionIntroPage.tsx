@@ -65,10 +65,17 @@ export default function InclusionIntroPage() {
             <p className="inclusion-intro-page__footer-place">Ulleung, Dokdo</p>
           </div>
           <p className="inclusion-intro-page__intro-sub">
-            화산섬으로 떠나는 당신의 소중한 여행의 파트너
+            화산섬으로 떠나는
+            <br />
+            당신의 소중한 여행의 파트너
           </p>
+          <hr className="inclusion-intro-page__intro-divider" aria-hidden="true" />
           <p className="inclusion-intro-page__intro-lead">
-            울릉스케치의 프리미엄 패키지는 고객의 모든 편의 시설, 제반 사항이 포함되어 있습니다.
+            울릉스케치의 프리미엄
+            <br />
+            패키지는 고객의 모든
+            <br />
+            편의 시설, 제반 사항이 포함되어 있습니다.
           </p>
         </section>
 

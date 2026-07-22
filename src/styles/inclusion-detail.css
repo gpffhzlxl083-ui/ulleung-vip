@@ -1,30 +1,37 @@
 .inclusion-detail {
   --inclusion-gap-block: 33px;
-  --inclusion-gap-section: 88px;
+  --inclusion-gap-section: 80px;
+  --inclusion-gap-intro: 88px;
+  --inclusion-gap-note: 48px;
+  --inclusion-gap-cta: 120px;
   --inclusion-text-x: 42px;
+  --inclusion-photo-x: 42px;
+  --inclusion-photo-w: 169px;
+  --inclusion-photo-h: 314px;
+  --inclusion-photo-gap: 8px;
   --inclusion-text-w: 346px;
   display: flex;
   flex-direction: column;
-  gap: var(--inclusion-gap-block);
+  gap: 0;
   padding: 0 0 32px;
   background: #fff;
   color: #222;
 }
 
 .inclusion-detail__photos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--inclusion-gap-block);
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--inclusion-photo-gap);
   margin: 0;
-  padding: 0 var(--inclusion-text-x);
+  padding: 0 var(--inclusion-photo-x);
   box-sizing: border-box;
 }
 
 .inclusion-detail__photos img {
   display: block;
-  width: 100%;
-  aspect-ratio: 9 / 16;
+  flex: none;
+  width: var(--inclusion-photo-w);
+  height: var(--inclusion-photo-h);
   object-fit: cover;
   object-position: center;
 }
@@ -37,9 +44,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
   width: min(var(--inclusion-text-w), calc(100% - var(--inclusion-text-x)));
-  margin-left: var(--inclusion-text-x);
+  margin: calc(40px - 44px) 0 0 var(--inclusion-text-x);
 }
 
 .inclusion-detail__culture {
@@ -65,37 +71,51 @@
 }
 
 .inclusion-detail__divider {
-  width: clamp(112px, 34vw, 132px);
-  height: 1px;
+  width: 107px;
+  height: 0;
   margin: 0;
-  background: rgba(0, 0, 0, 0.1);
+  padding: 0;
+  border: none;
+  border-top: 1.5px solid #9F9F9F;
 }
 
 .inclusion-detail__content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--inclusion-gap-section);
+  gap: 0;
   width: min(var(--inclusion-text-w), calc(100% - var(--inclusion-text-x)));
-  margin-left: var(--inclusion-text-x);
+  margin: 80px 0 0 var(--inclusion-text-x);
   padding: 0;
   box-sizing: border-box;
+}
+
+.inclusion-detail__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 33px;
+  width: 100%;
+  margin-bottom: var(--inclusion-gap-intro);
 }
 
 .inclusion-detail__summary {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 2px;
   margin: 0;
   padding: 0;
+  max-width: 237px;
   width: 100%;
 }
 
 .inclusion-detail__summary-line {
-  font-size: clamp(1rem, 4.3vw, 1.1rem);
-  font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: -0.03em;
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0;
   color: #4a6e6e;
 }
 
@@ -113,12 +133,13 @@
 }
 
 .inclusion-detail__section-title {
-  margin: 0 0 12px;
-  font-size: 0.96rem;
-  font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: -0.02em;
-  color: #333;
+  margin: 0 0 16px;
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0;
+  color: #000;
 }
 
 .inclusion-detail__list {
@@ -129,7 +150,7 @@
 
 .inclusion-detail__list li {
   position: relative;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   padding-left: 12px;
   font-size: 0.82rem;
   line-height: 1.65;
@@ -149,19 +170,18 @@
 }
 
 .inclusion-detail__note {
-  margin: 0;
+  margin: var(--inclusion-gap-note) 0 0;
   padding: 0;
   width: 100%;
-  font-size: 0.78rem;
-  line-height: 1.55;
+  font-size: 0.82rem;
+  line-height: 1.65;
   letter-spacing: -0.02em;
   color: #999;
 }
 
 .inclusion-detail__cta-wrap {
   width: min(var(--inclusion-text-w), calc(100% - var(--inclusion-text-x)));
-  margin: calc(var(--inclusion-gap-section) - var(--inclusion-gap-block)) 0 0
-    var(--inclusion-text-x);
+  margin: var(--inclusion-gap-cta) 0 0 var(--inclusion-text-x);
   padding: 0;
 }
 
@@ -175,8 +195,8 @@
   border-radius: 14px;
   background: #1a3638;
   color: #fff;
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 800;
   letter-spacing: -0.01em;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
