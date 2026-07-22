@@ -101,15 +101,16 @@ export default function InclusionDetailContent() {
           <p className="inclusion-detail__culture-en">Humanity &amp; Culture</p>
           <p className="inclusion-detail__culture-ko">울릉도 문화와 삶 해설</p>
         </div>
-
-        <div className="inclusion-detail__divider" aria-hidden="true" />
       </div>
 
       <div className="inclusion-detail__content">
-        <p className="inclusion-detail__summary">
+        <div className="inclusion-detail__intro">
+          <div className="inclusion-detail__divider" aria-hidden="true" />
+          <p className="inclusion-detail__summary">
           <span className="inclusion-detail__summary-line">프리미엄 패키지는</span>
           <span className="inclusion-detail__summary-line">여행의 모든 경비를 포함하고 있습니다</span>
-        </p>
+          </p>
+        </div>
 
         <div className="inclusion-detail__sections">
           {SECTIONS.map((section) => (
@@ -122,7 +123,7 @@ export default function InclusionDetailContent() {
 
       <div className="inclusion-detail__cta-wrap">
         <Link className="inclusion-detail__cta" to="/reservations">
-          예약하기
+          NEXT
           <span className="inclusion-detail__cta-arrow" aria-hidden="true">
             →
           </span>
