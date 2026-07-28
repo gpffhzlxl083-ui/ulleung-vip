@@ -184,7 +184,7 @@ export default function OptionPage() {
         >
           <header className="option-page__top">
             <div className="option-page__top-row">
-              <Link className="option-page__back" to="/premium" aria-label="이전 화면">
+              <Link className="option-page__back" to="/plan" aria-label="이전 화면">
                 BACK
               </Link>
               <span aria-hidden="true" />

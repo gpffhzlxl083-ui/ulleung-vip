@@ -122,7 +122,7 @@ export default function InclusionDetailContent() {
       </div>
 
       <div className="inclusion-detail__cta-wrap">
-        <Link className="inclusion-detail__cta" to="/reservations">
+        <Link className="inclusion-detail__cta" to="/plan">
           NEXT
           <span className="inclusion-detail__cta-arrow" aria-hidden="true">
             →

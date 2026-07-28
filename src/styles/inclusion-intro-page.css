@@ -1,5 +1,10 @@
-.inclusion-intro-page,
-.inclusion-intro-page * {
+.inclusion-intro-page {
+  font-family: var(--font-pretendard);
+}
+
+.inclusion-intro-page__intro-group,
+.inclusion-intro-page__detail-wrap,
+.inclusion-detail {
   font-family: var(--font-pretendard);
 }
 
@@ -124,7 +129,7 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
   width: fit-content;
   max-width: 145px;
   height: 18px;
-  font-family: var(--font-baskerville-old-face);
+  font-family: "Baskerville Old Face", var(--font-baskerville-old-face);
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.05em;

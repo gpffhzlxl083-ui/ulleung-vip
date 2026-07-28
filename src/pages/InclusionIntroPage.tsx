@@ -39,11 +39,11 @@ export default function InclusionIntroPage() {
           />
 
           <header className="inclusion-intro-page__header">
-            <Link className="inclusion-intro-page__nav inclusion-intro-page__nav--back" to="/plan">
+            <Link className="inclusion-intro-page__nav inclusion-intro-page__nav--back" to="/premium">
               <NavChevron direction="left" />
               BACK
             </Link>
-            <Link className="inclusion-intro-page__nav inclusion-intro-page__nav--next" to="/option">
+            <Link className="inclusion-intro-page__nav inclusion-intro-page__nav--next" to="/plan">
               NEXT
               <NavChevron direction="right" />
             </Link>
