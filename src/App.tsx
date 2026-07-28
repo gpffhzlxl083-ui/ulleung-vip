@@ -7,6 +7,7 @@ import OptionPage from "./pages/OptionPage";
 import PlanPage from "./pages/PlanPage";
 import PremiumLandingPage from "./pages/PremiumLandingPage";
 import ReservationsPage from "./pages/ReservationsPage";
+import ScheduleDayPage from "./pages/ScheduleDayPage";
 import VideoIntroPage from "./pages/VideoIntroPage";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/" element={<VideoIntroPage />} />
         <Route path="/premium" element={<PremiumLandingPage />} />
         <Route path="/plan" element={<PlanPage />} />
+        <Route path="/plan/:dayId" element={<ScheduleDayPage />} />
         <Route path="/inclusion" element={<InclusionIntroPage />} />
         <Route path="/infinity-pool-deck" element={<InfinityPoolDeckPage />} />
         <Route path="/option" element={<OptionPage />} />

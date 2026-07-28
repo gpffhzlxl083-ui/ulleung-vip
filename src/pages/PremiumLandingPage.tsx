@@ -28,17 +28,17 @@ export default function PremiumLandingPage() {
 
   const openServiceIntro = () => setShowServiceIntro(true);
   const closeServiceIntro = () => setShowServiceIntro(false);
-  const goToPlan = useCallback(() => {
+  const goToInclusion = useCallback(() => {
     setShowServiceIntro(false);
-    navigate("/plan");
+    navigate("/inclusion");
   }, [navigate]);
 
   useEffect(() => {
     if (!showServiceIntro) return;
 
-    const timer = window.setTimeout(goToPlan, INTRO_POPUP_DELAY_MS);
+    const timer = window.setTimeout(goToInclusion, INTRO_POPUP_DELAY_MS);
     return () => window.clearTimeout(timer);
-  }, [showServiceIntro, goToPlan]);
+  }, [showServiceIntro, goToInclusion]);
 
   return (
     <>
@@ -66,7 +66,7 @@ export default function PremiumLandingPage() {
             </header>
 
             <nav className="premium-landing__actions" aria-label="패키지 메뉴">
-              <Link to="/option" className="premium-landing__cta premium-landing__cta--light">
+              <Link to="/inclusion" className="premium-landing__cta premium-landing__cta--light">
                 <span className="premium-landing__cta-en">Inclusions</span>
                 <span className="premium-landing__cta-ko">
                   포함사항

@@ -1,13 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import PlanContent from "../components/PlanContent";
+import ScheduleIndexPage from "./ScheduleIndexPage";
 
 export default function PlanPage() {
-  const navigate = useNavigate();
-
-  return (
-    <PlanContent
-      onClose={() => navigate("/premium")}
-      onEnter={() => navigate("/inclusion")}
-    />
-  );
+  return <ScheduleIndexPage />;
 }
