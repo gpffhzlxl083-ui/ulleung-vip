@@ -14,10 +14,8 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
 
 .inclusion-intro-page.vf {
   align-items: flex-start;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   height: 100dvh;
-  -webkit-overflow-scrolling: touch;
 }
 
 .inclusion-intro-page .vf__stage,
@@ -25,10 +23,31 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: auto;
-  min-height: min(100dvh, var(--app-max-height));
-  overflow: visible;
+  height: min(100dvh, var(--app-max-height));
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(110, 110, 110, 0.55) rgba(0, 0, 0, 0.06);
   background: #fff;
+}
+
+.inclusion-intro-page .vf__stage::-webkit-scrollbar,
+.inclusion-intro-page__stage::-webkit-scrollbar {
+  width: 6px;
+}
+
+.inclusion-intro-page .vf__stage::-webkit-scrollbar-track,
+.inclusion-intro-page__stage::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.inclusion-intro-page .vf__stage::-webkit-scrollbar-thumb,
+.inclusion-intro-page__stage::-webkit-scrollbar-thumb {
+  background: rgba(110, 110, 110, 0.52);
+  border-radius: 999px;
 }
 
 .inclusion-intro-page__hero {
@@ -53,16 +72,19 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
 }
 
 .inclusion-intro-page__header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding:
-    max(56px, calc(env(safe-area-inset-top) + 48px))
-    max(14px, env(safe-area-inset-right))
-    12px
-    max(14px, env(safe-area-inset-left));
+    var(--nav-bar-top-inset)
+    var(--nav-bar-inline-end)
+    0
+    var(--nav-bar-inline-start);
   pointer-events: none;
 }
 
@@ -70,7 +92,8 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  min-height: var(--nav-bar-toggle);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -80,8 +103,11 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
   -webkit-tap-highlight-color: transparent;
 }
 
-.inclusion-intro-page__nav--next {
-  padding-right: 44px;
+.inclusion-intro-page__nav svg {
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
 }
 
 .inclusion-intro-page__nav:active {
@@ -113,7 +139,7 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
 .inclusion-intro-page .inclusion-intro-page__title {
   margin: 0;
   max-width: 284px;
-  font-family: var(--font-editors-note);
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.17em;
@@ -129,7 +155,7 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
   width: fit-content;
   max-width: 145px;
   height: 18px;
-  font-family: "Baskerville Old Face", var(--font-baskerville-old-face);
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -157,12 +183,15 @@ body:has(.inclusion-intro-page) .global-nav__drawer {
   flex-direction: column;
   align-items: flex-start;
   gap: 33px;
-  width: min(254px, calc(100% - 52px));
-  margin: 0 0 88px 52px;
-  padding: 90px 0 0;
+  width: 100%;
+  margin: 0 0 88px;
+  padding: 90px 52px 0;
   box-sizing: border-box;
+  border-radius: 28px 28px 0 0;
   background: #fff;
   color: #595547;
+  position: relative;
+  z-index: 1;
 }
 
 .inclusion-intro-page__intro-heading {

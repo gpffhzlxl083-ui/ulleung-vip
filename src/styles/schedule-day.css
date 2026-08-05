@@ -112,13 +112,14 @@ body:has(.schedule-day) .global-nav__drawer {
 .schedule-day__timeline {
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
 .schedule-day__item {
   display: grid;
-  grid-template-columns: 36px 1fr;
-  gap: 0 12px;
-  padding-bottom: 32px;
+  grid-template-columns: 40px 1fr;
+  gap: 0 14px;
+  padding-bottom: 0;
 }
 
 .schedule-day__item--last {
@@ -130,6 +131,18 @@ body:has(.schedule-day) .global-nav__drawer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40px;
+}
+
+.schedule-day__timeline-time {
+  margin-top: 10px;
+  font-size: 0.64rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: rgba(89, 85, 71, 0.78);
+  white-space: pre-line;
 }
 
 .schedule-day__icon {
@@ -139,7 +152,7 @@ body:has(.schedule-day) .global-nav__drawer {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  color: #1a353a;
+  color: #15363a;
   background: #eef2f2;
   flex-shrink: 0;
 }
@@ -154,6 +167,104 @@ body:has(.schedule-day) .global-nav__drawer {
 
 .schedule-day__content {
   min-width: 0;
+}
+
+.schedule-day__content--card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 16px 16px;
+  border: 1px solid #e7e7e7;
+  border-radius: 17px;
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+.schedule-day__welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+
+.schedule-day__welcome-line {
+  display: block;
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #b3b3b3;
+}
+
+.schedule-day__title-block {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.schedule-day__item-title--rich {
+  margin: 0;
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 24px;
+  color: #2b5a5f;
+}
+
+.schedule-day__bullets {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: rgba(47, 44, 40, 0.84);
+}
+
+.schedule-day__bullets li + li {
+  margin-top: 4px;
+}
+
+.schedule-day__bullet-emphasis {
+  font-weight: 700;
+  color: #c44b3a;
+}
+
+.schedule-day__meeting-place {
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #5f8289;
+  color: #fff;
+}
+
+.schedule-day__meeting-label {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.schedule-day__meeting-address {
+  margin: 0;
+  font-size: 0.76rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.schedule-day__footer-note {
+  margin: 0;
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: rgba(89, 85, 71, 0.72);
 }
 
 .schedule-day__meta {

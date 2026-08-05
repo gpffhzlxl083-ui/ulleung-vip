@@ -1,11 +1,20 @@
 /* ── 트리거 (2줄 햄버거) ── */
+:root {
+  --nav-bar-top: max(10px, env(safe-area-inset-top));
+  --nav-bar-inline-end: max(14px, env(safe-area-inset-right));
+  --nav-bar-inline-start: max(14px, env(safe-area-inset-left));
+  --nav-bar-toggle: 44px;
+  /* vf__stage 등 safe-area 패딩 안에서 메뉴바 top과 맞출 때 */
+  --nav-bar-top-inset: max(0px, calc(10px - env(safe-area-inset-top)));
+}
+
 .global-nav {
   position: fixed;
-  top: max(10px, env(safe-area-inset-top));
+  top: var(--nav-bar-top);
   left: 50%;
   width: min(100vw, var(--app-max-width));
   margin-left: calc(min(100vw, var(--app-max-width)) / -2);
-  padding-right: max(14px, env(safe-area-inset-right));
+  padding-right: var(--nav-bar-inline-end);
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
@@ -30,8 +39,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: var(--nav-bar-toggle);
+  height: var(--nav-bar-toggle);
   margin: 0;
   padding: 0;
   border: none;

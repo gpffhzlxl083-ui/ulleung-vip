@@ -11,6 +11,11 @@ export type ScheduleIcon =
   | "spa"
   | "staff";
 
+export type ScheduleBullet = {
+  text: string;
+  emphasis?: string;
+};
+
 export type ScheduleItem = {
   id: string;
   icon: ScheduleIcon;
@@ -19,6 +24,10 @@ export type ScheduleItem = {
   time?: string;
   description: string;
   highlight?: string;
+  welcomeLines?: [string, string];
+  bullets?: ScheduleBullet[];
+  meetingPlace?: { label: string; address: string };
+  footerNote?: string;
   images: string[];
   actionLabel?: string;
 };
@@ -41,13 +50,20 @@ export const SCHEDULE_DAYS: ScheduleDay[] = [
       {
         id: "d1-meeting",
         icon: "pin",
-        title: "만남의 광장",
-        category: "집합",
-        time: "08:00",
-        description: "포항 여객터미널 2층 만남의 광장에서 인솔자와 만나 출발 준비를 합니다.",
-        highlight: "08:00 집합",
+        title: "전문인솔자 미팅",
+        time: "08:50 ~ 09:50",
+        welcomeLines: ["Welcome to", "Ulleung-sketch"],
+        bullets: [
+          { text: "전문 인솔자와 미팅합니다." },
+          { text: "까지 포항여객터미널 집결", emphasis: "[08:50]" },
+        ],
+        meetingPlace: {
+          label: "Meeting Place",
+          address: "경상북도 포항시 흥해읍 용한리 914",
+        },
+        description: "포항 여객터미널에서 전문 인솔자와 미팅합니다.",
         images: [`${SCHEDULE_IMAGE_BASE}/ulleung-sketch-sign.webp`],
-        actionLabel: "만남의 광장 위치 확인",
+        footerNote: "-> 울릉 심층수, 멀미약, 기념품 제공",
       },
       {
         id: "d1-ferry",

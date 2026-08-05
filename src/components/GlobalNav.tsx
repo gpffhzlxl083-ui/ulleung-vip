@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { KAKAO_CONSULT_URL } from "../config/nav";
 import "../styles/global-nav.css";
 
+function isGlobalNavHidden(pathname: string) {
+  return pathname === "/inclusion" || pathname === "/plan" || pathname.startsWith("/plan/");
+}
+
 export default function GlobalNav() {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -18,6 +27,8 @@ export default function GlobalNav() {
   }, [open]);
 
   const close = () => setOpen(false);
+
+  if (isGlobalNavHidden(location.pathname)) return null;
 
   return (
     <>

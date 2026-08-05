@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import ScheduleDetailContent from "../components/ScheduleDetailContent";
-import { SCHEDULE_DAYS } from "../data/schedule";
 import "../styles/viewport-full.css";
 import "../styles/schedule-index.css";
 import "../styles/schedule-day.css";
@@ -30,11 +29,10 @@ function NavChevron({ direction }: { direction: "left" | "right" }) {
   );
 }
 
-function scrollToDay(day: number) {
-  document.getElementById(`schedule-day-${day}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 export default function ScheduleIndexPage() {
+  const location = useLocation();
+  const backTo = (location.state as { fromSchedule?: boolean } | null)?.fromSchedule ? "/premium" : "/inclusion";
+
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (!hash.startsWith("schedule-day-")) return;
@@ -58,7 +56,7 @@ export default function ScheduleIndexPage() {
           />
 
           <header className="schedule-index__header">
-            <Link className="schedule-index__nav schedule-index__nav--back" to="/inclusion">
+            <Link className="schedule-index__nav schedule-index__nav--back" to={backTo}>
               <NavChevron direction="left" />
               BACK
             </Link>
@@ -76,26 +74,6 @@ export default function ScheduleIndexPage() {
           </div>
 
           <p className="schedule-index__credit">Premium by ulleung_sketch</p>
-        </section>
-
-        <section className="schedule-index__list" aria-label="일차별 일정">
-          {SCHEDULE_DAYS.map((day, index) => (
-            <div key={day.day} className="schedule-index__day-wrap">
-              {index > 0 && <hr className="schedule-index__divider" aria-hidden="true" />}
-              <button
-                type="button"
-                className="schedule-index__day"
-                onClick={() => scrollToDay(day.day)}
-              >
-                <p className="schedule-index__day-label">Premium, Ulleung_Sketch</p>
-                <h2 className="schedule-index__day-title">{day.listTitle}</h2>
-                <span className="schedule-index__day-link">
-                  자세히보기
-                  <span aria-hidden="true"> →</span>
-                </span>
-              </button>
-            </div>
-          ))}
         </section>
 
         <div className="schedule-index__detail-wrap">

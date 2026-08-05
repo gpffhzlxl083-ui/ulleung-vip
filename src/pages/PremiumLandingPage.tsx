@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import PlanModal from "../components/PlanModal";
 import ServiceIntroModal from "../components/ServiceIntroModal";
 import "../styles/viewport-full.css";
 import "../styles/premium-landing.css";
@@ -22,23 +23,26 @@ function CtaArrow({ variant }: { variant: "light" | "dark" }) {
 
 const INTRO_POPUP_DELAY_MS = 3000;
 
+type ScheduleIntroStep = "none" | "service" | "plan";
+
 export default function PremiumLandingPage() {
   const navigate = useNavigate();
-  const [showServiceIntro, setShowServiceIntro] = useState(false);
+  const [introStep, setIntroStep] = useState<ScheduleIntroStep>("none");
 
-  const openServiceIntro = () => setShowServiceIntro(true);
-  const closeServiceIntro = () => setShowServiceIntro(false);
-  const goToInclusion = useCallback(() => {
-    setShowServiceIntro(false);
-    navigate("/inclusion");
+  const openScheduleIntro = () => setIntroStep("service");
+  const closeScheduleIntro = () => setIntroStep("none");
+  const goToPlanIntro = useCallback(() => setIntroStep("plan"), []);
+  const goToOption = useCallback(() => {
+    setIntroStep("none");
+    navigate("/option", { state: { fromSchedule: true } });
   }, [navigate]);
 
   useEffect(() => {
-    if (!showServiceIntro) return;
+    if (introStep !== "service") return;
 
-    const timer = window.setTimeout(goToInclusion, INTRO_POPUP_DELAY_MS);
+    const timer = window.setTimeout(goToPlanIntro, INTRO_POPUP_DELAY_MS);
     return () => window.clearTimeout(timer);
-  }, [showServiceIntro, goToInclusion]);
+  }, [introStep, goToPlanIntro]);
 
   return (
     <>
@@ -76,7 +80,7 @@ export default function PremiumLandingPage() {
               <button
                 type="button"
                 className="premium-landing__cta premium-landing__cta--dark"
-                onClick={openServiceIntro}
+                onClick={openScheduleIntro}
               >
                 <span className="premium-landing__cta-en">Schedule</span>
                 <span className="premium-landing__cta-ko">
@@ -89,7 +93,8 @@ export default function PremiumLandingPage() {
         </div>
       </div>
 
-      {showServiceIntro && <ServiceIntroModal onClose={closeServiceIntro} />}
+      {introStep === "service" && <ServiceIntroModal onClose={closeScheduleIntro} />}
+      {introStep === "plan" && <PlanModal onClose={closeScheduleIntro} onEnter={goToOption} />}
     </>
   );
 }

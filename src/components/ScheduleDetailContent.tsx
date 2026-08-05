@@ -12,9 +12,10 @@ export default function ScheduleDetailContent() {
           className="schedule-detail__day"
           aria-label={day.listTitle}
         >
-          <div className="schedule-detail__day-head">
-            <p className="schedule-detail__brand">Premium, Ulleung_Sketch</p>
-            <h2 className="schedule-detail__day-title">{day.listTitle}</h2>
+          <div className="schedule-detail__day-banner">
+            <span className="schedule-detail__day-badge">Day {day.day}</span>
+            <span className="schedule-detail__day-banner-divider" aria-hidden="true" />
+            <span className="schedule-detail__day-banner-label">상세일정</span>
           </div>
 
           <div className="schedule-day__timeline">

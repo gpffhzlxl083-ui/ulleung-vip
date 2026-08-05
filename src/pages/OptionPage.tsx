@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/option-page.css";
 
 const OPTION_BASE = "/Image/option";
@@ -66,7 +66,7 @@ const PANEL_FRONT_PATH =
 
 const PANEL_FRONT_Y = 361 - 327.485;
 
-function OptionCard({ index }: { index: number }) {
+function OptionCard({ index, isActive, animKey }: { index: number; isActive: boolean; animKey: number }) {
   const card = OPTION_CARDS[index];
 
   return (
@@ -96,7 +96,10 @@ function OptionCard({ index }: { index: number }) {
           <p className="option-page__page-label">{index + 1} PAGE</p>
 
           <div className="option-page__copy">
-            <div className="option-page__copy-main">
+            <div
+              key={isActive ? `copy-${animKey}` : `copy-idle-${index}`}
+              className={`option-page__copy-main${isActive ? " option-page__copy-main--in" : ""}`}
+            >
               <p className="option-page__eyebrow">{card.eyebrow}</p>
               <div className="option-page__headline">
                 <p className="option-page__subtitle">{card.subtitle}</p>
@@ -139,6 +142,8 @@ function OptionCard({ index }: { index: number }) {
 }
 
 export default function OptionPage() {
+  const location = useLocation();
+  const backTo = (location.state as { fromSchedule?: boolean } | null)?.fromSchedule ? "/premium" : "/plan";
   const [activeIndex, setActiveIndex] = useState(0);
   const dragRef = useRef({ startX: 0, moved: false });
 
@@ -184,7 +189,7 @@ export default function OptionPage() {
         >
           <header className="option-page__top">
             <div className="option-page__top-row">
-              <Link className="option-page__back" to="/plan" aria-label="이전 화면">
+              <Link className="option-page__back" to={backTo} aria-label="이전 화면">
                 BACK
               </Link>
               <span aria-hidden="true" />
@@ -234,7 +239,7 @@ export default function OptionPage() {
           >
             {OPTION_CARDS.map((_, index) => (
               <div key={index} className="option-page__slide">
-                <OptionCard index={index} />
+                <OptionCard index={index} isActive={index === activeIndex} animKey={activeIndex} />
               </div>
             ))}
           </div>
