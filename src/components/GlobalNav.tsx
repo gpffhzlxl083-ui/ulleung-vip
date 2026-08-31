@@ -4,7 +4,12 @@ import { KAKAO_CONSULT_URL } from "../config/nav";
 import "../styles/global-nav.css";
 
 function isGlobalNavHidden(pathname: string) {
-  return pathname === "/inclusion" || pathname === "/plan" || pathname.startsWith("/plan/");
+  return (
+    pathname === "/" ||
+    pathname === "/inclusion" ||
+    pathname === "/plan" ||
+    pathname.startsWith("/plan/")
+  );
 }
 
 export default function GlobalNav() {

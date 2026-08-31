@@ -1,189 +1,230 @@
-.premium-landing .vf__stage {
-  padding: 0;
-  background: #0a1620;
-}
-
-.premium-landing__bg {
-  position: absolute;
-  inset: 0;
+.premium-service {
+  --premium-bg: #312929;
+  --premium-slide-width: 75.06%;
+  --premium-slide-offset: 12.47%;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  z-index: 0;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background: var(--premium-bg);
+  overflow-x: hidden;
 }
 
-.premium-landing__content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.premium-service__shell {
+  width: min(100vw, 393px);
+  min-height: 852px;
   padding:
     max(72px, calc(env(safe-area-inset-top) + 56px))
-    clamp(22px, 6vw, 28px)
-    max(28px, env(safe-area-inset-bottom));
+    0
+    max(40px, env(safe-area-inset-bottom));
   box-sizing: border-box;
-  animation: premium-landing-in 0.85s cubic-bezier(0.33, 1, 0.45, 1) both;
 }
 
-@keyframes premium-landing-in {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 12px, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
+/* ── Header ── */
+.premium-service__intro {
+  margin: 0 0 36px;
+  text-align: center;
 }
 
-.premium-landing__hero {
-  margin-top: clamp(96px, 26vh, 140px);
-}
-
-.premium-landing__eyebrow {
-  margin: 0 0 24px;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.62rem, 2.6vw, 0.72rem);
-  font-weight: 400;
-  letter-spacing: 0.34em;
-  text-indent: 0.34em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
-}
-
-.premium-landing__title {
-  margin: 0 0 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.22em;
-  color: #fff;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.42);
-}
-
-.premium-landing__title-line {
-  display: block;
-  font-family: "Times New Roman", Times, serif;
-  font-size: clamp(1.55rem, 7.2vw, 2rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-}
-
-.premium-landing__title-line--main {
-  font-size: clamp(2.35rem, 11vw, 3rem);
-  font-weight: 700;
+.premium-service__intro-top {
+  margin: 0 0 6px;
+  font-family: var(--font-pretendard);
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.5;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
 }
 
-.premium-landing__desc {
+.premium-service__intro-title {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.88rem, 3.8vw, 1rem);
+  font-family: var(--font-pretendard);
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.premium-service__intro-em {
   font-weight: 400;
-  line-height: 1.75;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.38);
+  color: #fff;
 }
 
-.premium-landing__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: auto;
-  padding-bottom: clamp(40px, 10vh, 72px);
+/* ── Carousel ── */
+.premium-service__carousel {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
 }
 
-.premium-landing__cta {
+.premium-service__track {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  transition: transform 0.38s cubic-bezier(0.33, 1, 0.45, 1);
+  will-change: transform;
+}
+
+.premium-service__slide {
+  flex: 0 0 var(--premium-slide-width);
+  margin: 0;
+  padding: 0;
+  opacity: 0.45;
+  transform: scale(0.94);
+  transition:
+    opacity 0.38s ease,
+    transform 0.38s ease;
+}
+
+.premium-service__slide--active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.premium-service__slide img {
+  display: block;
   width: 100%;
-  min-height: 54px;
-  padding: 0 18px 0 22px;
+  aspect-ratio: 295 / 280;
+  object-fit: cover;
+  object-position: center;
+}
+
+.premium-service__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  z-index: 2;
+}
+
+.premium-service__dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
   border: none;
-  border-radius: 999px;
-  font: inherit;
-  text-decoration: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
-.premium-landing__cta:active {
-  transform: scale(0.985);
-  opacity: 0.92;
+.premium-service__dot--active {
+  background: #fff;
 }
 
-.premium-landing__cta--light {
-  background: rgba(235, 238, 242, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
-}
-
-.premium-landing__cta--dark {
-  background: rgba(18, 22, 28, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-}
-
-.premium-landing__cta-en {
-  font-family: "Times New Roman", Times, serif;
-  font-size: clamp(0.95rem, 4vw, 1.05rem);
+/* ── Swipe hint ── */
+.premium-service__swipe-hint {
+  margin: 14px 0 0;
+  text-align: center;
+  font-family: var(--font-nanum-barun);
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  color: rgba(18, 20, 24, 0.88);
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.28);
 }
 
-.premium-landing__cta--dark .premium-landing__cta-en {
+/* ── Divider ── */
+.premium-service__divider {
+  margin: 36px 49px 32px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+/* ── Detail section ── */
+.premium-service__detail {
+  padding: 0 49px;
+  position: relative;
+  min-height: 180px;
+}
+
+.premium-service__detail-head {
+  margin-bottom: 0;
+}
+
+.premium-service__title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.premium-service__title-line {
+  font-family: var(--font-pretendard);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: rgba(255, 255, 255, 0.92);
 }
 
-.premium-landing__cta-ko {
+.premium-service__more {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: clamp(0.82rem, 3.4vw, 0.92rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: rgba(22, 24, 28, 0.82);
+  gap: 3px;
+  font-family: var(--font-pretendard);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
 }
 
-.premium-landing__cta--dark .premium-landing__cta-ko {
-  color: rgba(255, 255, 255, 0.9);
+.premium-service__more-icon {
+  font-size: 7px;
+  line-height: 1;
 }
 
-.premium-landing__cta-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.premium-service__title-sub {
+  margin: 0;
+  font-family: var(--font-pretendard);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.92);
 }
 
-.premium-landing__cta-arrow--dark {
-  background: rgba(22, 24, 28, 0.88);
-  color: #fff;
-}
-
-.premium-landing__cta-arrow--light {
-  background: rgba(255, 255, 255, 0.95);
-  color: rgba(18, 20, 24, 0.88);
+.premium-service__detail-desc {
+  position: absolute;
+  right: 49px;
+  bottom: 0;
+  margin: 0;
+  text-align: right;
+  font-family: var(--font-pretendard);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.42);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .premium-landing__content {
-    animation: none;
+  .premium-service__track,
+  .premium-service__slide {
+    transition: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .premium-service__title-line,
+  .premium-service__title-sub {
+    font-size: 34px;
+  }
+
+  .premium-service__detail {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .premium-service__divider {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  .premium-service__detail-desc {
+    right: 32px;
   }
 }

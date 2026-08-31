@@ -1,100 +1,117 @@
-import { useCallback, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import PlanModal from "../components/PlanModal";
-import ServiceIntroModal from "../components/ServiceIntroModal";
-import "../styles/viewport-full.css";
+import { useCallback, useRef, useState } from "react";
 import "../styles/premium-landing.css";
 
-function CtaArrow({ variant }: { variant: "light" | "dark" }) {
-  return (
-    <span className={`premium-landing__cta-arrow premium-landing__cta-arrow--${variant}`} aria-hidden="true">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M10 6l6 6-6 6"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </span>
-  );
-}
+const CARD_MAIN = `/Image/${encodeURIComponent("card main")}/`;
 
-const INTRO_POPUP_DELAY_MS = 3000;
+const SLIDE_IMAGES = [
+  "/Image/option/vip-van.webp",
+  `${CARD_MAIN}dining-reserved.webp`,
+  `${CARD_MAIN}infinity-pool-deck.webp`,
+] as const;
 
-type ScheduleIntroStep = "none" | "service" | "plan";
+const SWIPE_THRESHOLD = 48;
 
 export default function PremiumLandingPage() {
-  const navigate = useNavigate();
-  const [introStep, setIntroStep] = useState<ScheduleIntroStep>("none");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const dragRef = useRef({ startX: 0, moved: false });
 
-  const openScheduleIntro = () => setIntroStep("service");
-  const closeScheduleIntro = () => setIntroStep("none");
-  const goToPlanIntro = useCallback(() => setIntroStep("plan"), []);
-  const goToOption = useCallback(() => {
-    setIntroStep("none");
-    navigate("/option", { state: { fromSchedule: true } });
-  }, [navigate]);
+  const goTo = useCallback((index: number) => {
+    setActiveIndex(((index % SLIDE_IMAGES.length) + SLIDE_IMAGES.length) % SLIDE_IMAGES.length);
+  }, []);
 
-  useEffect(() => {
-    if (introStep !== "service") return;
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.button !== 0) return;
+    dragRef.current = { startX: event.clientX, moved: false };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
 
-    const timer = window.setTimeout(goToPlanIntro, INTRO_POPUP_DELAY_MS);
-    return () => window.clearTimeout(timer);
-  }, [introStep, goToPlanIntro]);
+  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+    if (Math.abs(event.clientX - dragRef.current.startX) > 6) {
+      dragRef.current.moved = true;
+    }
+  };
+
+  const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+    event.currentTarget.releasePointerCapture(event.pointerId);
+
+    const delta = event.clientX - dragRef.current.startX;
+    if (dragRef.current.moved && Math.abs(delta) >= SWIPE_THRESHOLD) {
+      goTo(activeIndex + (delta < 0 ? 1 : -1));
+    }
+  };
 
   return (
-    <>
-      <div className="vf premium-landing">
-        <div className="vf__stage">
-          <img
-            className="premium-landing__bg"
-            src="/Image/premiumintro.webp"
-            alt=""
-            decoding="async"
-          />
+    <div className="premium-service premium-service--dark">
+      <div className="premium-service__shell">
+        <header className="premium-service__intro">
+          <p className="premium-service__intro-top">Introduce our</p>
+          <h1 className="premium-service__intro-title">
+            <span className="premium-service__intro-em">PRIMIUM</span> Service
+          </h1>
+        </header>
 
-          <div className="premium-landing__content">
-            <header className="premium-landing__hero">
-              <p className="premium-landing__eyebrow">PREMIUM PACKAGE</p>
-              <h1 className="premium-landing__title">
-                <span className="premium-landing__title-line">Another</span>
-                <span className="premium-landing__title-line premium-landing__title-line--main">VIP TOUR</span>
-              </h1>
-              <p className="premium-landing__desc">
-                남들과 다른 당신만을 위한
-                <br />
-                특별한 울릉도·독도 여행을 시작합니다
-              </p>
-            </header>
-
-            <nav className="premium-landing__actions" aria-label="패키지 메뉴">
-              <Link to="/inclusion" className="premium-landing__cta premium-landing__cta--light">
-                <span className="premium-landing__cta-en">Inclusions</span>
-                <span className="premium-landing__cta-ko">
-                  포함사항
-                  <CtaArrow variant="dark" />
-                </span>
-              </Link>
-              <button
-                type="button"
-                className="premium-landing__cta premium-landing__cta--dark"
-                onClick={openScheduleIntro}
+        <div
+          className="premium-service__carousel"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+        >
+          <div
+            className="premium-service__track"
+            style={{ transform: `translateX(calc(12.47% - ${activeIndex * 75.06}%))` }}
+          >
+            {SLIDE_IMAGES.map((src, index) => (
+              <figure
+                key={src}
+                className={`premium-service__slide${index === activeIndex ? " premium-service__slide--active" : ""}`}
               >
-                <span className="premium-landing__cta-en">Schedule</span>
-                <span className="premium-landing__cta-ko">
-                  여행계획
-                  <CtaArrow variant="light" />
-                </span>
-              </button>
-            </nav>
+                <img src={src} alt="" decoding="async" draggable={false} />
+              </figure>
+            ))}
+          </div>
+
+          <div className="premium-service__dots" aria-hidden="true">
+            {SLIDE_IMAGES.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                className={`premium-service__dot${index === activeIndex ? " premium-service__dot--active" : ""}`}
+                aria-label={`${index + 1}번째 이미지`}
+                onClick={() => goTo(index)}
+                onPointerDown={(event) => event.stopPropagation()}
+              />
+            ))}
           </div>
         </div>
-      </div>
 
-      {introStep === "service" && <ServiceIntroModal onClose={closeScheduleIntro} />}
-      {introStep === "plan" && <PlanModal onClose={closeScheduleIntro} onEnter={goToOption} />}
-    </>
+        <p className="premium-service__swipe-hint">화면을 좌우로 쓸어넘겨보세요</p>
+
+        <hr className="premium-service__divider" />
+
+        <section className="premium-service__detail">
+          <div className="premium-service__detail-head">
+            <div className="premium-service__title-row">
+              <span className="premium-service__title-line">Premium</span>
+              <span className="premium-service__more">
+                <span className="premium-service__more-icon" aria-hidden="true">
+                  ▶
+                </span>
+                More
+              </span>
+            </div>
+            <h2 className="premium-service__title-sub">Vehicle</h2>
+          </div>
+
+          <p className="premium-service__detail-desc">
+            Experience and cherish the deep,
+            <br />
+            rich waters of the East Sea.
+          </p>
+        </section>
+      </div>
+    </div>
   );
 }
