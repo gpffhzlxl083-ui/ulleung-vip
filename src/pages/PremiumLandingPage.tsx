@@ -4,15 +4,15 @@ import "../styles/premium-landing.css";
 const CARD_MAIN = `/Image/${encodeURIComponent("card main")}/`;
 
 const SLIDE_IMAGES = [
-  "/Image/option/vip-van.webp",
-  `${CARD_MAIN}dining-reserved.webp`,
-  `${CARD_MAIN}infinity-pool-deck.webp`,
+  `${SERVICE}/hotel-facade-coast.webp`,
+  `${SERVICE}/premium-room-twin.webp`,
+  `${SERVICE}/pool-shilla-monogram.webp`,
 ] as const;
 
 const SWIPE_THRESHOLD = 48;
 
 export default function PremiumLandingPage() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
   const dragRef = useRef({ startX: 0, moved: false });
 
   const goTo = useCallback((index: number) => {
@@ -43,42 +43,56 @@ export default function PremiumLandingPage() {
   };
 
   return (
-    <div className="premium-service premium-service--dark">
-      <div className="premium-service__shell">
-        <header className="premium-service__intro">
-          <p className="premium-service__intro-top">Introduce our</p>
-          <h1 className="premium-service__intro-title">
-            <span className="premium-service__intro-em">PRIMIUM</span> Service
-          </h1>
+    <div className="benefit-page" data-name="Benefit_hotel">
+      <div className="benefit-page__shell">
+        <nav className="benefit-page__category-nav" aria-label="프리미엄 카테고리">
+          <div className="benefit-page__category-bar">
+            {CATEGORIES.map((label) => (
+              <button
+                key={label}
+                type="button"
+                className={`benefit-page__category-item${label === "Hotel" ? " benefit-page__category-item--active" : ""}`}
+                aria-current={label === "Hotel" ? "page" : undefined}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </nav>
+
+        <header className="benefit-page__intro">
+          <p className="benefit-page__intro-line">Introduce</p>
+          <p className="benefit-page__intro-line">our</p>
+          <p className="benefit-page__intro-brand">PRIMIUM Service</p>
         </header>
 
         <div
-          className="premium-service__carousel"
+          className="benefit-page__carousel"
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
         >
           <div
-            className="premium-service__track"
-            style={{ transform: `translateX(calc(12.47% - ${activeIndex * 75.06}%))` }}
+            className="benefit-page__track"
+            style={{ transform: `translateX(calc(11.5% - ${activeIndex * 69.25}%))` }}
           >
             {SLIDE_IMAGES.map((src, index) => (
               <figure
                 key={src}
-                className={`premium-service__slide${index === activeIndex ? " premium-service__slide--active" : ""}`}
+                className={`benefit-page__slide${index === activeIndex ? " benefit-page__slide--active" : ""}`}
               >
                 <img src={src} alt="" decoding="async" draggable={false} />
               </figure>
             ))}
           </div>
 
-          <div className="premium-service__dots" aria-hidden="true">
+          <div className="benefit-page__dots" aria-hidden="true">
             {SLIDE_IMAGES.map((_, index) => (
               <button
                 key={index}
                 type="button"
-                className={`premium-service__dot${index === activeIndex ? " premium-service__dot--active" : ""}`}
+                className={`benefit-page__dot${index === activeIndex ? " benefit-page__dot--active" : ""}`}
                 aria-label={`${index + 1}번째 이미지`}
                 onClick={() => goTo(index)}
                 onPointerDown={(event) => event.stopPropagation()}
@@ -87,25 +101,25 @@ export default function PremiumLandingPage() {
           </div>
         </div>
 
-        <p className="premium-service__swipe-hint">화면을 좌우로 쓸어넘겨보세요</p>
+        <p className="benefit-page__swipe-hint">화면을 좌우로 쓸어넘겨보세요</p>
 
-        <hr className="premium-service__divider" />
+        <hr className="benefit-page__divider" />
 
-        <section className="premium-service__detail">
-          <div className="premium-service__detail-head">
-            <div className="premium-service__title-row">
-              <span className="premium-service__title-line">Premium</span>
-              <span className="premium-service__more">
-                <span className="premium-service__more-icon" aria-hidden="true">
-                  ▶
-                </span>
-                More
+        <section className="benefit-page__detail">
+          <div className="benefit-page__detail-head">
+            <h2 className="benefit-page__title">
+              <span>Hotel</span>
+              <span>Ramada</span>
+            </h2>
+            <span className="benefit-page__more">
+              <span className="benefit-page__more-icon" aria-hidden="true">
+                ▶
               </span>
-            </div>
-            <h2 className="premium-service__title-sub">Vehicle</h2>
+              More
+            </span>
           </div>
 
-          <p className="premium-service__detail-desc">
+          <p className="benefit-page__desc">
             Experience and cherish the deep,
             <br />
             rich waters of the East Sea.

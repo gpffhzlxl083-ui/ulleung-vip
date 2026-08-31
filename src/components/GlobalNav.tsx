@@ -6,6 +6,7 @@ import "../styles/global-nav.css";
 function isGlobalNavHidden(pathname: string) {
   return (
     pathname === "/" ||
+    pathname === "/premium" ||
     pathname === "/inclusion" ||
     pathname === "/plan" ||
     pathname.startsWith("/plan/")
