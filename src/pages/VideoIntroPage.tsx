@@ -1,5 +1,4 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../styles/viewport-full.css";
 import "../styles/video-intro.css";
 
@@ -76,9 +75,7 @@ const INTRO_SEGMENTS: IntroSegment[] = [
   },
 ];
 
-const OUTRO_START = 17;
-const OUTRO_RISE_SECONDS = 1.5;
-const VIP_PRICE = 999_000;
+const SKIP_APPEAR_AT = 9;
 
 function getActiveSegment(currentTime: number) {
   return INTRO_SEGMENTS.find((segment) => currentTime >= segment.start && currentTime < segment.end);
@@ -233,22 +230,17 @@ function renderCaptionLines(caption: CaptionLine[], activeSegment: number) {
 }
 
 export default function VideoIntroPage() {
-  const navigate = useNavigate();
-  const goToPremiumLanding = useCallback(() => {
-    navigate("/premium", { replace: true });
-  }, [navigate]);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [activeSegment, setActiveSegment] = useState(0);
   const [motionDuration, setMotionDuration] = useState("16s");
   const [frameIntroDone, setFrameIntroDone] = useState(false);
-  const [showOutro, setShowOutro] = useState(false);
-  const outroStartRef = useRef(OUTRO_START);
+  const [showSkip, setShowSkip] = useState(false);
+  const skipUsedRef = useRef(false);
 
   const handleLoadedMetadata = useCallback(() => {
     const video = videoRef.current;
     if (!video || !Number.isFinite(video.duration) || video.duration <= 0) return;
     setMotionDuration(`${video.duration}s`);
-    outroStartRef.current = OUTRO_START;
   }, []);
 
   const handleTimeUpdate = useCallback(() => {
@@ -259,14 +251,29 @@ export default function VideoIntroPage() {
     const nextSegment = segment ? INTRO_SEGMENTS.indexOf(segment) : -1;
     setActiveSegment((prev) => (prev === nextSegment ? prev : nextSegment));
 
-    if (video.currentTime >= outroStartRef.current) {
-      setShowOutro((prev) => (prev ? prev : true));
+    if (video.currentTime < SKIP_APPEAR_AT) {
+      skipUsedRef.current = false;
     }
+
+    if (!skipUsedRef.current) {
+      setShowSkip((prev) => {
+        const next = video.currentTime >= SKIP_APPEAR_AT;
+        return prev === next ? prev : next;
+      });
+    }
+  }, []);
+
+  const handleSkip = useCallback(() => {
+    const video = videoRef.current;
+    if (!video || !Number.isFinite(video.duration)) return;
+
+    skipUsedRef.current = true;
+    setShowSkip(false);
+    video.currentTime = Math.max(video.duration - 0.05, SKIP_APPEAR_AT);
   }, []);
 
   const caption =
     activeSegment >= 0 ? INTRO_SEGMENTS[activeSegment].lines ?? null : null;
-  const formattedPrice = VIP_PRICE.toLocaleString("en-US");
 
   return (
     <div className="vf video-intro">
@@ -282,24 +289,24 @@ export default function VideoIntroPage() {
             poster="/Image/premiumintro.webp"
             autoPlay
             muted
+            loop
             playsInline
             preload="auto"
             aria-label="울릉스케치 인트로 영상"
             onLoadedMetadata={handleLoadedMetadata}
             onTimeUpdate={handleTimeUpdate}
-            onEnded={goToPremiumLanding}
           />
         </div>
 
         <div
-          className={`video-intro__frame-shell${frameIntroDone ? "" : " video-intro__frame-shell--intro"}${showOutro ? " video-intro__frame-shell--hidden" : ""}`}
+          className={`video-intro__frame-shell${frameIntroDone ? "" : " video-intro__frame-shell--intro"}`}
           aria-hidden="true"
           onAnimationEnd={() => setFrameIntroDone(true)}
         >
           <div className="video-intro__frame" />
         </div>
 
-        {activeSegment >= 0 && caption && !showOutro && (
+        {activeSegment >= 0 && caption && (
           <div key={activeSegment} className="video-intro__caption-wrap" aria-live="polite">
             <div className="video-intro__caption">
               {renderCaptionLines(caption, activeSegment)}
@@ -307,45 +314,16 @@ export default function VideoIntroPage() {
           </div>
         )}
 
-        {showOutro && (
-          <>
-            <div
-              className="video-intro__outro-dim"
-              style={{ "--outro-rise-duration": `${OUTRO_RISE_SECONDS}s` } as React.CSSProperties}
-              aria-hidden="true"
-            />
-            <div
-              className="video-intro__outro-slot"
-              style={{ "--outro-rise-duration": `${OUTRO_RISE_SECONDS}s` } as React.CSSProperties}
-            >
-              <img
-                className="video-intro__outro-glass"
-                src="/Image/premium1-1.webp"
-                alt=""
-                decoding="async"
-              />
-              <div className="video-intro__outro-ui">
-                <p className="video-intro__outro-price">PRICE</p>
-                <p className="video-intro__outro-amount">
-                  WON <span>{formattedPrice}</span>
-                </p>
-                <button
-                  type="button"
-                  className="video-intro__outro-enter"
-                  onClick={goToPremiumLanding}
-                >
-                  ENTER
-                </button>
-                <p className="video-intro__outro-soon">Creative style</p>
-              </div>
-            </div>
-          </>
-        )}
-
-        {activeSegment === 0 && !showOutro && (
+        {activeSegment === 0 && (
           <p className="video-intro__footer" aria-hidden="true">
             ULLEUNG-SKETCH.com
           </p>
+        )}
+
+        {showSkip && (
+          <button type="button" className="video-intro__skip" onClick={handleSkip}>
+            SKIP
+          </button>
         )}
       </div>
     </div>
