@@ -2,13 +2,29 @@
   --intro-delay: 1s;
   --next-delay: 4.8s;
   --landing-delay: 8.8s;
-  background: #d0d0d0;
+  --cap-left: 111;
+  --cap-top: 179;
+  --cap-w: 219;
+  --cap-h: 510;
+  --glass-bg: rgba(29, 13, 13, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-blur: 2.98px;
+  --glass-saturate: 130%;
+  --glass-light: 135deg;
+  --capsule-light: 180deg;
+  --enter-border: 0px;
+  background: #d9d9d9;
+  overflow: hidden;
+  -webkit-font-smoothing: auto;
+  text-rendering: auto;
 }
 
 .seokhyang .vf__stage {
-  width: min(100vw, var(--app-max-width));
-  height: 100%;
+  aspect-ratio: 434 / 850;
+  height: 100dvh;
+  width: calc(100dvh * 434 / 850);
   min-height: 100dvh;
+  max-height: 100dvh;
   padding: 0;
   container-type: size;
   background: #d0d0d0;
@@ -23,7 +39,7 @@
   container-type: size;
 }
 
-.seokhyang__img {
+.seokhyang__tree {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -31,33 +47,53 @@
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+.seokhyang__tree--sharp {
   z-index: 0;
+}
+
+.seokhyang__tree--blur {
+  filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
 }
 
 .seokhyang__copy {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: calc(208.76 / 850 * 100%);
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: calc(11.24 / 434 * 100cqi);
+  gap: calc(12 / 850 * 100cqb);
   width: max-content;
   max-width: 90%;
-  transform: translateX(-50%);
+  margin-inline: auto;
   pointer-events: none;
+}
+
+.seokhyang__copy--intro {
+  top: calc(208.76 / 850 * 100%);
+}
+
+.seokhyang__copy--next {
+  top: calc(209 / 850 * 100%);
 }
 
 .seokhyang__title {
   margin: 0;
-  font-family: "Nanum Myeongjo", var(--font-baskerville-old-face);
+  font-family: "NanumMyeongjoOTF YetHangul", "Nanum Myeongjo", var(--font-baskerville-old-face);
   font-weight: 400;
-  font-size: calc(15.207 / 434 * 100cqi);
+  font-size: calc(17.21 / 434 * 100cqi);
   line-height: normal;
   color: #000;
   text-align: center;
   white-space: nowrap;
+}
+
+.seokhyang__title-sm {
+  font-size: calc(10.5 / 434 * 100cqi);
 }
 
 .seokhyang__desc {
@@ -70,17 +106,6 @@
   text-align: center;
 }
 
-.seokhyang__kicker {
-  margin: 0;
-  font-family: "Nanum Myeongjo", var(--font-baskerville-old-face);
-  font-weight: 400;
-  font-size: calc(11 / 434 * 100cqi);
-  line-height: calc(16 / 11);
-  color: #505050;
-  text-align: center;
-  white-space: nowrap;
-}
-
 .seokhyang__copy--intro .seokhyang__title {
   animation: seokhyang-intro 3.8s cubic-bezier(0.33, 1, 0.45, 1) var(--intro-delay) both;
 }
@@ -90,10 +115,12 @@
 }
 
 .seokhyang__copy--next .seokhyang__title {
+  font-size: calc(17 / 434 * 100cqi);
+  line-height: calc(16 / 15.21);
   animation: seokhyang-intro 4s cubic-bezier(0.33, 1, 0.45, 1) var(--next-delay) both;
 }
 
-.seokhyang__copy--next .seokhyang__kicker {
+.seokhyang__copy--next .seokhyang__desc {
   animation: seokhyang-intro 3.75s cubic-bezier(0.33, 1, 0.45, 1) 5.05s both;
 }
 
@@ -102,54 +129,117 @@
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  animation: seokhyang-fade-in 1.3s cubic-bezier(0.33, 1, 0.45, 1) var(--landing-delay) both;
+  animation: seokhyang-fade-in 1.7s cubic-bezier(0.22, 1, 0.36, 1) var(--landing-delay) both;
 }
 
 .seokhyang__capsule {
   position: absolute;
-  left: calc(111 / 434 * 100%);
-  top: calc(179 / 850 * 100%);
-  width: calc(213 / 434 * 100%);
-  height: calc(500 / 850 * 100%);
-  display: block;
+  left: calc(var(--cap-left) / 434 * 100%);
+  top: calc(var(--cap-top) / 850 * 100%);
+  width: calc(var(--cap-w) / 434 * 100%);
+  height: calc(var(--cap-h) / 850 * 100%);
+  background: transparent;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.16));
 }
 
-.seokhyang__logo {
+.seokhyang__capsule-body {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-image: url("../assets/capsule-exclude.svg");
+  mask-image: url("../assets/capsule-exclude.svg");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.seokhyang__capsule-scene {
+  position: absolute;
+  left: calc(var(--cap-left) / 434 * -100cqi);
+  top: calc(var(--cap-top) / 850 * -100cqb);
+  width: 100cqi;
+  height: 100cqb;
+}
+
+.seokhyang__capsule-tint {
+  position: absolute;
+  inset: 0;
+  background: var(--glass-bg);
+  pointer-events: none;
+}
+
+.seokhyang__capsule-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    var(--capsule-light),
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.12) 16%,
+    transparent 32%,
+    transparent 78%,
+    rgba(255, 255, 255, 0.14) 100%
+  );
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -0.8px 0 rgba(255, 255, 255, 0.22);
+}
+
+.seokhyang__capsule-outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.seokhyang__brand {
   position: absolute;
   left: calc(117 / 434 * 100%);
   top: calc(259 / 850 * 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: calc(202.213 / 434 * 100%);
-  height: calc(27.221 / 850 * 100%);
+  pointer-events: none;
+}
+
+.seokhyang__logo {
+  width: 100%;
+  height: calc(27.221 / 850 * 100cqb);
   object-fit: contain;
   object-position: center;
   display: block;
+  animation: seokhyang-soft-in 2.2s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--landing-delay) + 0.12s)
+    both;
 }
 
 .seokhyang__place {
-  position: absolute;
-  left: 50%;
-  top: calc(292 / 850 * 100%);
-  margin: 0;
-  transform: translateX(-50%);
-  font-family: "Nanum Myeongjo", var(--font-baskerville-old-face);
-  font-weight: 400;
-  font-size: calc(9.625 / 434 * 100cqi);
-  letter-spacing: calc(1.2512 / 434 * 100cqi);
-  line-height: normal;
+  margin: calc(5.779 / 850 * 100cqb) 0 0;
   color: #000;
   text-align: center;
+  font-family: "Nanum Myeongjo", "NanumMyeongjoOTF YetHangul", var(--font-baskerville-old-face);
+  font-size: calc(9.625 / 434 * 100cqi);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: calc(1.251 / 434 * 100cqi);
   white-space: nowrap;
+  animation: seokhyang-soft-in 2.3s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--landing-delay) + 0.28s)
+    both;
 }
 
 .seokhyang__journey {
-  position: absolute;
-  left: calc(139 / 434 * 100%);
-  top: calc(310.42 / 850 * 100%);
-  width: calc(158.465 / 434 * 100%);
-  height: calc(14.583 / 850 * 100%);
+  width: calc(158.465 / 434 * 100cqi);
+  height: calc(14.583 / 850 * 100cqb);
+  margin-top: calc(8.795 / 850 * 100cqb);
   object-fit: contain;
   object-position: center;
   display: block;
+  animation: seokhyang-soft-in 2.4s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--landing-delay) + 0.4s)
+    both;
 }
 
 .seokhyang__enter {
@@ -164,9 +254,23 @@
   height: calc(35 / 850 * 100%);
   margin: 0;
   padding: 0 calc(10 / 434 * 100cqi) 0 calc(16 / 434 * 100cqi);
-  border: none;
+  overflow: hidden;
+  border: var(--enter-border) solid rgba(255, 255, 255, 0.75);
   border-radius: calc(8.936 / 434 * 100cqi);
-  background: rgba(129, 55, 2, 0.18);
+  background:
+    linear-gradient(
+      var(--glass-light),
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.1) 34%,
+      transparent 52%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    rgba(129, 55, 2, 0.18);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.28),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   font-family: var(--font-editors-note);
   font-size: calc(13.404 / 434 * 100cqi);
   font-weight: 400;
@@ -192,10 +296,11 @@
 
 .seokhyang__footer {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: calc(740 / 850 * 100%);
-  margin: 0;
-  transform: translateX(-50%);
+  margin: 0 auto;
+  width: max-content;
   font-family: "Nanum Myeongjo", var(--font-baskerville-old-face);
   font-weight: 400;
   font-size: calc(11 / 434 * 100cqi);
@@ -203,6 +308,8 @@
   color: #333;
   text-align: center;
   white-space: nowrap;
+  animation: seokhyang-soft-in 2.2s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--landing-delay) + 0.35s)
+    both;
 }
 
 @keyframes seokhyang-intro {
@@ -211,14 +318,10 @@
     transform: translateY(8px);
   }
 
-  32% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  32%,
   74% {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 
   100% {
@@ -230,12 +333,20 @@
 @keyframes seokhyang-fade-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+@keyframes seokhyang-soft-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
@@ -245,7 +356,11 @@
     display: none;
   }
 
-  .seokhyang__landing {
+  .seokhyang__landing,
+  .seokhyang__logo,
+  .seokhyang__place,
+  .seokhyang__journey,
+  .seokhyang__footer {
     animation: none;
   }
 }
