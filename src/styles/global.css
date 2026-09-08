@@ -6,6 +6,16 @@
 }
 
 @font-face {
+  font-family: "NanumMyeongjoOTF YetHangul";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/fonts/NanumMyeongjo-YetHangul.ttf") format("truetype"),
+    url("/fonts/NanumMyeongjo-YetHangul.otf") format("opentype");
+}
+
+@font-face {
   font-family: "Baskerville Old Face";
   font-style: normal;
   font-weight: 400;
