@@ -1,6 +1,6 @@
 import chevronRight from "../assets/chevron-right.svg";
 import driftwood from "../assets/driftwood.webp";
-import logoAube from "../assets/logo-aube.png";
+import logoAube from "../assets/logo-aube.svg";
 import journeyMark from "../assets/premium-island-journey.png";
 import "../styles/viewport-full.css";
 import "../styles/seokhyang.css";
@@ -95,6 +95,10 @@ export default function SeokhyangPage() {
                 width={158}
                 height={15}
               />
+            </div>
+            <div className="seokhyang__package">
+              <p className="seokhyang__package-label">Premium Package</p>
+              <p className="seokhyang__package-price">1,490,000 won</p>
             </div>
             <button className="seokhyang__enter" type="button">
               ENTER

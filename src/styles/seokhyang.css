@@ -1,7 +1,7 @@
 .seokhyang {
-  --intro-delay: 1s;
-  --next-delay: 4.8s;
-  --landing-delay: 8.8s;
+  --intro-delay: 0.4s;
+  --next-delay: 2.7s;
+  --landing-delay: 4.7s;
   --cap-left: 111;
   --cap-top: 179;
   --cap-w: 219;
@@ -107,21 +107,21 @@
 }
 
 .seokhyang__copy--intro .seokhyang__title {
-  animation: seokhyang-intro 3.8s cubic-bezier(0.33, 1, 0.45, 1) var(--intro-delay) both;
+  animation: seokhyang-intro 2.3s cubic-bezier(0.33, 1, 0.45, 1) var(--intro-delay) both;
 }
 
 .seokhyang__copy--intro .seokhyang__desc {
-  animation: seokhyang-intro 3.55s cubic-bezier(0.33, 1, 0.45, 1) 1.25s both;
+  animation: seokhyang-intro 2.2s cubic-bezier(0.33, 1, 0.45, 1) 0.55s both;
 }
 
 .seokhyang__copy--next .seokhyang__title {
   font-size: calc(17 / 434 * 100cqi);
   line-height: calc(16 / 15.21);
-  animation: seokhyang-intro 4s cubic-bezier(0.33, 1, 0.45, 1) var(--next-delay) both;
+  animation: seokhyang-intro 2.3s cubic-bezier(0.33, 1, 0.45, 1) var(--next-delay) both;
 }
 
 .seokhyang__copy--next .seokhyang__desc {
-  animation: seokhyang-intro 3.75s cubic-bezier(0.33, 1, 0.45, 1) 5.05s both;
+  animation: seokhyang-intro 2.2s cubic-bezier(0.33, 1, 0.45, 1) 2.85s both;
 }
 
 .seokhyang__landing {
@@ -129,7 +129,7 @@
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  animation: seokhyang-fade-in 1.7s cubic-bezier(0.22, 1, 0.36, 1) var(--landing-delay) both;
+  animation: seokhyang-fade-in 1s cubic-bezier(0.22, 1, 0.36, 1) var(--landing-delay) both;
 }
 
 .seokhyang__capsule {
@@ -197,18 +197,18 @@
 
 .seokhyang__brand {
   position: absolute;
-  left: calc(117 / 434 * 100%);
-  top: calc(259 / 850 * 100%);
+  left: calc(122 / 434 * 100%);
+  top: calc(265 / 850 * 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(202.213 / 434 * 100%);
+  width: calc(190 / 434 * 100%);
   pointer-events: none;
 }
 
 .seokhyang__logo {
   width: 100%;
-  height: calc(27.221 / 850 * 100cqb);
+  height: calc(23.6 / 850 * 100cqb);
   object-fit: contain;
   object-position: center;
   display: block;
@@ -220,7 +220,7 @@
   margin: calc(5.779 / 850 * 100cqb) 0 0;
   color: #000;
   text-align: center;
-  font-family: "Nanum Myeongjo", "NanumMyeongjoOTF YetHangul", var(--font-baskerville-old-face);
+  font-family: "NanumMyeongjoOTF YetHangul", "Nanum Myeongjo", var(--font-baskerville-old-face);
   font-size: calc(9.625 / 434 * 100cqi);
   font-style: normal;
   font-weight: 400;
@@ -240,6 +240,48 @@
   display: block;
   animation: seokhyang-soft-in 2.4s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--landing-delay) + 0.4s)
     both;
+}
+
+.seokhyang__package {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(476 / 850 * 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.seokhyang__package-label {
+  width: calc(130 / 434 * 100cqi);
+  height: calc(67 / 850 * 100cqb);
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(13 / 434 * 100cqi);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: calc(0.26 / 434 * 100cqi);
+  opacity: 0.85;
+}
+
+.seokhyang__package-price {
+  position: absolute;
+  top: calc(18 / 850 * 100cqb);
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: calc(13 / 434 * 100cqi);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: calc(-0.13 / 434 * 100cqi);
+  opacity: 0.87;
+  white-space: nowrap;
 }
 
 .seokhyang__enter {
