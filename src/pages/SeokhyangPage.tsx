@@ -1,11 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import chevronRight from "../assets/chevron-right.svg";
 import driftwood from "../assets/driftwood.webp";
 import logoAube from "../assets/logo-aube.svg";
-import journeyMark from "../assets/premium-island-journey.png";
 import "../styles/viewport-full.css";
 import "../styles/seokhyang.css";
 
 export default function SeokhyangPage() {
+  const navigate = useNavigate();
   return (
     <main className="vf seokhyang">
       <div className="vf__stage">
@@ -88,19 +89,13 @@ export default function SeokhyangPage() {
                 height={28}
               />
               <p className="seokhyang__place">Ulleungdo, Dokdo</p>
-              <img
-                className="seokhyang__journey"
-                src={journeyMark}
-                alt="PREMIUM ISLAND JOURNEY"
-                width={158}
-                height={15}
-              />
+              <p className="seokhyang__journey">PREMIUM ISLAND JOURNEY</p>
             </div>
             <div className="seokhyang__package">
               <p className="seokhyang__package-label">Premium Package</p>
               <p className="seokhyang__package-price">1,490,000 won</p>
             </div>
-            <button className="seokhyang__enter" type="button">
+            <button className="seokhyang__enter" type="button" onClick={() => navigate("/coast")}>
               ENTER
               <img
                 className="seokhyang__chevron"
