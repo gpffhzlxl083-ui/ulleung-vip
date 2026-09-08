@@ -1,0 +1,317 @@
+.coast {
+  --panel-slide: calc(270 / 434 * 100cqi);
+  background: #d9d9d9;
+  overflow: hidden;
+}
+
+.coast .vf__stage {
+  aspect-ratio: 434 / 850;
+  height: 100dvh;
+  width: calc(100dvh * 434 / 850);
+  min-height: 100dvh;
+  max-height: 100dvh;
+  padding: 0;
+  container-type: size;
+  background: #0a1620;
+}
+
+.coast__img {
+  object-fit: cover;
+  object-position: center left;
+}
+
+.coast__frost {
+  --frost-w: 270;
+  --glass-light: 0.8;
+  --glass-blur: 4px;
+  --glass-depth: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  overflow: hidden;
+  isolation: isolate;
+  width: calc(var(--frost-w) / 434 * 100cqi);
+  height: 100%;
+  padding: calc(12 / 434 * 100cqi);
+  border-radius: calc(10 / 434 * 100cqi);
+  background: transparent;
+  clip-path: inset(0 round calc(10 / 434 * 100cqi));
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, calc(var(--glass-light) * 0.7)),
+    inset 0 calc(var(--glass-depth) * -0.15) var(--glass-depth) rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  animation: coast-panel-in 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.coast__frost-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.coast__frost-scene {
+  position: absolute;
+  top: 0;
+  left: calc((var(--frost-w) - 434) / 434 * 100cqi);
+  width: 100cqi;
+  height: 100cqb;
+  animation: coast-ocean-lock 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.coast__frost-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center left;
+  transform: scale(1.04);
+}
+
+.coast__frost-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, var(--glass-light)) 0%,
+    rgba(255, 255, 255, 0.18) 16%,
+    transparent 42%,
+    transparent 74%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.coast__sheet {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  overflow: hidden;
+  width: calc(235 / 434 * 100cqi);
+  height: 100%;
+  border-radius: calc(10 / 434 * 100cqi) 0 0 calc(10 / 434 * 100cqi);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  animation: coast-panel-in 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.coast__glass {
+  position: absolute;
+  inset: 0;
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  pointer-events: none;
+}
+
+.coast__tint {
+  position: absolute;
+  inset: 0;
+  opacity: 0.78;
+  background: linear-gradient(180deg, #74a7b5 0%, #27575e 42.3077%, #0e1f24 100%);
+  pointer-events: none;
+}
+
+.coast__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: calc(180 / 850 * 100cqb) calc(14 / 434 * 100cqi) calc(78 / 850 * 100cqb);
+}
+
+.coast__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  animation: coast-text-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) 1.1s both;
+}
+
+.coast__logo {
+  width: calc(168 / 434 * 100cqi);
+  max-width: 86%;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.coast__place {
+  margin: calc(8 / 850 * 100cqb) 0 0;
+  color: rgba(255, 255, 255, 0.90);
+  text-align: center;
+  font-family: var(--font-myeongjo);
+  font-size: calc(9.625 / 434 * 100cqi);
+  font-weight: 70;
+  letter-spacing: calc(1.251 / 434 * 100cqi);
+  white-space: nowrap;
+}
+
+.coast__journey {
+  margin: calc(14 / 850 * 100cqb) 0 0;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  font-family: "Noto Sans", "Segoe UI", sans-serif;
+  font-size: calc(5.2 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.coast__mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  animation: coast-text-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) 1.35s both;
+}
+
+.coast__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.coast__arrow {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: calc(18 / 434 * 100cqi);
+  height: calc(24 / 434 * 100cqi);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.coast__arrow svg {
+  width: calc(7 / 434 * 100cqi);
+  height: calc(11 / 434 * 100cqi);
+  display: block;
+}
+
+.coast__nav-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(10 / 850 * 100cqb);
+}
+
+.coast__nav-title,
+.coast__nav-more {
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.coast__nav-more {
+  font-weight: 500;
+}
+
+.coast__nav-line {
+  display: block;
+  width: calc(92 / 434 * 100cqi);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.coast__hint {
+  margin: calc(22 / 850 * 100cqb) 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  text-align: center;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(9.5 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.coast__story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.48);
+  text-align: center;
+  font-family: var(--font-myeongjo);
+  font-style: normal;
+  font-weight: 100;
+  animation: coast-text-in 1.9s cubic-bezier(0.22, 1, 0.36, 1) 1.55s both;
+}
+
+.coast__story-title,
+.coast__story-body {
+  margin: 0;
+  font-size: calc(11.64 / 434 * 100cqi);
+  font-weight: 100;
+  line-height: calc(17.988 / 434 * 100cqi);
+}
+
+.coast__story-dash {
+  display: block;
+  margin: calc(4 / 850 * 100cqb) 0;
+  font-size: calc(11.357 / 434 * 100cqi);
+  line-height: 1;
+}
+
+.coast__story-body {
+  line-height: 1.75;
+}
+
+@keyframes coast-panel-in {
+  from {
+    transform: translateX(var(--panel-slide));
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes coast-ocean-lock {
+  from {
+    transform: translateX(calc(-1 * var(--panel-slide)));
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes coast-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coast__frost,
+  .coast__frost-scene,
+  .coast__sheet,
+  .coast__brand,
+  .coast__mid,
+  .coast__story {
+    animation: none;
+  }
+}
