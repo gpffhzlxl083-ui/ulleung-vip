@@ -1,9 +1,17 @@
+@font-face {
+  font-family: "Noto Sans KR Package";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+}
+
 .seokhyang {
   --intro-delay: 0.4s;
   --next-delay: 4.2s;
   --landing-delay: 8s;
   --cap-left: 111;
-  --cap-top: 179;
+  --cap-top: 165;
   --cap-w: 219;
   --cap-h: 510;
   --glass-bg: rgba(29, 13, 13, 0.15);
@@ -201,7 +209,7 @@
 .seokhyang__brand {
   position: absolute;
   left: calc(122 / 434 * 100%);
-  top: calc(265 / 850 * 100%);
+  top: calc(250 / 850 * 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -235,7 +243,7 @@
 }
 
 .seokhyang__journey {
-  margin: calc(16 / 850 * 100cqb) 0 0;
+  margin: calc(13 / 850 * 100cqb) 0 0;
   color: #2b2b2b;
   text-align: center;
   font-family: "Noto Sans", "Segoe UI", sans-serif;
@@ -253,7 +261,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(476 / 850 * 100%);
+  top: calc(460 / 850 * 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -261,33 +269,49 @@
 }
 
 .seokhyang__package-label {
-  width: calc(130 / 434 * 100cqi);
-  height: calc(67 / 850 * 100cqb);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35em;
+  width: max-content;
+  max-width: 90%;
   margin: 0;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.87);
   text-align: center;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans KR Package", sans-serif;
   font-size: calc(13 / 434 * 100cqi);
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1;
   letter-spacing: calc(0.26 / 434 * 100cqi);
-  opacity: 0.85;
+  white-space: nowrap;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+.seokhyang__package-label span {
+  display: inline-block;
+  margin: 0;
+  font: inherit;
+  font-weight: 400;
+  color: inherit;
+  letter-spacing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .seokhyang__package-price {
-  position: absolute;
-  top: calc(18 / 850 * 100cqb);
-  margin: 0;
-  color: #fff;
+  margin: calc(10 / 850 * 100cqb) 0 0;
+  color: rgba(255, 255, 255, 0.87);
   text-align: center;
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: "Noto Sans KR Package", sans-serif;
   font-size: calc(13 / 434 * 100cqi);
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
+  line-height: 1;
   letter-spacing: calc(-0.13 / 434 * 100cqi);
-  opacity: 0.87;
   white-space: nowrap;
 }
 

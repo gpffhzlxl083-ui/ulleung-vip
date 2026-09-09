@@ -89,10 +89,9 @@ export default function SeokhyangPage() {
                 height={28}
               />
               <p className="seokhyang__place">Ulleungdo, Dokdo</p>
-              <p className="seokhyang__journey">PREMIUM ISLAND JOURNEY</p>
             </div>
             <div className="seokhyang__package">
-              <p className="seokhyang__package-label">Premium Package</p>
+              <p className="seokhyang__package-label">Package Premium</p>
               <p className="seokhyang__package-price">1,490,000 won</p>
             </div>
             <button className="seokhyang__enter" type="button" onClick={() => navigate("/coast")}>

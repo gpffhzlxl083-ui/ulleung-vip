@@ -1,0 +1,16 @@
+.coast-pine .coast__tint {
+  background: linear-gradient(180deg, #a8b89a 0%, #3d4f32 65.3846%, #4a5850 100%);
+}
+
+.coast-pine .coast__nav-copy {
+  width: max-content;
+}
+
+.coast-pine .coast__nav-title {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.coast-pine .coast__nav-line {
+  width: 100%;
+}
