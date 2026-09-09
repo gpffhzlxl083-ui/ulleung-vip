@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import coastWave from "../assets/coast-wave.mp4";
-import coastWavePoster from "../assets/coast-wave-poster.jpg";
+import coastBrown from "../assets/coast-brown.mp4";
+import coastBrownPoster from "../assets/coast-brown-poster.jpg";
 import logoAube from "../assets/logo-aube.svg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
+import "../styles/coast-include.css";
 
 function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
   const label = dir === "prev" ? "이전" : "다음";
@@ -67,7 +68,7 @@ function drawVideoCover(canvas: HTMLCanvasElement, video: HTMLVideoElement) {
   ctx.drawImage(video, sx, sy, sw, sh, 0, 0, cw, ch);
 }
 
-export default function CoastPage() {
+export default function CoastIncludePage() {
   const navigate = useNavigate();
   const [videoOn, setVideoOn] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -153,15 +154,18 @@ export default function CoastPage() {
     };
   }, []);
 
+  const goCoast = () => navigate("/coast");
+  const goPine = () => navigate("/coast/pine");
+
   return (
-    <main className="vf coast">
+    <main className="vf coast coast-include">
       <div className="vf__stage">
-        <img className="vf__img coast__img" src={coastWavePoster} alt="" />
+        <img className="vf__img coast__img" src={coastBrownPoster} alt="" />
         <video
           ref={videoRef}
           className={`vf__img coast__img${videoOn ? " coast__img--on" : ""}`}
-          src={coastWave}
-          poster={coastWavePoster}
+          src={coastBrown}
+          poster={coastBrownPoster}
           muted
           playsInline
           preload="auto"
@@ -171,7 +175,7 @@ export default function CoastPage() {
         <div className="coast__frost" aria-hidden="true">
           <svg className="coast__frost-defs" width="0" height="0" aria-hidden="true">
             <filter
-              id="coast-glass-fx"
+              id="coast-include-glass-fx"
               x="-8%"
               y="-8%"
               width="116%"
@@ -222,7 +226,7 @@ export default function CoastPage() {
             <canvas
               ref={frostCanvasRef}
               className="coast__frost-img"
-              style={{ filter: "url(#coast-glass-fx)" }}
+              style={{ filter: "url(#coast-include-glass-fx)" }}
             />
           </div>
           <div className="coast__frost-shine" />
@@ -237,25 +241,25 @@ export default function CoastPage() {
             </div>
             <div className="coast__mid">
               <div className="coast__nav">
-                <Arrow dir="prev" onClick={() => navigate("/coast/pine")} />
+                <Arrow dir="prev" onClick={goCoast} />
                 <div className="coast__nav-copy">
-                  <p className="coast__nav-title">패키지 포함사항</p>
+                  <p className="coast__nav-title">2박3일 일정표</p>
                   <span className="coast__nav-line" />
                   <p className="coast__nav-more">더보기</p>
                 </div>
-                <Arrow dir="next" onClick={() => navigate("/coast/include")} />
+                <Arrow dir="next" onClick={goPine} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
             <div className="coast__story">
-              <p className="coast__story-title">바다 해(海)</p>
+              <p className="coast__story-title">바위 암(巖)</p>
               <span className="coast__story-dash">-</span>
               <p className="coast__story-body">
-                육지의 소음이 닿지 않는 곳,
+                파도와 바람이 깎아낸 섬,
                 <br />
-                오랜 외로움이 빚어낸
+                세상에 남겨진 가장
                 <br />
-                깊고 푸른 울릉 앞바다
+                단단한 조각. 주상절리
               </p>
             </div>
           </div>
