@@ -245,7 +245,13 @@ export default function CoastIncludePage() {
                 <div className="coast__nav-copy">
                   <p className="coast__nav-title">2박3일 일정표</p>
                   <span className="coast__nav-line" />
-                  <p className="coast__nav-more">더보기</p>
+                  <button
+                    className="coast__nav-more"
+                    type="button"
+                    onClick={() => navigate("/coast/schedule")}
+                  >
+                    더보기
+                  </button>
                 </div>
                 <Arrow dir="next" onClick={goPine} />
               </div>

@@ -1,0 +1,157 @@
+.coast-schedule {
+  --panel-hold: 2.2s;
+}
+
+.coast-schedule .coast__tint {
+  background: linear-gradient(180deg, #b3a08c 0%, #5b3727 65.3846%, #51605c 100%);
+}
+
+.coast-schedule__photo,
+.coast-schedule .coast__frost-img {
+  object-fit: cover;
+  object-position: 22% center;
+}
+
+.coast-schedule__glow {
+  position: absolute;
+  left: calc(-20 / 434 * 100cqi);
+  top: calc(179 / 850 * 100cqb);
+  z-index: 1;
+  width: calc(259 / 434 * 100cqi);
+  height: calc(251 / 850 * 100cqb);
+  pointer-events: none;
+}
+
+.coast-schedule__copy {
+  position: absolute;
+  left: calc(60 / 434 * 100cqi);
+  top: calc(260 / 850 * 100cqb);
+  z-index: 3;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-myeongjo);
+  font-size: calc(18 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(31 / 18);
+  pointer-events: none;
+  animation:
+    schedule-copy-in 2s ease-out both,
+    schedule-copy-out 0.7s ease 2.2s forwards;
+}
+
+.coast-schedule__content {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: calc(79 / 850 * 100cqb) calc(22 / 434 * 100cqi) calc(51 / 850 * 100cqb)
+    calc(35 / 434 * 100cqi);
+  animation: coast-text-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--panel-hold) + 0.35s) both;
+}
+
+.coast-schedule__head {
+  display: flex;
+  flex-direction: column;
+  gap: calc(6 / 850 * 100cqb);
+  color: #fff;
+}
+
+.coast-schedule__head-en {
+  margin: 0;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(13.5 / 434 * 100cqi);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.coast-schedule__head-ko {
+  margin: 0;
+  font-family: var(--font-myeongjo);
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.coast-schedule__rule {
+  display: block;
+  width: calc(163 / 434 * 100cqi);
+  max-width: 100%;
+  height: 1px;
+  margin: calc(28 / 850 * 100cqb) 0 calc(32 / 850 * 100cqb);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.coast-schedule__list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(28 / 850 * 100cqb);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coast-schedule__item {
+  display: flex;
+  flex-direction: column;
+  gap: calc(3 / 850 * 100cqb);
+  color: #fff;
+  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.coast-schedule__en {
+  opacity: 0.85;
+}
+
+.coast-schedule__ko {
+  opacity: 0.5;
+}
+
+.coast-schedule__back {
+  display: flex;
+  align-items: center;
+  gap: calc(8 / 434 * 100cqi);
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.coast-schedule__back-icon {
+  width: calc(10 / 434 * 100cqi);
+  height: calc(10 / 434 * 100cqi);
+  transform: rotate(180deg);
+  object-fit: contain;
+}
+
+@keyframes schedule-copy-in {
+  0%,
+  12.5% {
+    opacity: 0;
+  }
+
+  57.5%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes schedule-copy-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coast-schedule__copy,
+  .coast-schedule__content {
+    animation: none;
+  }
+}

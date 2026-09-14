@@ -235,6 +235,13 @@
   font-weight: 500;
 }
 
+button.coast__nav-more {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .coast__nav-line {
   display: block;
   width: calc(92 / 434 * 100cqi);
