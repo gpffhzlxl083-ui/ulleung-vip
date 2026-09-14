@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import chevronRight from "../assets/chevron-right.svg";
-import driftwood from "../assets/driftwood.webp";
-import logoAube from "../assets/logo-aube.svg";
+import chevronRight from "../assets/common/chevron-right.svg";
+import driftwood from "../assets/seokhyang/driftwood.webp";
+import logoAube from "../assets/common/logo-aube.svg";
 import "../styles/viewport-full.css";
 import "../styles/seokhyang.css";
 

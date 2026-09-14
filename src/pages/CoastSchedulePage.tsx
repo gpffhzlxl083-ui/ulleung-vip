@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import chevronRight from "../assets/chevron-right.svg";
-import scheduleCliff from "../assets/schedule-cliff.webp";
-import scheduleGlow from "../assets/schedule-glow.svg";
+import backArrow from "../assets/coast-schedule/schedule-back.svg";
+import scheduleCliff from "../assets/coast-schedule/schedule-cliff.webp";
+import scheduleGlow from "../assets/coast-schedule/schedule-glow.svg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 import "../styles/coast-schedule.css";
@@ -10,7 +10,8 @@ const TRANSPORT = [
   { en: "Hotel", ko: "라마다 울릉" },
   { en: "Cruise ship", ko: "퍼스트 클래스" },
   { en: "Dokdo ship", ko: "비즈니스 클래스" },
-  { en: "Vip van", ko: "4~6명 단독행사" },
+  { en: "Vip van", ko: "고급 리무진 차량" },
+  { en: "Private tour", ko: "4~6명 단독행사" },
 ];
 
 const EXPERIENCE = [
@@ -125,7 +126,7 @@ export default function CoastSchedulePage() {
             >
               <img
                 className="coast-schedule__back-icon"
-                src={chevronRight}
+                src={backArrow}
                 alt=""
                 width={5}
                 height={10}

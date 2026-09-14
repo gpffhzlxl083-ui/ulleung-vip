@@ -42,7 +42,7 @@
 .coast-schedule__content {
   align-items: flex-start;
   justify-content: flex-start;
-  padding: calc(79 / 850 * 100cqb) calc(22 / 434 * 100cqi) calc(51 / 850 * 100cqb)
+  padding: calc(39 / 850 * 100cqb) calc(22 / 434 * 100cqi) calc(51 / 850 * 100cqb)
     calc(35 / 434 * 100cqi);
   animation: coast-text-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--panel-hold) + 0.35s) both;
 }
@@ -75,14 +75,14 @@
   width: calc(163 / 434 * 100cqi);
   max-width: 100%;
   height: 1px;
-  margin: calc(28 / 850 * 100cqb) 0 calc(32 / 850 * 100cqb);
+  margin: calc(22 / 850 * 100cqb) 0 calc(28 / 850 * 100cqb);
   background: rgba(255, 255, 255, 0.28);
 }
 
 .coast-schedule__list {
   display: flex;
   flex-direction: column;
-  gap: calc(28 / 850 * 100cqb);
+  gap: calc(32 / 850 * 100cqb);
   width: 100%;
   margin: 0;
   padding: 0;
@@ -125,9 +125,8 @@
 }
 
 .coast-schedule__back-icon {
-  width: calc(10 / 434 * 100cqi);
+  width: calc(5 / 434 * 100cqi);
   height: calc(10 / 434 * 100cqi);
-  transform: rotate(180deg);
   object-fit: contain;
 }
 

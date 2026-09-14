@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import coastWave from "../assets/coast-wave.mp4";
-import coastWavePoster from "../assets/coast-wave-poster.jpg";
-import logoAube from "../assets/logo-aube.svg";
+import coastWave from "../assets/coast/coast-wave.mp4";
+import coastWavePoster from "../assets/coast/coast-wave-poster.jpg";
+import logoAube from "../assets/common/logo-aube.svg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 
