@@ -100,6 +100,27 @@
   line-height: 1.35;
 }
 
+.coast-schedule__item-btn {
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.coast-schedule__item-btn:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 6px;
+}
+
 .coast-schedule__en {
   opacity: 0.85;
 }

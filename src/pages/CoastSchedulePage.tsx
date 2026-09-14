@@ -7,7 +7,7 @@ import "../styles/coast.css";
 import "../styles/coast-schedule.css";
 
 const TRANSPORT = [
-  { en: "Hotel", ko: "라마다 울릉" },
+  { en: "Hotel", ko: "라마다 울릉", to: "/coast/hotel" },
   { en: "Cruise ship", ko: "퍼스트 클래스" },
   { en: "Dokdo ship", ko: "비즈니스 클래스" },
   { en: "Vip van", ko: "고급 리무진 차량" },
@@ -105,8 +105,21 @@ export default function CoastSchedulePage() {
             <ul className="coast-schedule__list">
               {TRANSPORT.map((item) => (
                 <li key={item.en} className="coast-schedule__item">
-                  <span className="coast-schedule__en">{item.en}</span>
-                  <span className="coast-schedule__ko">{item.ko}</span>
+                  {"to" in item && item.to ? (
+                    <button
+                      className="coast-schedule__item-btn"
+                      type="button"
+                      onClick={() => navigate(item.to)}
+                    >
+                      <span className="coast-schedule__en">{item.en}</span>
+                      <span className="coast-schedule__ko">{item.ko}</span>
+                    </button>
+                  ) : (
+                    <>
+                      <span className="coast-schedule__en">{item.en}</span>
+                      <span className="coast-schedule__ko">{item.ko}</span>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>

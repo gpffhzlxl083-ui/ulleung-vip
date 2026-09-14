@@ -1,0 +1,150 @@
+.ramada {
+  background: #d9d9d9;
+  overflow: hidden;
+}
+
+.ramada__stage {
+  aspect-ratio: 434 / 850;
+  height: 100dvh;
+  width: calc(100dvh * 434 / 850);
+  min-height: 100dvh;
+  max-height: 100dvh;
+  padding: 0;
+  container-type: size;
+  background: #f2efe8;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.ramada__stage--drag {
+  cursor: grabbing;
+}
+
+.ramada__track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.ramada__page {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f2efe8;
+}
+
+.ramada__edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block;
+  width: calc(61 / 434 * 100cqi);
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.ramada__sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: calc(40 / 850 * 100cqb) calc(56 / 434 * 100cqi) calc(48 / 850 * 100cqb)
+    calc(126 / 434 * 100cqi);
+}
+
+.ramada__hero {
+  display: block;
+  width: calc(252 / 434 * 100cqi);
+  height: calc(394 / 850 * 100cqb);
+  margin: 0 0 calc(78 / 850 * 100cqb);
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.ramada__title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: #3f3c39;
+  font-family: var(--font-pretendard);
+  font-size: calc(21 / 434 * 100cqi);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.ramada__lead {
+  margin: calc(14 / 850 * 100cqb) 0 0;
+  color: #8a847c;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.5;
+}
+
+.ramada__meta {
+  display: flex;
+  flex-direction: column;
+  gap: calc(14 / 850 * 100cqb);
+  width: 100%;
+  max-width: calc(252 / 434 * 100cqi);
+  margin: calc(36 / 850 * 100cqb) 0 0;
+}
+
+.ramada__row {
+  display: grid;
+  grid-template-columns: calc(70 / 434 * 100cqi) 1fr;
+  gap: calc(18 / 434 * 100cqi);
+  margin: 0;
+  color: #6a6560;
+  font-family: var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.55;
+}
+
+.ramada__row dt {
+  margin: 0;
+  color: #8c8780;
+}
+
+.ramada__row dd {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.ramada__back {
+  display: flex;
+  align-items: center;
+  gap: calc(8 / 434 * 100cqi);
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #5a564f;
+  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ramada__back-icon {
+  width: calc(5 / 434 * 100cqi);
+  height: calc(10 / 434 * 100cqi);
+  object-fit: contain;
+  filter: brightness(0) opacity(0.52);
+}
