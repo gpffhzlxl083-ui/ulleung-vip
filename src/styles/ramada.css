@@ -1,6 +1,10 @@
 .ramada {
   background: #d9d9d9;
   overflow: hidden;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: auto;
+  font-synthesis: none;
 }
 
 .ramada__stage {
@@ -24,7 +28,6 @@
 .ramada__track {
   display: flex;
   height: 100%;
-  will-change: transform;
 }
 
 .ramada__page {
@@ -56,72 +59,178 @@
   flex-direction: column;
   align-items: flex-start;
   box-sizing: border-box;
-  padding: calc(40 / 850 * 100cqb) calc(56 / 434 * 100cqi) calc(48 / 850 * 100cqb)
-    calc(126 / 434 * 100cqi);
+  padding: calc(40 / 850 * 100cqb) calc(61 / 434 * 100cqi) calc(48 / 850 * 100cqb)
+    calc(116 / 434 * 100cqi);
+}
+
+.ramada__hero-wrap {
+  flex-shrink: 0;
+  width: calc(257 / 434 * 100cqi);
+  height: calc(390 / 850 * 100cqb);
+  margin: 0;
+  overflow: hidden;
+  border-radius: calc(8 / 434 * 100cqi);
 }
 
 .ramada__hero {
   display: block;
-  width: calc(252 / 434 * 100cqi);
-  height: calc(394 / 850 * 100cqb);
-  margin: 0 0 calc(78 / 850 * 100cqb);
+  width: 100%;
+  height: 100%;
+  margin: 0;
   object-fit: cover;
   object-position: center;
   pointer-events: none;
   -webkit-user-drag: none;
 }
 
-.ramada__title {
+.ramada__pager {
   display: flex;
-  flex-direction: column;
-  margin: 0;
-  color: #3f3c39;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(257 / 434 * 100cqi);
+  height: calc(40 / 850 * 100cqb);
+  margin: 0 0 calc(8 / 850 * 100cqb);
+  color: #494949;
+}
+
+.ramada__pager-num {
+  flex: 1;
+  height: calc(40 / 850 * 100cqb);
+  color: #494949;
   font-family: var(--font-pretendard);
-  font-size: calc(21 / 434 * 100cqi);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: calc(40 / 850 * 100cqb);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ramada__pager-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 calc(18 / 434 * 100cqi);
+  width: calc(18 / 434 * 100cqi);
+  height: calc(40 / 850 * 100cqb);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #494949;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ramada__pager-btn:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.ramada__pager-icon {
+  display: block;
+  width: calc(7 / 434 * 100cqi);
+  height: calc(12 / 434 * 100cqi);
+}
+
+.ramada__title {
+  display: block;
+  width: calc(206 / 434 * 100cqi);
+  margin: 0 0 calc(6 / 850 * 100cqb);
+  padding-top: calc(44 / 850 * 100cqb);
+  color: #535750;
+  font-family: var(--font-gujarati);
+  font-size: calc(18 / 434 * 100cqi);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: calc(0.36 / 434 * 100cqi);
+  line-height: calc(28 / 18);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
 }
 
 .ramada__lead {
-  margin: calc(14 / 850 * 100cqb) 0 0;
-  color: #8a847c;
-  font-family: "Noto Sans KR", var(--font-pretendard);
-  font-size: calc(11 / 434 * 100cqi);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: max-content;
+  max-width: calc((434 - 116 - 20) / 434 * 100cqi);
+  min-height: calc(17 / 850 * 100cqb);
+  margin: 0;
+  color: rgba(11, 11, 11, 0.5);
+  font-family: "NanumMyeongjo", var(--font-myeongjo);
+  font-size: calc(13 / 434 * 100cqi);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: calc(18 / 13);
+  white-space: nowrap;
 }
 
 .ramada__meta {
   display: flex;
   flex-direction: column;
   gap: calc(14 / 850 * 100cqb);
-  width: 100%;
-  max-width: calc(252 / 434 * 100cqi);
-  margin: calc(36 / 850 * 100cqb) 0 0;
+  width: calc(257 / 434 * 100cqi);
+  margin: calc(52 / 850 * 100cqb) 0 0;
 }
 
 .ramada__row {
   display: grid;
-  grid-template-columns: calc(70 / 434 * 100cqi) 1fr;
-  gap: calc(18 / 434 * 100cqi);
+  grid-template-columns: calc(89 / 434 * 100cqi) 1fr;
+  column-gap: 0;
+  align-items: start;
   margin: 0;
-  color: #6a6560;
-  font-family: var(--font-pretendard);
-  font-size: calc(10 / 434 * 100cqi);
+  font-family: "Inter", var(--font-pretendard);
+  font-style: normal;
   font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.55;
+  letter-spacing: 0;
+  font-optical-sizing: auto;
+  font-kerning: normal;
 }
 
 .ramada__row dt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(17 / 850 * 100cqb);
   margin: 0;
-  color: #8c8780;
+  color: #302e2d;
+  font-size: calc(11 / 434 * 100cqi);
+  line-height: normal;
 }
 
 .ramada__row dd {
+  display: flex;
+  flex-direction: column;
   margin: 0;
+}
+
+.ramada__value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(17 / 850 * 100cqb);
+  color: rgba(33, 32, 32, 0.6);
+  font-size: calc(11 / 434 * 100cqi);
+  line-height: normal;
+  white-space: pre-line;
+}
+
+.ramada__detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(164 / 434 * 100cqi);
+  height: calc(46 / 850 * 100cqb);
+  margin: calc(8 / 850 * 100cqb) 0 0;
+  overflow: hidden;
+  color: rgba(33, 32, 32, 0.6);
+  font-family: "Inter", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: calc(15 / 10);
   white-space: pre-line;
 }
 
