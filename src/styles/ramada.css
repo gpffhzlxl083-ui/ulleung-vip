@@ -216,6 +216,15 @@
   white-space: pre-line;
 }
 
+.ramada__rule {
+  display: block;
+  width: 0.5px;
+  height: calc(23 / 850 * 100cqb);
+  margin: calc(8 / 850 * 100cqb) 0;
+  flex-shrink: 0;
+  background: rgba(47, 45, 45, 0.4);
+}
+
 .ramada__detail {
   display: flex;
   flex-direction: column;

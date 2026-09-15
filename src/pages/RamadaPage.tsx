@@ -6,13 +6,14 @@ import ramadaCafe from "../assets/ramada/ramada-cafe.webp";
 import ramadaEdge from "../assets/ramada/ramada-edge.svg";
 import ramadaExterior from "../assets/ramada/ramada-exterior.webp";
 import ramadaLobby from "../assets/ramada/ramada-lobby.webp";
+import ramadaChecklist from "../assets/ramada/ramada-room-checklist.webp";
 import ramadaOcean from "../assets/ramada/ramada-room-ocean.webp";
 import ramadaTwin from "../assets/ramada/ramada-room-twin.webp";
 import ramadaTerrace from "../assets/ramada/ramada-terrace.webp";
 import "../styles/viewport-full.css";
 import "../styles/ramada.css";
 
-type MetaRow = { label: string; value: string; detail?: string };
+type MetaRow = { label: string; value: string; detail?: string; list?: string };
 
 type Slide = {
   src: string;
@@ -118,7 +119,21 @@ const SLIDES: Slide[] = [
       {
         label: "coupon",
         value:
-          "라마다 호텔의 베이커리 카페\n이용 기프트 카드를 제공합니다\n\n1인 1매 베이커리 카페 이용권\n커피 & 베이커리 택 1",
+          "1인 1매 베이커리 카페 이용권\n커피 & 베이커리 택 1\n\n라마다 호텔의 베이커리 카페\n이용 기프트 카드를 제공합니다",
+      },
+    ],
+  },
+  {
+    src: ramadaChecklist,
+    title: "ROOM CHECK",
+    lead: "<오브, 울릉>은 객실의 컨디션을 점검 합니다",
+    objectPosition: "center",
+    meta: [
+      { label: "brand", value: "ramada ulleung" },
+      {
+        label: "room check",
+        value: "객실의 냉난방, 위생, 어메니티 등을\n전문 인솔자가 매일 체크합니다",
+        list: "entrance & security\nbathroom\nbedroom & Living Area",
       },
     ],
   },
@@ -265,6 +280,12 @@ export default function RamadaPage() {
                       <dt>{row.label}</dt>
                       <dd>
                         <span className="ramada__value">{row.value}</span>
+                        {row.list ? (
+                          <>
+                            <span className="ramada__rule" aria-hidden="true" />
+                            <span className="ramada__value">{row.list}</span>
+                          </>
+                        ) : null}
                         {row.detail ? (
                           <p className="ramada__detail">{row.detail}</p>
                         ) : null}
