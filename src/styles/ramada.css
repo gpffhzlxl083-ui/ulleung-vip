@@ -89,7 +89,7 @@
   justify-content: space-between;
   width: calc(257 / 434 * 100cqi);
   height: calc(40 / 850 * 100cqb);
-  margin: 0 0 calc(8 / 850 * 100cqb);
+  margin: calc(12 / 850 * 100cqb) 0 calc(8 / 850 * 100cqb);
   color: #494949;
 }
 
@@ -109,7 +109,6 @@
 .ramada__pager-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex: 0 0 calc(18 / 434 * 100cqi);
   width: calc(18 / 434 * 100cqi);
   height: calc(40 / 850 * 100cqb);
@@ -119,6 +118,14 @@
   color: #494949;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+}
+
+.ramada__pager-btn--prev {
+  justify-content: flex-start;
+}
+
+.ramada__pager-btn--next {
+  justify-content: flex-end;
 }
 
 .ramada__pager-btn:disabled {

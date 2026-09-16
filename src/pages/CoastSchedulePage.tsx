@@ -8,7 +8,7 @@ import "../styles/coast-schedule.css";
 
 const TRANSPORT = [
   { en: "Hotel", ko: "라마다 울릉", to: "/coast/hotel" },
-  { en: "Cruise ship", ko: "퍼스트 클래스" },
+  { en: "Cruise ship", ko: "퍼스트 클래스", to: "/coast/first-class" },
   { en: "Dokdo ship", ko: "비즈니스 클래스" },
   { en: "Vip van", ko: "고급 리무진 차량" },
   { en: "Private tour", ko: "4~6명 단독행사" },

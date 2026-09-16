@@ -239,7 +239,7 @@ export default function CoastPage() {
               <div className="coast__nav">
                 <Arrow dir="prev" onClick={() => navigate("/coast/pine")} />
                 <div className="coast__nav-copy">
-                  <p className="coast__nav-title">패키지 포함사항</p>
+                  <p className="coast__nav-title">2박3일 일정표</p>
                   <span className="coast__nav-line" />
                   <p className="coast__nav-more">더보기</p>
                 </div>
