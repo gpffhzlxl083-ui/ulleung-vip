@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import BusinessClassPage from "./pages/BusinessClassPage";
 import CoastIncludePage from "./pages/CoastIncludePage";
 import CoastPage from "./pages/CoastPage";
 import CoastPinePage from "./pages/CoastPinePage";
@@ -16,6 +17,7 @@ export default function App() {
       <Route path="/coast/schedule" element={<CoastSchedulePage />} />
       <Route path="/coast/hotel" element={<RamadaPage />} />
       <Route path="/coast/first-class" element={<FirstClassPage />} />
+      <Route path="/coast/business-class" element={<BusinessClassPage />} />
       <Route path="/coast/pine" element={<CoastPinePage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
