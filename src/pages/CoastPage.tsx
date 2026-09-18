@@ -6,7 +6,13 @@ import logoAube from "../assets/common/logo-aube.svg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 
-function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
+function Arrow({
+  dir,
+  onClick,
+}: {
+  dir: "prev" | "next";
+  onClick: () => void;
+}) {
   const label = dir === "prev" ? "이전" : "다음";
   return (
     <button
@@ -104,7 +110,9 @@ export default function CoastPage() {
       raf = requestAnimationFrame(tick);
     };
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (reduced) {
       video.pause();
       paint();
@@ -169,7 +177,12 @@ export default function CoastPage() {
           onPlaying={() => setVideoOn(true)}
         />
         <div className="coast__frost" aria-hidden="true">
-          <svg className="coast__frost-defs" width="0" height="0" aria-hidden="true">
+          <svg
+            className="coast__frost-defs"
+            width="0"
+            height="0"
+            aria-hidden="true"
+          >
             <filter
               id="coast-glass-fx"
               x="-8%"
@@ -232,7 +245,13 @@ export default function CoastPage() {
           <div className="coast__tint" aria-hidden="true" />
           <div className="coast__content">
             <div className="coast__brand">
-              <img className="coast__logo" src={logoAube} alt="AUBE" width={203} height={28} />
+              <img
+                className="coast__logo"
+                src={logoAube}
+                alt="AUBE"
+                width={203}
+                height={28}
+              />
               <p className="coast__place">Ulleungdo, Dokdo</p>
             </div>
             <div className="coast__mid">
@@ -241,7 +260,13 @@ export default function CoastPage() {
                 <div className="coast__nav-copy">
                   <p className="coast__nav-title">2박3일 일정표</p>
                   <span className="coast__nav-line" />
-                  <p className="coast__nav-more">더보기</p>
+                  <button
+                    className="coast__nav-more"
+                    type="button"
+                    onClick={() => navigate("/coast/plan")}
+                  >
+                    더보기
+                  </button>
                 </div>
                 <Arrow dir="next" onClick={() => navigate("/coast/include")} />
               </div>

@@ -10,7 +10,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/NanumMyeongjo-YetHangul.otf") format("opentype");
+  src:
+    url("/fonts/NanumMyeongjo-YetHangul.ttf") format("truetype"),
+    url("/fonts/NanumMyeongjo-YetHangul.otf") format("opentype");
 }
 
 @font-face {
@@ -26,7 +28,15 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("/fonts/NanumMyeongjo.otf") format("opentype");
+  src: url("/fonts/NanumMyeongjoBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/NanumMyeongjoBold.otf") format("opentype");
 }
 
 @font-face {
@@ -63,6 +73,22 @@
   src: url("/fonts/Inter-Italic-Variable.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+}
+
 :root {
   /* 앱 카드 기준 뷰포트 (브라우저 반응형 426×1098과 맞춤) */
   --app-max-width: 426px;
@@ -76,6 +102,9 @@
   --font-baskerville-old-face: "Baskerville Old Face", "Libre Baskerville", Georgia, serif;
   --font-gujarati: "Noto Sans Gujarati", "Noto Sans", var(--font-pretendard);
   --font-inter: "Inter", "Noto Sans KR", var(--font-pretendard);
+  --font-noto-sans-kr: "Noto Sans KR", sans-serif;
+  --font-noto-sans: "Noto Sans", "Noto Sans KR", sans-serif;
+  --font-nanum-myeongjo: "NanumMyeongjo", serif;
 }
 
 *,

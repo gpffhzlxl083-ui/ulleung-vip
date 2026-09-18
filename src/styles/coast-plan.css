@@ -1,0 +1,339 @@
+.coast-plan {
+  --panel-hold: 2.2s;
+  --panel-slide: calc(354 / 434 * 100cqi);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: auto;
+  font-synthesis: none;
+}
+
+.coast-plan .coast__frost {
+  --frost-w: 354;
+  left: auto;
+  right: 0;
+  width: calc(354 / 434 * 100cqi);
+  padding: calc(12 / 434 * 100cqi) 0 calc(12 / 434 * 100cqi) calc(12 / 434 * 100cqi);
+  border-radius: calc(10 / 434 * 100cqi) 0 0 calc(10 / 434 * 100cqi);
+  clip-path: inset(0 0 0 0 round calc(10 / 434 * 100cqi) 0 0 calc(10 / 434 * 100cqi));
+}
+
+.coast-plan .coast__sheet {
+  left: auto;
+  right: 0;
+  width: calc(319 / 434 * 100cqi);
+  border: 0;
+  border-radius: calc(10 / 434 * 100cqi) 0 0 calc(10 / 434 * 100cqi);
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.coast-plan .coast__glass,
+.coast-plan .coast__tint {
+  display: none;
+}
+
+.coast-plan__panel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.coast-plan__photo,
+.coast-plan .coast__frost-img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.coast-plan__copy {
+  position: absolute;
+  left: calc(60 / 434 * 100cqi);
+  top: calc(260 / 850 * 100cqb);
+  z-index: 3;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-myeongjo);
+  font-size: calc(18 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(31 / 18);
+  pointer-events: none;
+  animation:
+    plan-copy-in 2s ease-out both,
+    plan-copy-out 0.7s ease 2.2s forwards;
+}
+
+.coast-plan__content {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: calc(158 / 850 * 100cqb) 0 calc(36 / 850 * 100cqb)
+    calc(54 / 434 * 100cqi);
+  animation: coast-text-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--panel-hold) + 0.35s) both;
+}
+
+.coast-plan__card {
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: calc(279 / 434 * 100cqi);
+  height: calc(199 / 850 * 100cqb);
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: calc(10 / 434 * 100cqi);
+  background: transparent;
+}
+
+.coast-plan__card-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.coast-plan__head {
+  display: contents;
+}
+
+.coast-plan__head-en,
+.coast-plan__head-ko,
+.coast-plan__label,
+.coast-plan__body {
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.coast-plan__head-en {
+  top: calc(27 / 850 * 100cqb);
+  left: calc(30 / 434 * 100cqi);
+  width: calc(125 / 434 * 100cqi);
+  height: calc(22 / 850 * 100cqb);
+  color: #fff;
+  font-family: var(--font-noto-sans);
+  font-size: calc(18 / 434 * 100cqi);
+  font-weight: 250;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1;
+  font-synthesis: none;
+}
+
+.coast-plan__head-ko {
+  top: calc(55 / 850 * 100cqb);
+  left: calc(30 / 434 * 100cqi);
+  width: calc(54 / 434 * 100cqi);
+  height: calc(18 / 850 * 100cqb);
+  color: #fff;
+  font-family: var(--font-noto-sans);
+  font-size: calc(14 / 434 * 100cqi);
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1;
+  font-synthesis: none;
+}
+
+.coast-plan__label {
+  top: calc(94 / 850 * 100cqb);
+  left: calc(30 / 434 * 100cqi);
+  width: calc(196.2588 / 434 * 100cqi);
+  height: calc(16 / 850 * 100cqb);
+  color: #fff;
+  opacity: 0.85;
+  font-family: var(--font-noto-sans);
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 200;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.coast-plan__body {
+  top: calc(117 / 850 * 100cqb);
+  left: calc(30 / 434 * 100cqi);
+  width: calc(199.7634 / 434 * 100cqi);
+  height: calc(76 / 850 * 100cqb);
+  color: #fff;
+  font-family: var(--font-noto-sans);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 200;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: calc(15 / 10);
+  text-align: justify;
+  text-align-last: left;
+}
+
+.coast-plan__days {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  height: calc(280 / 850 * 100cqb);
+  margin: calc(81 / 850 * 100cqb) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coast-plan__days-line {
+  position: absolute;
+  left: calc(54 / 434 * 100cqi);
+  top: calc(414.5 / 850 * 100cqb);
+  width: calc(3 / 434 * 100cqi);
+  height: calc(306 / 850 * 100cqb);
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.coast-plan__day {
+  margin: 0;
+}
+
+.coast-plan__day-btn {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.coast-plan__day-btn:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 6px;
+}
+
+.coast-plan__day-copy {
+  display: contents;
+}
+
+.coast-plan__day-en,
+.coast-plan__day-ko {
+  position: absolute;
+  left: calc(30 / 434 * 100cqi);
+  margin: 0;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: normal;
+  font-synthesis: none;
+  font-variation-settings: "wght" 400;
+  white-space: nowrap;
+}
+
+.coast-plan__day-en {
+  opacity: 0.85;
+}
+
+.coast-plan__day-ko {
+  opacity: 0.5;
+}
+
+.coast-plan__day:nth-child(1) .coast-plan__day-en {
+  top: 0;
+}
+
+.coast-plan__day:nth-child(1) .coast-plan__day-ko {
+  top: calc(22 / 850 * 100cqb);
+}
+
+.coast-plan__day:nth-child(2) .coast-plan__day-en {
+  top: calc(104 / 850 * 100cqb);
+}
+
+.coast-plan__day:nth-child(2) .coast-plan__day-ko {
+  top: calc(126 / 850 * 100cqb);
+}
+
+.coast-plan__day:nth-child(3) .coast-plan__day-en {
+  top: calc(207 / 850 * 100cqb);
+}
+
+.coast-plan__day:nth-child(3) .coast-plan__day-ko {
+  top: calc(229 / 850 * 100cqb);
+}
+
+.coast-plan__chevron {
+  position: absolute;
+  left: calc(223 / 434 * 100cqi);
+  width: calc(6 / 434 * 100cqi);
+  height: calc(11 / 850 * 100cqb);
+  overflow: visible;
+}
+
+.coast-plan__day:nth-child(1) .coast-plan__chevron {
+  top: calc(27 / 850 * 100cqb);
+}
+
+.coast-plan__day:nth-child(2) .coast-plan__chevron {
+  top: calc(130 / 850 * 100cqb);
+}
+
+.coast-plan__day:nth-child(3) .coast-plan__chevron {
+  top: calc(233 / 850 * 100cqb);
+}
+
+.coast-plan__back {
+  position: absolute;
+  left: calc(54 / 434 * 100cqi);
+  top: calc(801 / 850 * 100cqb);
+  display: flex;
+  align-items: center;
+  gap: calc(8 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-noto-sans);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  font-synthesis: none;
+  font-variation-settings: "wght" 400;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.coast-plan__back-icon {
+  width: calc(5 / 434 * 100cqi);
+  height: calc(10 / 434 * 100cqi);
+  object-fit: contain;
+}
+
+@keyframes plan-copy-in {
+  0%,
+  12.5% {
+    opacity: 0;
+  }
+
+  57.5%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes plan-copy-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coast-plan__copy,
+  .coast-plan__content {
+    animation: none;
+  }
+}
