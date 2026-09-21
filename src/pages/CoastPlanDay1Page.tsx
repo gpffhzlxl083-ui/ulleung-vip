@@ -197,6 +197,8 @@ export default function CoastPlanDay1Page() {
               />
             </div>
             <div className="coast-plan-day1__frost-shine" aria-hidden="true" />
+          </div>
+          <div className="coast-plan-day1__glass-header">
             <div className="coast-plan-day1__glass-labels" style={{ opacity: 1 - progress }}>
               <span>Premium package</span>
               <span>Aube - ulleung, dokdo</span>

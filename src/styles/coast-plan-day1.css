@@ -145,36 +145,35 @@
 }
 
 .coast-plan-day1__panel {
+  --glass-pad: calc(12 / 434 * 100cqi);
+  --glass-radius: calc(10 / 434 * 100cqi);
   position: absolute;
   left: 0;
   top: calc(455 / 850 * 100cqb);
   z-index: 2;
-  width: calc(435 / 434 * 100cqi);
-  border-radius: calc(10 / 434 * 100cqi) calc(10 / 434 * 100cqi) 0 0;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--glass-radius) var(--glass-radius) 0 0;
+  background: #1a2428;
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, calc(0.58 * 0.7)),
+    inset 0 -2.4px 16px rgba(255, 255, 255, 0.1);
 }
 
 .coast-plan-day1__frost {
   --glass-light: 0.58;
   --glass-depth: 16px;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  box-sizing: border-box;
-  width: calc(434 / 434 * 100cqi);
-  height: calc(66 / 850 * 100cqb);
-  padding: calc(12 / 434 * 100cqi);
-  justify-content: center;
-  align-items: center;
-  gap: calc(10 / 434 * 100cqi);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
-  isolation: isolate;
-  border-radius: calc(10 / 434 * 100cqi) calc(10 / 434 * 100cqi) 0 0;
-  background: transparent;
-  clip-path: inset(0 round calc(10 / 434 * 100cqi) calc(10 / 434 * 100cqi) 0 0);
-  box-shadow:
-    0 2px 4px 0 rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, calc(var(--glass-light) * 0.7)),
-    inset 0 calc(var(--glass-depth) * -0.15) var(--glass-depth) rgba(255, 255, 255, 0.1);
   pointer-events: none;
 }
 
@@ -219,14 +218,26 @@
   pointer-events: none;
 }
 
+.coast-plan-day1__glass-header {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-height: calc(37 / 850 * 100cqb);
+  padding: calc(19 / 850 * 100cqb) var(--glass-pad);
+}
+
 .coast-plan-day1__glass-labels,
 .coast-plan-day1__glass-lead {
+  grid-area: 1 / 1;
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
   width: 100%;
   margin: 0;
+  padding: 0;
   color: rgba(255, 255, 255, 0.85);
   font-family: "Noto Sans", sans-serif;
   font-size: calc(11 / 434 * 100cqi);
@@ -236,17 +247,11 @@
 }
 
 .coast-plan-day1__glass-labels {
-  position: absolute;
-  inset: 0;
   justify-content: space-between;
-  padding: calc(12 / 434 * 100cqi);
 }
 
 .coast-plan-day1__glass-lead {
-  position: absolute;
-  inset: 0;
   justify-content: flex-start;
-  padding: calc(12 / 434 * 100cqi);
   color: rgba(255, 255, 255, 0.88);
   font-family: "NanumMyeongjo", var(--font-myeongjo);
   font-size: calc(13 / 434 * 100cqi);
@@ -254,12 +259,14 @@
 }
 
 .coast-plan-day1__sheet {
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
-  width: calc(435 / 434 * 100cqi);
+  width: 100%;
   height: calc(712 / 850 * 100cqb);
   overflow: hidden;
   padding: calc(16 / 850 * 100cqb) calc(32 / 434 * 100cqi) calc(32 / 850 * 100cqb);
-  border-radius: calc(10 / 434 * 100cqi) calc(10 / 434 * 100cqi) 0 0;
+  border-radius: var(--glass-radius) var(--glass-radius) 0 0;
   background: #f3f0ec;
   box-shadow: inset 0 1px 0 rgba(83, 87, 80, 0.12);
 }
