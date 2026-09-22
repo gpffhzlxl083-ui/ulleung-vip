@@ -15,10 +15,10 @@ const INCLUSIONS = [
   "오브, 울릉 Snack box",
   "심층수 1병",
   "Vip van (4명~6명 단독행사)",
-  "Find dining 2",
+  "Fine dining 2",
   "Ramada hotel deluxe ocean view",
   "호박 막걸리, 음료 제공",
-  "Premium Tour  5h / night tour 1h",
+  "Premium Tour 5h / night tour 1h",
 ];
 
 export default function CoastPlanDay1Page() {
@@ -115,7 +115,7 @@ export default function CoastPlanDay1Page() {
             <p>Ulleungdo, Dokdo</p>
           </div>
           <button className="coast-plan-day1__nav coast-plan-day1__nav--next" type="button">
-            Next
+            Nset
             <svg viewBox="0 0 6 11" width="6" height="11" aria-hidden="true">
               <path d="M.18.17l5 5.5-5 5" stroke="currentColor" strokeWidth="0.5" fill="none" />
             </svg>
@@ -126,7 +126,7 @@ export default function CoastPlanDay1Page() {
           DAY 1
         </h1>
         <p className="coast-plan-day1__lead" style={{ opacity: Math.max(0, 1 - progress * 1.35) }}>
-          〈오브, 울릉〉의 첫번째 여정입니다
+          {"<오브, 울릉>의 첫번째 여정입니다"}
         </p>
 
         <section
@@ -201,10 +201,10 @@ export default function CoastPlanDay1Page() {
           <div className="coast-plan-day1__glass-header">
             <div className="coast-plan-day1__glass-labels" style={{ opacity: 1 - progress }}>
               <span>Premium package</span>
-              <span>Aube - ulleung, dokdo</span>
+              <span>Aube · ulleung, dokdo</span>
             </div>
             <p className="coast-plan-day1__glass-lead" style={{ opacity: progress }}>
-              〈오브, 울릉〉의 첫번째 여정입니다
+              {"<오브, 울릉>의 첫번째 여정입니다"}
             </p>
           </div>
           <div className="coast-plan-day1__sheet">
@@ -224,21 +224,21 @@ export default function CoastPlanDay1Page() {
                 <h3>INCLUSIONS</h3>
                 <span className="coast-plan-day1__chip">포함사항</span>
               </div>
-              <p className="coast-plan-day1__incl-lead">첫번째 여정의 포항서행입니다</p>
+              <p className="coast-plan-day1__incl-lead">첫번째 여정의 포함사항입니다</p>
               <ul className="coast-plan-day1__list">
                 {INCLUSIONS.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
               <p className="coast-plan-day1__note">
-                [+] welcome kit : 오브울릉 에코백, 염서 3종, 독도 핀버튼, 일회용 실내화,
-                수면안대, 면이막, 독도손거울, 독도멀티슈가 들어 있습니다
+                welcome kit : 오브울릉 에코백, 엽서 3종, 독도 핀버튼, 일회용 실내화,
+                수면안대, 멀미약, 독도손거울, 독도물티슈가 들어 있습니다
               </p>
               <div className="coast-plan-day1__incl-head">
-                <h3>TOURIST SPOT</h3>
-                <span className="coast-plan-day1__chip">우산국관</span>
+                <h3>TOURIST SPORT</h3>
+                <span className="coast-plan-day1__chip">주요관광</span>
               </div>
-              <p className="coast-plan-day1__incl-lead">첫번째 여정의 우산 관광입니다</p>
+              <p className="coast-plan-day1__incl-lead">첫번째 여정의 주요 관광지입니다</p>
             </div>
           </div>
         </section>
