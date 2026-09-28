@@ -16,36 +16,21 @@
   padding: 0;
   overflow: hidden;
   container-type: size;
-  background: #1a2428;
-  touch-action: none;
-  cursor: grab;
-  user-select: none;
-}
-
-.coast-plan-day1__stage:active {
-  cursor: grabbing;
-}
-
-.coast-plan-day1__photo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: calc(543 / 850 * 100cqb);
-  object-fit: cover;
-  object-position: center 42%;
-  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  background: #0e1f24;
 }
 
 .coast-plan-day1__top {
-  position: absolute;
-  top: calc(28 / 850 * 100cqb);
-  left: calc(22 / 434 * 100cqi);
-  right: calc(22 / 434 * 100cqi);
-  z-index: 4;
+  position: relative;
+  z-index: 2;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
+  height: calc(70 / 850 * 100cqb);
+  padding: 0 calc(22 / 434 * 100cqi);
+  background: linear-gradient(180deg, #74a7b5 0%, #27575e 42%, #0e1f24 100%);
 }
 
 .coast-plan-day1__nav {
@@ -53,10 +38,10 @@
   align-items: center;
   gap: calc(6 / 434 * 100cqi);
   margin: 0;
-  padding: calc(8 / 850 * 100cqb) 0;
+  padding: 0;
   border: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
   font-family: "Noto Sans", sans-serif;
   font-size: calc(11 / 434 * 100cqi);
   font-weight: 400;
@@ -73,11 +58,11 @@
 .coast-plan-day1__brand {
   position: absolute;
   left: 50%;
-  top: calc(2 / 850 * 100cqb);
+  top: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
@@ -99,295 +84,240 @@
   white-space: nowrap;
 }
 
-.coast-plan-day1__title {
-  position: absolute;
-  left: calc(32 / 434 * 100cqi);
-  top: calc(168 / 850 * 100cqb);
-  z-index: 2;
-  margin: 0;
-  color: #fff;
-  font-family: "Noto Sans", sans-serif;
-  font-size: calc(22 / 434 * 100cqi);
-  font-weight: 400;
-  font-variation-settings: "wght" 400;
-  line-height: 1;
-  pointer-events: none;
+.coast-plan-day1__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 0;
+  overscroll-behavior: contain;
+  border-radius: calc(10 / 434 * 100cqi) calc(10 / 434 * 100cqi) 0 0;
+  background: #f3f0ec;
+  color: #3d403c;
 }
 
-.coast-plan-day1__lead {
-  position: absolute;
-  left: calc(32 / 434 * 100cqi);
-  top: calc(202 / 850 * 100cqb);
-  z-index: 2;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.92);
-  font-family: "NanumMyeongjo", var(--font-myeongjo);
-  font-size: calc(13 / 434 * 100cqi);
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.3;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.coast-plan-day1__photo-dim {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(12, 28, 34, 0.78) 0%,
-    rgba(12, 28, 34, 0.48) 18%,
-    rgba(12, 28, 34, 0.18) 36%,
-    transparent 52%
-  );
-  pointer-events: none;
+.coast-plan-day1__scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .coast-plan-day1__panel {
-  --glass-pad: calc(12 / 434 * 100cqi);
-  --glass-radius: calc(10 / 434 * 100cqi);
-  position: absolute;
-  left: 0;
-  top: calc(455 / 850 * 100cqb);
-  z-index: 2;
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  flex-direction: column;
-  gap: 0;
-  padding: 0;
-  overflow: hidden;
-  isolation: isolate;
-  border-radius: var(--glass-radius) var(--glass-radius) 0 0;
-  background: #1a2428;
-  box-shadow:
-    0 2px 4px 0 rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, calc(0.58 * 0.7)),
-    inset 0 -2.4px 16px rgba(255, 255, 255, 0.1);
-}
-
-.coast-plan-day1__frost {
-  --glass-light: 0.58;
-  --glass-depth: 16px;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.coast-plan-day1__frost-defs {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.coast-plan-day1__frost-scene {
-  position: absolute;
-  top: calc(-455 / 850 * 100cqb + var(--rise, 0px));
-  left: 0;
-  width: 100cqi;
-  height: calc(543 / 850 * 100cqb);
-}
-
-.coast-plan-day1__frost-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 42%;
-  opacity: 0.78;
-  transform: scale(1.04);
-}
-
-.coast-plan-day1__frost-shine {
-  position: absolute;
-  inset: 0;
-  opacity: 0.8;
-  background: linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, var(--glass-light)) 0%,
-    rgba(255, 255, 255, 0.16) 16%,
-    transparent 42%,
-    transparent 74%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-}
-
-.coast-plan-day1__glass-header {
-  position: relative;
-  z-index: 1;
-  display: grid;
+  height: calc(100cqb - 70 / 850 * 100cqb);
   box-sizing: border-box;
   flex-shrink: 0;
-  min-height: calc(37 / 850 * 100cqb);
-  padding: calc(19 / 850 * 100cqb) var(--glass-pad);
-}
-
-.coast-plan-day1__glass-labels,
-.coast-plan-day1__glass-lead {
-  grid-area: 1 / 1;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: "Noto Sans", sans-serif;
-  font-size: calc(11 / 434 * 100cqi);
-  font-weight: 400;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.coast-plan-day1__glass-labels {
-  justify-content: space-between;
-}
-
-.coast-plan-day1__glass-lead {
-  justify-content: flex-start;
-  color: rgba(255, 255, 255, 0.88);
-  font-family: "NanumMyeongjo", var(--font-myeongjo);
-  font-size: calc(13 / 434 * 100cqi);
-  line-height: 1.3;
-}
-
-.coast-plan-day1__sheet {
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
-  width: 100%;
-  height: calc(712 / 850 * 100cqb);
+  padding: 0 calc(28 / 434 * 100cqi);
   overflow: hidden;
-  padding: calc(16 / 850 * 100cqb) calc(32 / 434 * 100cqi) calc(32 / 850 * 100cqb);
-  border-radius: var(--glass-radius) var(--glass-radius) 0 0;
-  background: #f3f0ec;
-  box-shadow: inset 0 1px 0 rgba(83, 87, 80, 0.12);
 }
 
-.coast-plan-day1__handle {
-  width: calc(36 / 434 * 100cqi);
-  height: calc(3 / 850 * 100cqb);
-  margin: 0 auto calc(18 / 850 * 100cqb);
-  border-radius: 99px;
-  background: rgba(83, 87, 80, 0.22);
+.coast-plan-day1__panel--plan {
+  padding-top: calc(22 / 850 * 100cqb);
 }
 
-.coast-plan-day1__sheet-inner {
-  will-change: transform;
+.coast-plan-day1__hotel {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  padding: calc(118 / 850 * 100cqb) 0 0;
 }
 
-.coast-plan-day1__depart-block {
-  padding-bottom: calc(4 / 850 * 100cqb);
-}
-
-.coast-plan-day1__depart {
+.coast-plan-day1__hotel h1 {
   margin: 0;
-  color: #535750;
-  font-family: var(--font-gujarati);
-  font-size: calc(18 / 434 * 100cqi);
-  font-weight: 600;
-  letter-spacing: calc(0.2 / 434 * 100cqi);
+  color: #2f3330;
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(16 / 434 * 100cqi);
+  font-weight: 500;
+  letter-spacing: 0.04em;
   line-height: 1.2;
 }
 
-.coast-plan-day1__depart-ko {
-  margin: calc(4 / 850 * 100cqb) 0 0;
-  color: rgba(11, 11, 11, 0.45);
+.coast-plan-day1__hotel p {
+  margin: calc(10 / 850 * 100cqb) 0 0;
+  color: rgba(47, 51, 48, 0.55);
   font-family: "Noto Sans", sans-serif;
   font-size: calc(12 / 434 * 100cqi);
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
-.coast-plan-day1__port {
+.coast-plan-day1__hotel img {
+  display: block;
+  width: calc(276 / 434 * 100cqi);
+  height: calc(413 / 850 * 100cqb);
+  margin: calc(108 / 850 * 100cqb) 0 0;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: calc(8 / 434 * 100cqi);
+}
+
+.coast-plan-day1__intro {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
-  margin: calc(22 / 850 * 100cqb) 0 0;
-  color: #5a5a5a;
-  font-family: "Noto Sans", sans-serif;
-  font-size: calc(12 / 434 * 100cqi);
-  font-weight: 400;
-  line-height: 1.3;
+  gap: calc(12 / 434 * 100cqi);
+  margin-top: 0;
 }
 
-.coast-plan-day1__port em {
-  font-style: normal;
-  font-size: calc(10 / 434 * 100cqi);
-  color: rgba(11, 11, 11, 0.45);
-}
-
-.coast-plan-day1__incl-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: calc(28 / 850 * 100cqb) 0 0;
-}
-
-.coast-plan-day1__incl-head h3 {
+.coast-plan-day1__intro h1 {
   margin: 0;
-  color: #535750;
+  color: #2f3330;
   font-family: "Noto Sans", sans-serif;
-  font-size: calc(13 / 434 * 100cqi);
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-size: calc(18 / 434 * 100cqi);
+  font-weight: 600;
+  letter-spacing: 0.04em;
   line-height: 1;
+}
+
+.coast-plan-day1__intro p {
+  margin: calc(8 / 850 * 100cqb) 0 0;
+  color: rgba(47, 51, 48, 0.55);
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1.35;
 }
 
 .coast-plan-day1__chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: calc(68 / 434 * 100cqi);
-  height: calc(22 / 850 * 100cqb);
-  padding: 0 calc(10 / 434 * 100cqi);
-  border: 1px solid rgba(83, 87, 80, 0.35);
-  border-radius: calc(11 / 850 * 100cqb);
+  flex-shrink: 0;
+  height: calc(24 / 850 * 100cqb);
+  padding: 0 calc(12 / 434 * 100cqi);
+  border: 1px solid rgba(83, 87, 80, 0.28);
+  border-radius: 999px;
   color: #535750;
   font-family: "Noto Sans", sans-serif;
-  font-size: calc(10 / 434 * 100cqi);
-  font-weight: 400;
+  font-size: calc(11 / 434 * 100cqi);
   line-height: 1;
   white-space: nowrap;
 }
 
-.coast-plan-day1__incl-lead {
-  margin: calc(8 / 850 * 100cqb) 0 0;
-  color: rgba(11, 11, 11, 0.45);
+.coast-plan-day1__meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(12 / 434 * 100cqi);
+  margin-top: calc(22 / 850 * 100cqb);
+  padding-bottom: calc(16 / 850 * 100cqb);
+  border-bottom: 1px solid rgba(83, 87, 80, 0.16);
+}
+
+.coast-plan-day1__meta span,
+.coast-plan-day1__rail span,
+.coast-plan-day1__rail em {
+  display: block;
+  color: rgba(47, 51, 48, 0.48);
   font-family: "Noto Sans", sans-serif;
   font-size: calc(11 / 434 * 100cqi);
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
-.coast-plan-day1__list {
-  margin: calc(16 / 850 * 100cqb) 0 0;
-  padding: 0 0 0 calc(14 / 434 * 100cqi);
-  color: #3f3f3f;
+.coast-plan-day1__meta strong {
+  display: block;
+  margin-top: calc(6 / 850 * 100cqb);
+  color: #3a3e3b;
   font-family: "Noto Sans", sans-serif;
-  font-size: calc(13 / 434 * 100cqi);
-  font-weight: 400;
-  line-height: calc(22 / 13);
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: 1.35;
 }
 
-.coast-plan-day1__list li + li {
+.coast-plan-day1__meta div:last-child {
+  text-align: right;
+}
+
+.coast-plan-day1__stops {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coast-plan-day1__stop {
+  display: grid;
+  grid-template-columns: calc(92 / 434 * 100cqi) 1fr;
+  gap: calc(8 / 434 * 100cqi);
+  padding: calc(16 / 850 * 100cqb) 0;
+  border-bottom: 1px solid rgba(83, 87, 80, 0.12);
+}
+
+.coast-plan-day1__rail em {
   margin-top: calc(4 / 850 * 100cqb);
 }
 
-.coast-plan-day1__note {
-  margin: calc(20 / 850 * 100cqb) 0 0;
-  padding: calc(16 / 850 * 100cqb) 0 0;
-  border-top: 1px solid rgba(83, 87, 80, 0.14);
-  color: rgba(11, 11, 11, 0.42);
+.coast-plan-day1__body h2 {
+  margin: 0;
+  color: #2f3330;
   font-family: "Noto Sans", sans-serif;
-  font-size: calc(10 / 434 * 100cqi);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.coast-plan-day1__note {
+  margin: calc(6 / 850 * 100cqb) 0 0;
+  color: rgba(47, 51, 48, 0.62);
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.45;
+}
+
+.coast-plan-day1__items {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(8 / 434 * 100cqi);
+  margin-top: calc(8 / 850 * 100cqb);
+}
+
+.coast-plan-day1__items ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coast-plan-day1__items li {
+  position: relative;
+  padding-left: calc(10 / 434 * 100cqi);
+  color: #3f433f;
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.coast-plan-day1__items li + li {
+  margin-top: calc(3 / 850 * 100cqb);
+}
+
+.coast-plan-day1__items li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.coast-plan-day1__items li span {
+  display: block;
+  padding-left: calc(2 / 434 * 100cqi);
+  color: rgba(47, 51, 48, 0.72);
+}
+
+.coast-plan-day1__more {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(3 / 434 * 100cqi);
+  flex-shrink: 0;
+  margin-top: calc(2 / 850 * 100cqb);
+  color: rgba(47, 51, 48, 0.55);
+  font-family: "Noto Sans", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.coast-plan-day1__more svg {
+  width: calc(5 / 434 * 100cqi);
+  height: calc(9 / 850 * 100cqb);
 }
