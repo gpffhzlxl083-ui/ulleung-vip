@@ -11,8 +11,8 @@ import "../styles/coast-plan.css";
 
 const DAYS: { en: string; ko: string; to?: string }[] = [
   { en: "Day_1", ko: "1일 계획 보기", to: "/coast/plan/day1" },
-  { en: "Day_2", ko: "2일 계획 보기" },
-  { en: "Day_3", ko: "3일 계획 보기" },
+  { en: "Day_2", ko: "2일 계획 보기", to: "/coast/plan/day2/itinerary" },
+  { en: "Day_3", ko: "3일 계획 보기", to: "/coast/plan/day3/itinerary" },
 ];
 
 export default function CoastPlanPage() {

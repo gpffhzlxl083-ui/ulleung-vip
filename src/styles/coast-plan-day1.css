@@ -39,17 +39,34 @@
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  height: calc(70 / 850 * 100cqb);
+  height: calc(85 / 850 * 100cqb);
   padding: 0 calc(22 / 434 * 100cqi);
-  background: #245056;
+  background: linear-gradient(90deg, #74a7b5 0%, #27575e 42.3077%, #0e1f24 100%);
+}
+
+.coast-plan-day1__top::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  height: calc(18 / 850 * 100cqb);
+  background: #f3f0ec;
+  border-top-left-radius: calc(10 / 434 * 100cqi);
+  border-top-right-radius: calc(10 / 434 * 100cqi);
+  pointer-events: none;
 }
 
 .coast-plan-day1__nav {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: calc(5 / 434 * 100cqi);
   margin: 0;
   padding: 0;
+  transform: translateY(calc(-9 / 850 * 100cqb));
   border: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.92);
@@ -69,8 +86,9 @@
 
 .coast-plan-day1__brand {
   position: absolute;
+  z-index: 1;
   left: 50%;
-  top: 50%;
+  top: calc(33.5 / 85 * 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
