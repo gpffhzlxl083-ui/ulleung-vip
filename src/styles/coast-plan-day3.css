@@ -1,0 +1,149 @@
+.coast-plan-day3 .coast-plan-itinerary__scroll {
+  height: calc(5 * 100cqb);
+}
+
+.coast-plan-day3__route-arrow {
+  position: absolute;
+  z-index: 1;
+  top: calc(99 / 850 * 100cqb);
+  left: calc(197 / 434 * 100cqi);
+  width: calc(12 / 434 * 100cqi);
+  height: calc(12 / 434 * 100cqi);
+  pointer-events: none;
+}
+
+.coast-plan-day3__album {
+  position: absolute;
+  z-index: 1;
+  top: calc(575 / 850 * 100cqb);
+  left: calc(162 / 434 * 100cqi);
+  width: calc(137 / 434 * 100cqi);
+  height: calc(206 / 850 * 100cqb);
+  overflow: hidden;
+  border-radius: calc(6 / 434 * 100cqi);
+}
+
+.coast-plan-day3__album img {
+  position: absolute;
+  top: -17.87%;
+  left: -14.08%;
+  width: 114.27%;
+  height: 135.6%;
+  max-width: none;
+}
+
+.coast-plan-day3__album-item {
+  position: absolute;
+  z-index: 1;
+  left: calc(320 / 434 * 100cqi);
+  margin: 0;
+  color: rgba(56, 54, 54, 0.6);
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.coast-plan-day3__orbit {
+  position: absolute;
+  z-index: 1;
+  top: calc(207.5 / 850 * 100cqb);
+  left: calc(65.5 / 434 * 100cqi);
+  width: calc(295.5 / 434 * 100cqi);
+  height: calc(295.5 / 850 * 100cqb);
+  pointer-events: none;
+}
+
+.coast-plan-day3__donut {
+  position: absolute;
+  z-index: 1;
+  top: calc(234.5 / 850 * 100cqb);
+  left: calc(93 / 434 * 100cqi);
+  width: calc(241 / 434 * 100cqi);
+  height: calc(241 / 850 * 100cqb);
+  overflow: hidden;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.coast-plan-day3__donut img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coast-plan-day3__logo {
+  position: absolute;
+  z-index: 2;
+  top: calc(339 / 850 * 100cqb);
+  left: calc(171 / 434 * 100cqi);
+  width: calc(83 / 434 * 100cqi);
+  height: calc(32 / 850 * 100cqb);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.coast-plan-day3__logo img {
+  position: absolute;
+  top: 0;
+  left: -0.6%;
+  width: 101.2%;
+  height: 131.25%;
+}
+
+.coast-plan-day3__dot {
+  position: absolute;
+  z-index: 2;
+  width: calc(7 / 434 * 100cqi);
+  height: calc(7 / 850 * 100cqb);
+  pointer-events: none;
+}
+
+.coast-plan-day3__orbit-label {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  color: #808080;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 300;
+  letter-spacing: calc(0.3306 / 434 * 100cqi);
+  line-height: calc(15 / 850 * 100cqb);
+}
+
+.coast-plan-day3__orbit-label--left {
+  top: calc(204 / 850 * 100cqb);
+  left: calc(18 / 434 * 100cqi);
+  width: calc(123 / 434 * 100cqi);
+  text-align: right;
+}
+
+.coast-plan-day3__orbit-label--right {
+  top: calc(233 / 850 * 100cqb);
+  left: calc(322 / 434 * 100cqi);
+  width: calc(98 / 434 * 100cqi);
+}
+
+.coast-plan-day3__orbit-label--bottom {
+  top: calc(511 / 850 * 100cqb);
+  left: calc(151 / 434 * 100cqi);
+  width: calc(123 / 434 * 100cqi);
+  text-align: center;
+}
+
+.coast-plan-day3__orbit-label span {
+  display: block;
+}
+
+.coast-plan-day3__close {
+  top: calc(638 / 850 * 100cqb);
+  left: calc(30 / 434 * 100cqi);
+  width: calc(373 / 434 * 100cqi);
+  text-align: center;
+}
+
+.coast-plan-day3__close-rule {
+  top: calc(609 / 850 * 100cqb);
+}

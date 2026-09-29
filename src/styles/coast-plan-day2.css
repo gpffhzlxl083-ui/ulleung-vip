@@ -1,0 +1,133 @@
+.coast-plan-day2__stem {
+  position: absolute;
+  z-index: 1;
+  left: calc(119 / 434 * 100cqi);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.coast-plan-day2__stem img {
+  display: block;
+  flex: none;
+  max-width: none;
+  transform: rotate(90deg);
+}
+
+.coast-plan-day2__line {
+  position: absolute;
+  z-index: 1;
+  left: calc(170 / 434 * 100cqi);
+  margin: 0;
+  color: rgba(33, 32, 32, 0.4);
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.coast-plan-day2__notice {
+  white-space: pre-wrap;
+}
+
+.coast-plan-day2__diagram {
+  position: absolute;
+  z-index: 1;
+  top: calc(200 / 850 * 100cqb);
+  left: calc(74 / 434 * 100cqi);
+  width: calc(290 / 434 * 100cqi);
+  height: calc(367 / 850 * 100cqb);
+  pointer-events: none;
+}
+
+.coast-plan-day2__num {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  color: rgba(125, 124, 123, 0.9);
+  font-family: "Cormorant", "Baskerville Old Face", serif;
+  font-weight: 300;
+  line-height: calc(62 / 850 * 100cqb);
+}
+
+.coast-plan-day2__num--1 {
+  top: calc(195 / 850 * 100cqb);
+  left: calc(237 / 434 * 100cqi);
+  font-size: calc(57 / 434 * 100cqi);
+}
+
+.coast-plan-day2__num--2 {
+  top: calc(323 / 850 * 100cqb);
+  left: calc(170 / 434 * 100cqi);
+  font-size: calc(57 / 434 * 100cqi);
+}
+
+.coast-plan-day2__num--3 {
+  top: calc(440 / 850 * 100cqb);
+  left: calc(241 / 434 * 100cqi);
+  font-size: calc(42 / 434 * 100cqi);
+}
+
+.coast-plan-day2__cap,
+.coast-plan-day2__blurb {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  font-family: Inter, "Noto Sans KR", sans-serif;
+}
+
+.coast-plan-day2__cap {
+  color: #333631;
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: normal;
+}
+
+.coast-plan-day2__cap--end {
+  left: calc(97 / 434 * 100cqi);
+  width: calc(103 / 434 * 100cqi);
+  text-align: right;
+}
+
+.coast-plan-day2__cap--start {
+  left: calc(231 / 434 * 100cqi);
+}
+
+.coast-plan-day2__blurb {
+  width: calc(123 / 434 * 100cqi);
+  color: #808080;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 300;
+  letter-spacing: calc(0.3306 / 434 * 100cqi);
+  line-height: calc(15 / 850 * 100cqb);
+}
+
+.coast-plan-day2__blurb span {
+  display: block;
+}
+
+.coast-plan-day2__blurb--end {
+  left: calc(77 / 434 * 100cqi);
+  text-align: right;
+}
+
+.coast-plan-day2__blurb--start {
+  left: calc(231 / 434 * 100cqi);
+  text-align: left;
+}
+
+.coast-plan-day2__q {
+  top: calc(659 / 850 * 100cqb);
+}
+
+.coast-plan-day2__body {
+  top: calc(685 / 850 * 100cqb);
+}
+
+.coast-plan-day2__rule {
+  top: calc(609 / 850 * 100cqb);
+}
