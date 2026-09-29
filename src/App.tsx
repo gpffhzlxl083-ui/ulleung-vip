@@ -4,6 +4,7 @@ import CoastIncludePage from "./pages/CoastIncludePage";
 import CoastPage from "./pages/CoastPage";
 import CoastPinePage from "./pages/CoastPinePage";
 import CoastPlanDay1Page from "./pages/CoastPlanDay1Page";
+import CoastPlanItineraryPage from "./pages/CoastPlanItineraryPage";
 import CoastPlanPage from "./pages/CoastPlanPage";
 import CoastSchedulePage from "./pages/CoastSchedulePage";
 import FirstClassPage from "./pages/FirstClassPage";
@@ -19,6 +20,7 @@ export default function App() {
       <Route path="/coast/schedule" element={<CoastSchedulePage />} />
       <Route path="/coast/plan" element={<CoastPlanPage />} />
       <Route path="/coast/plan/day1" element={<CoastPlanDay1Page />} />
+      <Route path="/coast/plan/day1/itinerary" element={<CoastPlanItineraryPage />} />
       <Route path="/coast/hotel" element={<RamadaPage />} />
       <Route path="/coast/first-class" element={<FirstClassPage />} />
       <Route path="/coast/business-class" element={<BusinessClassPage />} />

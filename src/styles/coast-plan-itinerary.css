@@ -1,0 +1,262 @@
+.coast-plan-itinerary .coast-plan-day1__stage {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.coast-plan-itinerary .coast-plan-day1__top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.coast-plan-itinerary__scroll {
+  position: relative;
+  height: calc(2 * 100cqb);
+  margin-top: calc(-70 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__screen {
+  position: relative;
+  height: 100cqb;
+}
+
+.coast-plan-itinerary__title,
+.coast-plan-itinerary__sub,
+.coast-plan-itinerary__chip,
+.coast-plan-itinerary__depart,
+.coast-plan-itinerary__depart-ko,
+.coast-plan-itinerary__day,
+.coast-plan-itinerary__day-ko,
+.coast-plan-itinerary__rule,
+.coast-plan-itinerary__stem,
+.coast-plan-itinerary__label,
+.coast-plan-itinerary__clock,
+.coast-plan-itinerary__stop,
+.coast-plan-itinerary__bullet,
+.coast-plan-itinerary__detail,
+.coast-plan-itinerary__copy,
+.coast-plan-itinerary__note,
+.coast-plan-itinerary__fee,
+.coast-plan-itinerary__more {
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+}
+
+.coast-plan-itinerary__title {
+  top: calc(107 / 850 * 100cqb);
+  left: calc(25 / 434 * 100cqi);
+  color: #535750;
+  font-family: "Noto Sans Gujarati", "Noto Sans", sans-serif;
+  font-size: calc(16 / 434 * 100cqi);
+  font-weight: 600;
+  letter-spacing: calc(-0.48 / 434 * 100cqi);
+  line-height: calc(28 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__sub {
+  top: calc(136 / 850 * 100cqb);
+  left: calc(25 / 434 * 100cqi);
+  color: rgba(56, 54, 54, 0.7);
+  opacity: 0.5;
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.coast-plan-itinerary__chip {
+  top: calc(111 / 850 * 100cqb);
+  left: calc(333 / 434 * 100cqi);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(65 / 434 * 100cqi);
+  height: calc(24 / 850 * 100cqb);
+  border: 1px solid #d1cecc;
+  border-radius: calc(10 / 434 * 100cqi);
+  color: #535750;
+  font-family: "Noto Sans Gujarati", "Noto Sans", sans-serif;
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: calc(0.24 / 434 * 100cqi);
+  line-height: 1;
+}
+
+.coast-plan-itinerary__rule {
+  left: calc(26 / 434 * 100cqi);
+  width: calc(372 / 434 * 100cqi);
+  height: 0.5px;
+  background: #c9c5c2;
+}
+
+.coast-plan-itinerary__rule--top {
+  top: calc(190 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__rule--mid {
+  top: calc(265 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__depart,
+.coast-plan-itinerary__day {
+  color: #333631;
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: calc(20 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__depart,
+.coast-plan-itinerary__day {
+  top: calc(206 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__depart {
+  left: calc(25 / 434 * 100cqi);
+}
+
+.coast-plan-itinerary__day {
+  left: calc(343 / 434 * 100cqi);
+}
+
+.coast-plan-itinerary__depart-ko,
+.coast-plan-itinerary__day-ko {
+  top: calc(227 / 850 * 100cqb);
+  color: #7d7a78;
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 200;
+  line-height: calc(20 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__depart-ko {
+  left: calc(25 / 434 * 100cqi);
+}
+
+.coast-plan-itinerary__day-ko {
+  right: calc((434 - 395) / 434 * 100cqi);
+  text-align: right;
+}
+
+.coast-plan-itinerary__stem {
+  left: calc(119 / 434 * 100cqi);
+  width: 1px;
+  background: #c9c5c2;
+  transform: translateX(-50%);
+}
+
+.coast-plan-itinerary__label,
+.coast-plan-itinerary__clock {
+  left: calc(25 / 434 * 100cqi);
+  color: #7d7a78;
+  font-weight: 400;
+}
+
+.coast-plan-itinerary__label {
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
+  line-height: normal;
+}
+
+.coast-plan-itinerary__clock {
+  color: rgba(56, 54, 54, 0.7);
+  opacity: 0.5;
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  line-height: normal;
+}
+
+.coast-plan-itinerary__stop {
+  left: calc(160 / 434 * 100cqi);
+  color: #333631;
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: normal;
+}
+
+.coast-plan-itinerary__bullet,
+.coast-plan-itinerary__detail {
+  left: calc(160 / 434 * 100cqi);
+  color: rgba(33, 32, 32, 0.6);
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.coast-plan-itinerary__bullet span {
+  color: rgba(33, 32, 32, 0.4);
+}
+
+.coast-plan-itinerary__bullet strong {
+  font-weight: 600;
+}
+
+.coast-plan-itinerary__copy {
+  left: calc(160 / 434 * 100cqi);
+  width: calc(220 / 434 * 100cqi);
+  color: rgba(33, 32, 32, 0.6);
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(14 / 850 * 100cqb);
+}
+
+.coast-plan-itinerary__note {
+  left: calc(170 / 434 * 100cqi);
+  color: rgba(56, 54, 54, 0.6);
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.coast-plan-itinerary__fee {
+  left: calc(186 / 434 * 100cqi);
+  color: rgba(56, 54, 54, 0.6);
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.coast-plan-itinerary__fee img {
+  position: absolute;
+  top: 0;
+  left: calc(-16 / 434 * 100cqi);
+  width: calc(11 / 434 * 100cqi);
+  height: calc(11 / 434 * 100cqi);
+}
+
+.coast-plan-itinerary__detail {
+  left: calc(171 / 434 * 100cqi);
+}
+
+.coast-plan-itinerary__more {
+  left: calc(362 / 434 * 100cqi);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: calc(31 / 434 * 100cqi);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(33, 32, 32, 0.6);
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.coast-plan-itinerary__more svg {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: calc(12 / 434 * 100cqi);
+  height: calc(12 / 434 * 100cqi);
+  transform: translateY(-50%);
+}

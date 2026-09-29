@@ -142,13 +142,14 @@
   height: auto;
   color: #fff;
   opacity: 0.85;
-  font-family: var(--font-noto-sans);
+  font-family: var(--font-gujarati);
   font-size: calc(12 / 434 * 100cqi);
   font-weight: 300;
   font-style: normal;
   letter-spacing: 0;
   line-height: 1;
   text-align: right;
+  font-synthesis: none;
 }
 
 .coast-plan__body {
