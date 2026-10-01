@@ -1,0 +1,102 @@
+.hotel-intro {
+  background: #d9d9d9;
+  overflow: hidden;
+}
+
+.hotel-intro__stage {
+  aspect-ratio: 434 / 850;
+  width: min(100dvw, calc(100dvh * 434 / 850));
+  height: min(100dvh, calc(100dvw * 850 / 434));
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  container-type: size;
+  background: #5b3727;
+  transition: opacity 0.7s ease;
+}
+
+.hotel-intro__stage.is-leaving {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotel-intro__stage {
+    transition: none;
+  }
+}
+
+.hotel-intro__base {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hotel-intro__logo {
+  position: absolute;
+  top: calc(351 / 850 * 100cqb);
+  left: calc(163 / 434 * 100cqi);
+  width: calc(110 / 434 * 100cqi);
+  height: auto;
+  aspect-ratio: 233.164 / 42.497;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hotel-intro__brand {
+  position: absolute;
+  top: calc(349 / 850 * 100cqb);
+  left: calc(124 / 434 * 100cqi);
+  width: calc(193 / 434 * 100cqi);
+  height: calc(41 / 850 * 100cqb);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hotel-intro__text {
+  position: absolute;
+  top: calc(418 / 850 * 100cqb);
+  left: calc(220 / 434 * 100cqi);
+  width: calc(206 / 434 * 100cqi);
+  margin: 0;
+  transform: translateX(-50%);
+  color: #fff;
+  text-align: center;
+  font-family: var(--font-inter);
+  font-size: calc(15 / 434 * 100cqi);
+  font-weight: 200;
+  line-height: calc(20 / 850 * 100cqb);
+  letter-spacing: calc(0.45 / 434 * 100cqi);
+}
+
+.hotel-intro--teal .hotel-intro__stage {
+  background: #27575e;
+}
+
+/* SVG 그라데이션은 세로로 그려져 있어 Figma처럼 -90.14deg 회전해 좌→우로 깐다 */
+.hotel-intro__base-teal {
+  position: absolute;
+  top: calc((-3.3 + 857.537 / 2) / 850 * 100cqb);
+  left: calc((-3.03 + 447.656 / 2) / 434 * 100cqi);
+  width: calc(856.464 / 850 * 100cqb);
+  height: calc(445.591 / 434 * 100cqi);
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(-90.14deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hotel-intro--teal .hotel-intro__logo {
+  left: calc(160 / 434 * 100cqi);
+}
+
+.hotel-intro--teal .hotel-intro__brand {
+  left: calc(121 / 434 * 100cqi);
+}
+
+.hotel-intro--teal .hotel-intro__text {
+  left: calc(217 / 434 * 100cqi);
+}

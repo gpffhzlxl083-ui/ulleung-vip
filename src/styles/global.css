@@ -6,13 +6,58 @@
 }
 
 @font-face {
+  font-family: "NanumMyeongjo YetHangul";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/NanumMyeongjo-YetHangul.ttf") format("truetype");
+}
+
+/* 원본 OTF는 브라우저가 거부해서, 글자 범위별 woff2로 나눠 변환한 파일을 쓴다 */
+@font-face {
   font-family: "NanumMyeongjoOTF YetHangul";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src:
-    url("/fonts/NanumMyeongjo-YetHangul.ttf") format("truetype"),
-    url("/fonts/NanumMyeongjo-YetHangul.otf") format("opentype");
+  src: url("/fonts/nanum-myeongjo-otf-yethangul/latin.woff2?v=2") format("woff2");
+  unicode-range: U+0000-024F, U+2000-2BFF, U+3000-303F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "NanumMyeongjoOTF YetHangul";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-otf-yethangul/jamo.woff2?v=2") format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: "NanumMyeongjoOTF YetHangul";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-otf-yethangul/hangul.woff2?v=2") format("woff2");
+  unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
+  font-family: "NanumMyeongjoOTF YetHangul";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-otf-yethangul/hanja.woff2?v=2") format("woff2");
+  unicode-range: U+4E00-9FFF, U+F900-FAFF;
+}
+
+@font-face {
+  font-family: "NanumMyeongjoOTF YetHangul";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-otf-yethangul/rest.woff2?v=2") format("woff2");
+  unicode-range: U+02BC, U+02C7, U+02D0, U+02D8-02DD, U+0391-03A9, U+03B1-03C9, U+0401,
+    U+0410-044F, U+0451, U+3041-30F6, U+3200-33DD, U+E0BC-EFFF, U+F100-F66E;
 }
 
 @font-face {
@@ -107,7 +152,7 @@
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
     sans-serif;
   --font-editors-note: "Editor's Note", "Times New Roman", Times, serif;
-  --font-myeongjo: "NanumMyeongjoOTF YetHangul", serif;
+  --font-myeongjo: "NanumMyeongjo YetHangul", serif;
   --font-baskerville-old-face: "Baskerville Old Face", "Libre Baskerville", Georgia, serif;
   --font-gujarati: "Noto Sans Gujarati", "Noto Sans", var(--font-pretendard);
   --font-inter: "Inter", "Noto Sans KR", var(--font-pretendard);

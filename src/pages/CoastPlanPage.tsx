@@ -10,10 +10,10 @@ import "../styles/coast.css";
 import "../styles/coast-plan.css";
 
 const DAYS: { en: string; ko: string; to?: string }[] = [
-  { en: "Ready", ko: "출발 전 계획 보기" },
-  { en: "Day 1", ko: "1일 계획 보기", to: "/coast/plan/day1" },
-  { en: "Day 2", ko: "2일 계획 보기", to: "/coast/plan/day1" },
-  { en: "Day 3", ko: "3일 계획 보기", to: "/coast/plan/day1" },
+  { en: "Ready", ko: "출발 전 계획 보기", to: "/coast/plan/intro/ready" },
+  { en: "Day 1", ko: "1일 계획 보기", to: "/coast/plan/intro/day1" },
+  { en: "Day 2", ko: "2일 계획 보기", to: "/coast/plan/intro/day2" },
+  { en: "Day 3", ko: "3일 계획 보기", to: "/coast/plan/intro/day3" },
 ];
 
 export default function CoastPlanPage() {

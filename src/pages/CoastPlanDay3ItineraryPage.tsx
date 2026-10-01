@@ -1,5 +1,5 @@
 import { useRef, useState, type PointerEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import logoAube from "../assets/common/logo-aube.svg";
 import day1Sheet from "../assets/coast-plan/day1-sheet.svg";
 import feeIcon from "../assets/coast-plan/itinerary-fee.svg";
@@ -94,6 +94,7 @@ const ALBUM_ITEMS = [
 
 export default function CoastPlanDay3ItineraryPage() {
   const navigate = useNavigate();
+  const fadeIn = Boolean((useLocation().state as { fadeIn?: boolean } | null)?.fadeIn);
   const [spotIndex, setSpotIndex] = useState(0);
   const spotDragX = useRef<number | null>(null);
   const spotMain = SPOT_SLIDES[spotIndex];
@@ -113,7 +114,9 @@ export default function CoastPlanDay3ItineraryPage() {
   };
 
   return (
-    <main className="vf coast-plan-day1 coast-plan-itinerary coast-plan-day3">
+    <main
+      className={`vf coast-plan-day1 coast-plan-itinerary coast-plan-day3${fadeIn ? " coast-plan-day1--fade-in" : ""}`}
+    >
       <div className="vf__stage coast-plan-day1__stage">
         <header
           className="coast-plan-day1__top coast-plan-itinerary__header"

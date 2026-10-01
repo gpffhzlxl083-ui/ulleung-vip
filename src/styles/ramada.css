@@ -21,6 +21,22 @@
   cursor: grab;
 }
 
+.ramada--fade-in .ramada__stage {
+  animation: ramada-fade-in 0.7s ease both;
+}
+
+@keyframes ramada-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ramada--fade-in .ramada__stage {
+    animation: none;
+  }
+}
+
 .ramada__stage--drag {
   cursor: grabbing;
 }

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import logoAube from "../assets/common/logo-aube.svg";
 import day1Sheet from "../assets/coast-plan/day1-sheet.svg";
 import ramadaBathroom from "../assets/ramada/ramada-bathroom.webp";
@@ -30,6 +30,7 @@ const FLICK_VELOCITY = 0.28;
 
 export default function CoastPlanDay1Page() {
   const navigate = useNavigate();
+  const fadeIn = Boolean((useLocation().state as { fadeIn?: boolean } | null)?.fadeIn);
   const frameRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef(0);
   const dragRef = useRef({
@@ -131,7 +132,7 @@ export default function CoastPlanDay1Page() {
   };
 
   return (
-    <main className="vf coast-plan-day1">
+    <main className={`vf coast-plan-day1${fadeIn ? " coast-plan-day1--fade-in" : ""}`}>
       <div className="vf__stage coast-plan-day1__stage">
         <img className="coast-plan-day1__sheet" src={day1Sheet} alt="" />
         <header className="coast-plan-day1__top">

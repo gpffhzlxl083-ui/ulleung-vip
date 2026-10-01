@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import coastWave from "../assets/coast/coast-wave.mp4";
 import coastWavePoster from "../assets/coast/coast-wave-poster.jpg";
 import logoAube from "../assets/common/logo-aube.svg";
+import brandPlace from "../assets/hotel-intro/brand.svg";
 import dayArrow from "../assets/coast-plan/day-arrow.png";
 import backArrow from "../assets/coast-schedule/schedule-back.svg";
 import "../styles/viewport-full.css";
@@ -10,10 +11,10 @@ import "../styles/coast.css";
 import "../styles/coast-plan.css";
 
 const PLAN_DAYS: { en: string; ko: string; to?: string }[] = [
-  { en: "Ready", ko: "출발 전 계획 보기" },
-  { en: "Day 1", ko: "1일 계획 보기", to: "/coast/plan/day1" },
-  { en: "Day 2", ko: "2일 계획 보기", to: "/coast/plan/day1" },
-  { en: "Day 3", ko: "3일 계획 보기", to: "/coast/plan/day1" },
+  { en: "Ready", ko: "출발 전 계획 보기", to: "/coast/plan/intro/ready" },
+  { en: "Day 1", ko: "1일 계획 보기", to: "/coast/plan/intro/day1" },
+  { en: "Day 2", ko: "2일 계획 보기", to: "/coast/plan/intro/day2" },
+  { en: "Day 3", ko: "3일 계획 보기", to: "/coast/plan/intro/day3" },
 ];
 
 function Arrow({
@@ -257,14 +258,8 @@ export default function CoastPage() {
           <div className="coast__tint" aria-hidden="true" />
           <div className="coast__content">
             <div className="coast__brand">
-              <img
-                className="coast__logo"
-                src={logoAube}
-                alt="AUBE"
-                width={208}
-                height={28}
-              />
-              <p className="coast__place">Ulleungdo, Dokdo</p>
+              <img className="coast__logo" src={logoAube} alt="AUBE" />
+              <img className="coast__place" src={brandPlace} alt="Ulleungdo, Dokdo" />
             </div>
             <div className="coast__mid">
               <div className="coast__nav">

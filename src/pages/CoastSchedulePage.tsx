@@ -7,17 +7,17 @@ import "../styles/coast.css";
 import "../styles/coast-schedule.css";
 
 const TRANSPORT = [
-  { en: "Hotel", ko: "라마다 울릉", to: "/coast/hotel" },
-  { en: "Cruise ship", ko: "퍼스트 클래스", to: "/coast/first-class" },
-  { en: "Dokdo ship", ko: "비즈니스 클래스", to: "/coast/business-class" },
-  { en: "Vip van", ko: "고급 리무진 차량" },
-  { en: "Private tour", ko: "4~6명 단독행사" },
+  { en: "Hotel", ko: "라마다 울릉", to: "/coast/include/hotel" },
+  { en: "Cruise ship", ko: "퍼스트 클래스", to: "/coast/include/cruise" },
+  { en: "Dokdo ship", ko: "비즈니스 클래스", to: "/coast/include/dokdo" },
+  { en: "Vip van", ko: "고급 리무진 차량", to: "/coast/include/van" },
+  { en: "Private tour", ko: "4~6명 단독행사", to: "/coast/include/tour" },
 ];
 
 const EXPERIENCE = [
-  { en: "Fine dining", ko: "전체 특식" },
-  { en: "Tour", ko: "모든 입장료 포함" },
-  { en: "Service", ko: "스파 / 굿즈 / 어메니티", service: true },
+  { en: "Fine dining", ko: "전체 특식", to: "/coast/include/dining" },
+  { en: "Tour", ko: "모든 입장료 포함", to: "/coast/include/trip" },
+  { en: "Service", ko: "스파 / 굿즈 / 어메니티", to: "/coast/include/service", service: true },
 ];
 
 export default function CoastSchedulePage() {
@@ -100,21 +100,14 @@ export default function CoastSchedulePage() {
             <ul className="coast-schedule__list">
               {TRANSPORT.map((item) => (
                 <li key={item.en} className="coast-schedule__item">
-                  {"to" in item && item.to ? (
-                    <button
-                      className="coast-schedule__item-btn"
-                      type="button"
-                      onClick={() => navigate(item.to)}
-                    >
-                      <span className="coast-schedule__en">{item.en}</span>
-                      <span className="coast-schedule__ko">{item.ko}</span>
-                    </button>
-                  ) : (
-                    <>
-                      <span className="coast-schedule__en">{item.en}</span>
-                      <span className="coast-schedule__ko">{item.ko}</span>
-                    </>
-                  )}
+                  <button
+                    className="coast-schedule__item-btn"
+                    type="button"
+                    onClick={() => navigate(item.to)}
+                  >
+                    <span className="coast-schedule__en">{item.en}</span>
+                    <span className="coast-schedule__ko">{item.ko}</span>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -122,15 +115,21 @@ export default function CoastSchedulePage() {
             <ul className="coast-schedule__list">
               {EXPERIENCE.map((item) => (
                 <li key={item.en} className={`coast-schedule__item${"service" in item && item.service ? " coast-schedule__item--service" : ""}`}>
-                  <span className="coast-schedule__en">{item.en}</span>
-                  <span className="coast-schedule__ko">{item.ko}</span>
+                  <button
+                    className="coast-schedule__item-btn"
+                    type="button"
+                    onClick={() => navigate(item.to)}
+                  >
+                    <span className="coast-schedule__en">{item.en}</span>
+                    <span className="coast-schedule__ko">{item.ko}</span>
+                  </button>
                 </li>
               ))}
             </ul>
             <button
               className="coast-schedule__back"
               type="button"
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/coast/include")}
             >
               <img
                 className="coast-schedule__back-icon"

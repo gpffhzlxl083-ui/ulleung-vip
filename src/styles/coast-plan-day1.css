@@ -21,6 +21,22 @@
   background: #245056;
 }
 
+.coast-plan-day1--fade-in .coast-plan-day1__stage {
+  animation: coast-plan-fade-in 0.7s ease both;
+}
+
+@keyframes coast-plan-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coast-plan-day1--fade-in .coast-plan-day1__stage {
+    animation: none;
+  }
+}
+
 .coast-plan-day1__sheet {
   position: absolute;
   left: 0;

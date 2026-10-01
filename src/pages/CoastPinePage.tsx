@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import coastPine from "../assets/coast-pine/coast-pine.mp4";
 import coastPinePoster from "../assets/coast-pine/coast-pine-poster.jpg";
 import logoAube from "../assets/common/logo-aube.svg";
+import brandPlace from "../assets/hotel-intro/brand.svg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 import "../styles/coast-pine.css";
@@ -233,8 +234,8 @@ export default function CoastPinePage() {
           <div className="coast__tint" aria-hidden="true" />
           <div className="coast__content">
             <div className="coast__brand">
-              <img className="coast__logo" src={logoAube} alt="AUBE" width={208} height={28} />
-              <p className="coast__place">Ulleungdo, Dokdo</p>
+              <img className="coast__logo" src={logoAube} alt="AUBE" />
+              <img className="coast__place" src={brandPlace} alt="Ulleungdo, Dokdo" />
             </div>
             <div className="coast__mid">
               <div className="coast__nav">

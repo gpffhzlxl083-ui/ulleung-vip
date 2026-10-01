@@ -11,18 +11,18 @@
 }
 
 .coast-plan-itinerary .coast-plan-day1__stage::-webkit-scrollbar-track {
-  background: #e4dfd8;
+  background: #d6cfc5;
 }
 
 .coast-plan-itinerary .coast-plan-day1__stage::-webkit-scrollbar-thumb {
-  background: #0e1f24;
+  background: #3f97a8;
   border-radius: 999px;
 }
 
 @supports (-moz-appearance: none) {
   .coast-plan-itinerary .coast-plan-day1__stage {
     scrollbar-width: thin;
-    scrollbar-color: #0e1f24 #e4dfd8;
+    scrollbar-color: #3f97a8 #d6cfc5;
   }
 }
 

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import backArrow from "../assets/coast-schedule/schedule-back.svg";
 import ramadaBathroom from "../assets/ramada/ramada-bathroom.webp";
 import ramadaCafe from "../assets/ramada/ramada-cafe.webp";
@@ -143,6 +143,7 @@ const SWIPE_THRESHOLD = 56;
 
 export default function RamadaPage() {
   const navigate = useNavigate();
+  const fadeIn = Boolean((useLocation().state as { fadeIn?: boolean } | null)?.fadeIn);
   const [index, setIndex] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [dragging, setDragging] = useState(false);
@@ -197,7 +198,7 @@ export default function RamadaPage() {
   };
 
   return (
-    <main className="vf ramada">
+    <main className={`vf ramada${fadeIn ? " ramada--fade-in" : ""}`}>
       <div
         ref={stageRef}
         className={`vf__stage ramada__stage${dragging ? " ramada__stage--drag" : ""}`}

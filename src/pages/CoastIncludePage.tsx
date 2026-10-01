@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import coastBrown from "../assets/coast-include/coast-brown.mp4";
 import coastBrownPoster from "../assets/coast-include/coast-brown-poster.jpg";
 import logoAube from "../assets/common/logo-aube.svg";
+import brandPlace from "../assets/hotel-intro/brand.svg";
 import backArrow from "../assets/coast-schedule/schedule-back.svg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
@@ -10,17 +11,17 @@ import "../styles/coast-include.css";
 import "../styles/coast-schedule.css";
 
 const TRANSPORT = [
-  { en: "Hotel", ko: "라마다 울릉", to: "/coast/hotel" },
-  { en: "Cruise ship", ko: "퍼스트 클래스", to: "/coast/first-class" },
-  { en: "Dokdo ship", ko: "비즈니스 클래스", to: "/coast/business-class" },
-  { en: "Vip van", ko: "고급 리무진 차량" },
-  { en: "Private tour", ko: "4~6명 단독행사" },
+  { en: "Hotel", ko: "라마다 울릉", to: "/coast/include/hotel" },
+  { en: "Cruise ship", ko: "퍼스트 클래스", to: "/coast/include/cruise" },
+  { en: "Dokdo ship", ko: "비즈니스 클래스", to: "/coast/include/dokdo" },
+  { en: "Vip van", ko: "고급 리무진 차량", to: "/coast/include/van" },
+  { en: "Private tour", ko: "4~6명 단독행사", to: "/coast/include/tour" },
 ];
 
 const EXPERIENCE = [
-  { en: "Fine dining", ko: "전체 특식" },
-  { en: "Tour", ko: "모든 입장료 포함" },
-  { en: "Service", ko: "스파 / 굿즈 / 어메니티" },
+  { en: "Fine dining", ko: "전체 특식", to: "/coast/include/dining" },
+  { en: "Tour", ko: "모든 입장료 포함", to: "/coast/include/trip" },
+  { en: "Service", ko: "스파 / 굿즈 / 어메니티", to: "/coast/include/service" },
 ];
 
 function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
@@ -257,8 +258,8 @@ export default function CoastIncludePage() {
           <div className="coast__tint" aria-hidden="true" />
           <div className="coast__content">
             <div className="coast__brand">
-              <img className="coast__logo" src={logoAube} alt="AUBE" width={208} height={28} />
-              <p className="coast__place">Ulleungdo, Dokdo</p>
+              <img className="coast__logo" src={logoAube} alt="AUBE" />
+              <img className="coast__place" src={brandPlace} alt="Ulleungdo, Dokdo" />
             </div>
             <div className="coast__mid">
               <div className="coast__nav">
@@ -302,21 +303,14 @@ export default function CoastIncludePage() {
             <ul className="coast-schedule__list">
               {TRANSPORT.map((item) => (
                 <li key={item.en} className="coast-schedule__item">
-                  {item.to ? (
-                    <button
-                      className="coast-schedule__item-btn"
-                      type="button"
-                      onClick={() => navigate(item.to)}
-                    >
-                      <span className="coast-schedule__en">{item.en}</span>
-                      <span className="coast-schedule__ko">{item.ko}</span>
-                    </button>
-                  ) : (
-                    <>
-                      <span className="coast-schedule__en">{item.en}</span>
-                      <span className="coast-schedule__ko">{item.ko}</span>
-                    </>
-                  )}
+                  <button
+                    className="coast-schedule__item-btn"
+                    type="button"
+                    onClick={() => navigate(item.to)}
+                  >
+                    <span className="coast-schedule__en">{item.en}</span>
+                    <span className="coast-schedule__ko">{item.ko}</span>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -324,8 +318,14 @@ export default function CoastIncludePage() {
             <ul className="coast-schedule__list">
               {EXPERIENCE.map((item) => (
                 <li key={item.en} className="coast-schedule__item">
-                  <span className="coast-schedule__en">{item.en}</span>
-                  <span className="coast-schedule__ko">{item.ko}</span>
+                  <button
+                    className="coast-schedule__item-btn"
+                    type="button"
+                    onClick={() => navigate(item.to)}
+                  >
+                    <span className="coast-schedule__en">{item.en}</span>
+                    <span className="coast-schedule__ko">{item.ko}</span>
+                  </button>
                 </li>
               ))}
             </ul>
