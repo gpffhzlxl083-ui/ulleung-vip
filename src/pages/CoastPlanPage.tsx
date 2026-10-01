@@ -10,9 +10,10 @@ import "../styles/coast.css";
 import "../styles/coast-plan.css";
 
 const DAYS: { en: string; ko: string; to?: string }[] = [
-  { en: "Day_1", ko: "1일 계획 보기", to: "/coast/plan/day1" },
-  { en: "Day_2", ko: "2일 계획 보기", to: "/coast/plan/day2/itinerary" },
-  { en: "Day_3", ko: "3일 계획 보기", to: "/coast/plan/day3/itinerary" },
+  { en: "Ready", ko: "출발 전 계획 보기" },
+  { en: "Day 1", ko: "1일 계획 보기", to: "/coast/plan/day1" },
+  { en: "Day 2", ko: "2일 계획 보기", to: "/coast/plan/day1" },
+  { en: "Day 3", ko: "3일 계획 보기", to: "/coast/plan/day1" },
 ];
 
 export default function CoastPlanPage() {
@@ -22,11 +23,6 @@ export default function CoastPlanPage() {
     <main className="vf coast coast-plan">
       <div className="vf__stage">
         <img className="vf__img coast-plan__photo" src={coastWavePoster} alt="" />
-        <p className="coast-plan__copy">
-          남들과
-          <br />
-          다른 울릉도, 독도
-        </p>
         <div className="coast__frost" aria-hidden="true">
           <svg className="coast__frost-defs" width="0" height="0" aria-hidden="true">
             <filter
@@ -93,17 +89,15 @@ export default function CoastPlanPage() {
             <div className="coast-plan__card">
               <img className="coast-plan__card-frame" src={cardFrame} alt="" />
               <div className="coast-plan__head">
-                <p className="coast-plan__head-en">SCHEDULE</p>
+                <p className="coast-plan__head-en">S&nbsp;&nbsp;C&nbsp;&nbsp;H&nbsp;&nbsp;E&nbsp;&nbsp;D&nbsp;&nbsp;U&nbsp;&nbsp;L&nbsp;&nbsp;E</p>
               </div>
               <p className="coast-plan__label">premium package</p>
               <p className="coast-plan__body">
-                &lt;오브, 울릉&gt; 프리미엄 패키지는
+                프리미엄 패키지는 준비부터 여정의
                 <br />
-                숙박부터 교통·식사, 전문 인솔과
+                참여까지 특별하고 차별된 프로그램
                 <br />
-                안전 관리까지 여정의 모든 순간을
-                <br />
-                세심하게 준비했습니다.
+                서비스로 운영되는 <span className="coast-plan__vip">VIP</span> 일정입니다
               </p>
             </div>
             <img className="coast-plan__days-line" src={line15} alt="" />

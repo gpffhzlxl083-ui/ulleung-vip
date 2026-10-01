@@ -233,18 +233,18 @@ export default function CoastPinePage() {
           <div className="coast__tint" aria-hidden="true" />
           <div className="coast__content">
             <div className="coast__brand">
-              <img className="coast__logo" src={logoAube} alt="AUBE" width={203} height={28} />
+              <img className="coast__logo" src={logoAube} alt="AUBE" width={208} height={28} />
               <p className="coast__place">Ulleungdo, Dokdo</p>
             </div>
             <div className="coast__mid">
               <div className="coast__nav">
-                <Arrow dir="prev" onClick={() => navigate("/coast/include")} />
+                <Arrow dir="prev" onClick={() => navigate("/coast")} />
                 <div className="coast__nav-copy">
                   <p className="coast__nav-title">ABOUT US</p>
                   <span className="coast__nav-line" />
                   <p className="coast__nav-more">더보기</p>
                 </div>
-                <Arrow dir="next" onClick={() => navigate("/coast")} />
+                <Arrow dir="next" onClick={() => navigate("/coast/include")} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>

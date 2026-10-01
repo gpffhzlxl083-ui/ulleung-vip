@@ -85,7 +85,7 @@ export default function SeokhyangPage() {
                 className="seokhyang__logo"
                 src={logoAube}
                 alt="AUBE"
-                width={203}
+                width={208}
                 height={28}
               />
               <p className="seokhyang__place">Ulleungdo, Dokdo</p>
@@ -94,7 +94,7 @@ export default function SeokhyangPage() {
               <p className="seokhyang__package-label">Package Premium</p>
               <p className="seokhyang__package-price">1,490,000 won</p>
             </div>
-            <button className="seokhyang__enter" type="button" onClick={() => navigate("/coast")}>
+            <button className="seokhyang__enter" type="button" onClick={() => navigate("/coast/include")}>
               ENTER
               <img
                 className="seokhyang__chevron"

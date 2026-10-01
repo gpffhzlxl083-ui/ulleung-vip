@@ -9,10 +9,10 @@
 
 .ramada__stage {
   aspect-ratio: 434 / 850;
-  height: 100dvh;
-  width: calc(100dvh * 434 / 850);
-  min-height: 100dvh;
-  max-height: 100dvh;
+  width: min(100dvw, calc(100dvh * 434 / 850));
+  height: min(100dvh, calc(100dvw * 850 / 434));
+  min-height: 0;
+  max-height: none;
   padding: 0;
   container-type: size;
   background: #f2efe8;

@@ -1,11 +1,27 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import coastBrown from "../assets/coast-include/coast-brown.mp4";
 import coastBrownPoster from "../assets/coast-include/coast-brown-poster.jpg";
 import logoAube from "../assets/common/logo-aube.svg";
+import backArrow from "../assets/coast-schedule/schedule-back.svg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 import "../styles/coast-include.css";
+import "../styles/coast-schedule.css";
+
+const TRANSPORT = [
+  { en: "Hotel", ko: "라마다 울릉", to: "/coast/hotel" },
+  { en: "Cruise ship", ko: "퍼스트 클래스", to: "/coast/first-class" },
+  { en: "Dokdo ship", ko: "비즈니스 클래스", to: "/coast/business-class" },
+  { en: "Vip van", ko: "고급 리무진 차량" },
+  { en: "Private tour", ko: "4~6명 단독행사" },
+];
+
+const EXPERIENCE = [
+  { en: "Fine dining", ko: "전체 특식" },
+  { en: "Tour", ko: "모든 입장료 포함" },
+  { en: "Service", ko: "스파 / 굿즈 / 어메니티" },
+];
 
 function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
   const label = dir === "prev" ? "이전" : "다음";
@@ -70,6 +86,9 @@ function drawVideoCover(canvas: HTMLCanvasElement, video: HTMLVideoElement) {
 
 export default function CoastIncludePage() {
   const navigate = useNavigate();
+  const openedSchedule = Boolean((useLocation().state as { schedule?: boolean } | null)?.schedule);
+  const [scheduleOpen, setScheduleOpen] = useState(openedSchedule);
+  const [scheduleSeen, setScheduleSeen] = useState(openedSchedule);
   const [videoOn, setVideoOn] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frostCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -158,7 +177,9 @@ export default function CoastIncludePage() {
   const goPine = () => navigate("/coast/pine");
 
   return (
-    <main className="vf coast coast-include">
+    <main
+      className={`vf coast coast-include${scheduleOpen ? " is-schedule" : ""}${openedSchedule && scheduleOpen ? " is-direct" : ""}${scheduleSeen && !scheduleOpen ? " is-restored" : ""}`}
+    >
       <div className="vf__stage">
         <img className="vf__img coast__img" src={coastBrownPoster} alt="" />
         <video
@@ -236,38 +257,82 @@ export default function CoastIncludePage() {
           <div className="coast__tint" aria-hidden="true" />
           <div className="coast__content">
             <div className="coast__brand">
-              <img className="coast__logo" src={logoAube} alt="AUBE" width={203} height={28} />
+              <img className="coast__logo" src={logoAube} alt="AUBE" width={208} height={28} />
               <p className="coast__place">Ulleungdo, Dokdo</p>
             </div>
             <div className="coast__mid">
               <div className="coast__nav">
-                <Arrow dir="prev" onClick={goCoast} />
+                <Arrow dir="prev" onClick={goPine} />
                 <div className="coast__nav-copy">
                   <p className="coast__nav-title">패키지 포함사항</p>
                   <span className="coast__nav-line" />
                   <button
                     className="coast__nav-more"
                     type="button"
-                    onClick={() => navigate("/coast/schedule")}
+                    onClick={() => {
+                      setScheduleSeen(true);
+                      setScheduleOpen(true);
+                    }}
                   >
                     더보기
                   </button>
                 </div>
-                <Arrow dir="next" onClick={goPine} />
+                <Arrow dir="next" onClick={goCoast} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
             <div className="coast__story">
-              <p className="coast__story-title">바위 암(巖)</p>
+              <p className="coast__story-title">바위 암(岩)</p>
               <span className="coast__story-dash">-</span>
               <p className="coast__story-body">
                 파도와 바람이 깎아낸 섬,
                 <br />
                 세상에 남겨진 가장
                 <br />
-                단단한 조각. 주상절리
+                단단한 조각, 주상절리
               </p>
             </div>
+          </div>
+          <div className="coast__schedule" aria-hidden={!scheduleOpen}>
+            <div className="coast-schedule__head">
+              <p className="coast-schedule__head-en">Inclusioins</p>
+              <p className="coast-schedule__head-ko">포함사항</p>
+            </div>
+            <span className="coast-schedule__rule" />
+            <ul className="coast-schedule__list">
+              {TRANSPORT.map((item) => (
+                <li key={item.en} className="coast-schedule__item">
+                  {item.to ? (
+                    <button
+                      className="coast-schedule__item-btn"
+                      type="button"
+                      onClick={() => navigate(item.to)}
+                    >
+                      <span className="coast-schedule__en">{item.en}</span>
+                      <span className="coast-schedule__ko">{item.ko}</span>
+                    </button>
+                  ) : (
+                    <>
+                      <span className="coast-schedule__en">{item.en}</span>
+                      <span className="coast-schedule__ko">{item.ko}</span>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <span className="coast-schedule__rule" />
+            <ul className="coast-schedule__list">
+              {EXPERIENCE.map((item) => (
+                <li key={item.en} className="coast-schedule__item">
+                  <span className="coast-schedule__en">{item.en}</span>
+                  <span className="coast-schedule__ko">{item.ko}</span>
+                </li>
+              ))}
+            </ul>
+            <button className="coast-schedule__back" type="button" onClick={() => setScheduleOpen(false)}>
+              <img className="coast-schedule__back-icon" src={backArrow} alt="" width={5} height={10} />
+              Back
+            </button>
           </div>
         </div>
       </div>

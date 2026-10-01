@@ -17,7 +17,7 @@ const TRANSPORT = [
 const EXPERIENCE = [
   { en: "Fine dining", ko: "전체 특식" },
   { en: "Tour", ko: "모든 입장료 포함" },
-  { en: "Service", ko: "스파 / 굿즈 / 어메니티" },
+  { en: "Service", ko: "스파 / 굿즈 / 어메니티", service: true },
 ];
 
 export default function CoastSchedulePage() {
@@ -28,11 +28,6 @@ export default function CoastSchedulePage() {
       <div className="vf__stage">
         <img className="vf__img coast-schedule__photo" src={scheduleCliff} alt="" />
         <img className="coast-schedule__glow" src={scheduleGlow} alt="" />
-        <p className="coast-schedule__copy">
-          남들과
-          <br />
-          다른 울릉도, 독도
-        </p>
         <div className="coast__frost" aria-hidden="true">
           <svg className="coast__frost-defs" width="0" height="0" aria-hidden="true">
             <filter
@@ -126,7 +121,7 @@ export default function CoastSchedulePage() {
             <span className="coast-schedule__rule" />
             <ul className="coast-schedule__list">
               {EXPERIENCE.map((item) => (
-                <li key={item.en} className="coast-schedule__item">
+                <li key={item.en} className={`coast-schedule__item${"service" in item && item.service ? " coast-schedule__item--service" : ""}`}>
                   <span className="coast-schedule__en">{item.en}</span>
                   <span className="coast-schedule__ko">{item.ko}</span>
                 </li>
@@ -135,7 +130,7 @@ export default function CoastSchedulePage() {
             <button
               className="coast-schedule__back"
               type="button"
-              onClick={() => navigate("/coast/include")}
+              onClick={() => navigate(-1)}
             >
               <img
                 className="coast-schedule__back-icon"
