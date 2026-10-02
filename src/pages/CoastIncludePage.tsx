@@ -5,6 +5,7 @@ import coastBrownPoster from "../assets/coast-include/coast-brown-poster.jpg";
 import logoAube from "../assets/common/logo-aube.svg";
 import brandPlace from "../assets/hotel-intro/brand.svg";
 import backArrow from "../assets/coast-schedule/schedule-back.svg";
+import { useSwipeNav } from "../hooks/useSwipeNav";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 import "../styles/coast-include.css";
@@ -87,9 +88,11 @@ function drawVideoCover(canvas: HTMLCanvasElement, video: HTMLVideoElement) {
 
 export default function CoastIncludePage() {
   const navigate = useNavigate();
-  const openedSchedule = Boolean((useLocation().state as { schedule?: boolean } | null)?.schedule);
+  const navState = useLocation().state as { schedule?: boolean; restored?: boolean } | null;
+  const openedSchedule = Boolean(navState?.schedule);
+  const restored = Boolean(navState?.restored);
   const [scheduleOpen, setScheduleOpen] = useState(openedSchedule);
-  const [scheduleSeen, setScheduleSeen] = useState(openedSchedule);
+  const [scheduleSeen, setScheduleSeen] = useState(openedSchedule || restored);
   const [videoOn, setVideoOn] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frostCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -132,6 +135,27 @@ export default function CoastIncludePage() {
       return;
     }
 
+    if (restored) {
+      const showLastFrame = () => {
+        paint();
+        setVideoOn(true);
+      };
+      const seekToEnd = () => {
+        video.pause();
+        video.currentTime = Math.max(0, video.duration - 0.05);
+      };
+      video.addEventListener("seeked", showLastFrame);
+      video.addEventListener("loadedmetadata", seekToEnd);
+      if (video.readyState >= 1) seekToEnd();
+      const observer = new ResizeObserver(paint);
+      observer.observe(scene);
+      return () => {
+        observer.disconnect();
+        video.removeEventListener("seeked", showLastFrame);
+        video.removeEventListener("loadedmetadata", seekToEnd);
+      };
+    }
+
     const fitPlaybackToPanel = () => {
       const styles = getComputedStyle(panel);
       const hold = secondsFromCss(styles.getPropertyValue("--panel-hold"), 1.8);
@@ -172,14 +196,16 @@ export default function CoastIncludePage() {
       panel.removeEventListener("animationend", onPanelEnd);
       video.pause();
     };
-  }, []);
+  }, [restored]);
 
   const goCoast = () => navigate("/coast");
   const goPine = () => navigate("/coast/pine");
+  const swipe = useSwipeNav({ onPrev: goPine, onNext: goCoast, disabled: scheduleOpen });
 
   return (
     <main
-      className={`vf coast coast-include${scheduleOpen ? " is-schedule" : ""}${openedSchedule && scheduleOpen ? " is-direct" : ""}${scheduleSeen && !scheduleOpen ? " is-restored" : ""}`}
+      {...swipe}
+      className={`vf coast coast-include${scheduleOpen ? " is-schedule" : ""}${openedSchedule && scheduleOpen ? " is-direct" : ""}${scheduleSeen && !scheduleOpen ? " is-restored" : ""}${restored ? " is-back" : ""}`}
     >
       <div className="vf__stage">
         <img className="vf__img coast__img" src={coastBrownPoster} alt="" />

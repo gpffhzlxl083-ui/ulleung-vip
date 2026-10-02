@@ -31,8 +31,29 @@
   }
 }
 
+.coast-plan-day1--pull-in :is(
+    .coast-plan-day1__top > *,
+    .coast-plan-day1__body,
+    .coast-plan-itinerary__screen:first-child > *
+  ) {
+  animation: coast-plan-pull-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 기존 transform 배치를 건드리지 않도록 translate 속성으로 움직인다 */
+@keyframes coast-plan-pull-in {
+  from {
+    opacity: 0;
+    translate: 0 calc(28 / 850 * 100cqb);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .coast-plan-day1--fade-in .coast-plan-day1__stage {
+  .coast-plan-day1--fade-in .coast-plan-day1__stage,
+  .coast-plan-day1--pull-in :is(
+      .coast-plan-day1__top > *,
+      .coast-plan-day1__body,
+      .coast-plan-itinerary__screen:first-child > *
+    ) {
     animation: none;
   }
 }

@@ -6,6 +6,7 @@ import logoAube from "../assets/common/logo-aube.svg";
 import brandPlace from "../assets/hotel-intro/brand.svg";
 import dayArrow from "../assets/coast-plan/day-arrow.png";
 import backArrow from "../assets/coast-schedule/schedule-back.svg";
+import { useSwipeNav } from "../hooks/useSwipeNav";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 import "../styles/coast-plan.css";
@@ -174,8 +175,14 @@ export default function CoastPage() {
     };
   }, []);
 
+  const swipe = useSwipeNav({
+    onPrev: () => navigate("/coast/include"),
+    onNext: () => navigate("/coast/pine"),
+    disabled: planOpen,
+  });
+
   return (
-    <main className={`vf coast${planOpen ? " is-plan" : ""}${planSeen && !planOpen ? " is-restored" : ""}`}>
+    <main {...swipe} className={`vf coast${planOpen ? " is-plan" : ""}${planSeen && !planOpen ? " is-restored" : ""}`}>
       <div className="vf__stage">
         <img className="vf__img coast__img" src={coastWavePoster} alt="" />
         <video

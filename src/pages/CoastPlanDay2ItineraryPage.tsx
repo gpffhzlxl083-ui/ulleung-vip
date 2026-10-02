@@ -117,7 +117,9 @@ const DINNER_MENU = ["소라, 전복회", "보리새우, 가자미", "문어숙�
 
 export default function CoastPlanDay2ItineraryPage() {
   const navigate = useNavigate();
-  const fadeIn = Boolean((useLocation().state as { fadeIn?: boolean } | null)?.fadeIn);
+  const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean } | null;
+  const fadeIn = Boolean(navState?.fadeIn);
+  const pullIn = Boolean(navState?.pullIn);
   const [hotelIndex, setHotelIndex] = useState(0);
   const [spotIndex, setSpotIndex] = useState(0);
   const spotDragX = useRef<number | null>(null);
@@ -141,7 +143,7 @@ export default function CoastPlanDay2ItineraryPage() {
 
   return (
     <main
-      className={`vf coast-plan-day1 coast-plan-itinerary coast-plan-day2${fadeIn ? " coast-plan-day1--fade-in" : ""}`}
+      className={`vf coast-plan-day1 coast-plan-itinerary coast-plan-day2${fadeIn ? " coast-plan-day1--fade-in" : ""}${pullIn ? " coast-plan-day1--pull-in" : ""}`}
     >
       <div className="vf__stage coast-plan-day1__stage">
         <header

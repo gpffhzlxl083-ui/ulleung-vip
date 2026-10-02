@@ -48,12 +48,25 @@
   }
 }
 
+.coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__base) {
+  animation: coast-ready-pull-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 기존 transform 배치를 건드리지 않도록 translate 속성으로 움직인다 */
+@keyframes coast-ready-pull-in {
+  from {
+    opacity: 0;
+    translate: calc(60 / 434 * 100cqi) 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .coast-ready__stage {
     scroll-behavior: auto;
   }
 
-  .coast-ready--fade-in .coast-ready__stage {
+  .coast-ready--fade-in .coast-ready__stage,
+  .coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__base) {
     animation: none;
   }
 }

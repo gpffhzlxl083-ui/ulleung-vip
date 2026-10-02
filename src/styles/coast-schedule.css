@@ -30,6 +30,9 @@
 }
 
 .coast-schedule__content {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   padding: calc(39 / 850 * 100cqb) calc(22 / 434 * 100cqi) calc(47 / 850 * 100cqb)

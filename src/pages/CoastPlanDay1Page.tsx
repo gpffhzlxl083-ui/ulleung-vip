@@ -30,7 +30,9 @@ const FLICK_VELOCITY = 0.28;
 
 export default function CoastPlanDay1Page() {
   const navigate = useNavigate();
-  const fadeIn = Boolean((useLocation().state as { fadeIn?: boolean } | null)?.fadeIn);
+  const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean } | null;
+  const fadeIn = Boolean(navState?.fadeIn);
+  const pullIn = Boolean(navState?.pullIn);
   const frameRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef(0);
   const dragRef = useRef({
@@ -132,7 +134,9 @@ export default function CoastPlanDay1Page() {
   };
 
   return (
-    <main className={`vf coast-plan-day1${fadeIn ? " coast-plan-day1--fade-in" : ""}`}>
+    <main
+      className={`vf coast-plan-day1${fadeIn ? " coast-plan-day1--fade-in" : ""}${pullIn ? " coast-plan-day1--pull-in" : ""}`}
+    >
       <div className="vf__stage coast-plan-day1__stage">
         <img className="coast-plan-day1__sheet" src={day1Sheet} alt="" />
         <header className="coast-plan-day1__top">

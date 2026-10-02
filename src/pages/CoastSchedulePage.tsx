@@ -129,7 +129,7 @@ export default function CoastSchedulePage() {
             <button
               className="coast-schedule__back"
               type="button"
-              onClick={() => navigate("/coast/include")}
+              onClick={() => navigate("/coast/include", { state: { restored: true } })}
             >
               <img
                 className="coast-schedule__back-icon"

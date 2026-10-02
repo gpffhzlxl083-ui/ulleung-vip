@@ -93,7 +93,9 @@ const SWIPE_THRESHOLD = 56;
 
 export default function BusinessClassPage() {
   const navigate = useNavigate();
-  const fadeIn = Boolean((useLocation().state as { fadeIn?: boolean } | null)?.fadeIn);
+  const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean } | null;
+  const fadeIn = Boolean(navState?.fadeIn);
+  const pullIn = Boolean(navState?.pullIn);
   const [index, setIndex] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [dragging, setDragging] = useState(false);
@@ -148,7 +150,7 @@ export default function BusinessClassPage() {
   };
 
   return (
-    <main className={`vf ramada${fadeIn ? " ramada--fade-in" : ""}`}>
+    <main className={`vf ramada${fadeIn ? " ramada--fade-in" : ""}${pullIn ? " ramada--pull-in" : ""}`}>
       <div
         ref={stageRef}
         className={`vf__stage ramada__stage${dragging ? " ramada__stage--drag" : ""}`}

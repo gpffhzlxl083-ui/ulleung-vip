@@ -31,8 +31,20 @@
   }
 }
 
+.ramada--pull-in .ramada__sheet {
+  animation: ramada-pull-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ramada-pull-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(28 / 434 * 100cqi));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .ramada--fade-in .ramada__stage {
+  .ramada--fade-in .ramada__stage,
+  .ramada--pull-in .ramada__sheet {
     animation: none;
   }
 }

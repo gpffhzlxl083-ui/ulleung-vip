@@ -12,15 +12,92 @@
   padding: 0;
   container-type: size;
   background: #5b3727;
-  transition: opacity 0.7s ease;
+  overflow: hidden;
 }
 
-.hotel-intro__stage.is-leaving {
+/* 크림 시트가 오른쪽에서 당겨 들어와 다음 페이지의 그라데이션 영역만 남긴다 */
+.hotel-intro__sheet {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  transform: translateX(105%);
+  pointer-events: none;
+}
+
+.hotel-intro__sheet--edge {
+  top: 0;
+  left: calc(61 / 434 * 100cqi);
+  background: #f2efe8;
+}
+
+.hotel-intro__sheet--top {
+  top: calc(67 / 850 * 100cqb);
+  left: 0;
+  background: #f3f0ec;
+  border-top-left-radius: calc(10 / 434 * 100cqi);
+  border-top-right-radius: calc(10 / 434 * 100cqi);
+}
+
+.hotel-intro__stage.is-pulling .hotel-intro__sheet {
+  animation: hotel-intro-sheet-pull 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.hotel-intro__stage.is-pulling :is(.hotel-intro__logo, .hotel-intro__brand, .hotel-intro__text) {
+  transition:
+    translate 0.9s cubic-bezier(0.76, 0, 0.24, 1),
+    opacity 0.6s ease;
+  translate: calc(-140 / 434 * 100cqi) 0;
   opacity: 0;
 }
 
+@keyframes hotel-intro-sheet-pull {
+  0% {
+    transform: translateX(105%);
+    box-shadow: -16px 0 32px rgba(0, 0, 0, 0.28);
+  }
+  80% {
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.18);
+  }
+  100% {
+    transform: translateX(0);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* 일정 인트로는 시트가 아래에서 위로 올라와 헤더 영역만 남긴다 */
+.hotel-intro--rise .hotel-intro__sheet--top {
+  transform: translateY(105%);
+}
+
+.hotel-intro--rise .hotel-intro__stage.is-pulling .hotel-intro__sheet--top {
+  animation-name: hotel-intro-sheet-rise;
+}
+
+.hotel-intro--rise .hotel-intro__stage.is-pulling :is(.hotel-intro__logo, .hotel-intro__brand, .hotel-intro__text) {
+  translate: 0 calc(-120 / 850 * 100cqb);
+}
+
+@keyframes hotel-intro-sheet-rise {
+  0% {
+    transform: translateY(105%);
+    box-shadow: 0 -16px 32px rgba(0, 0, 0, 0.28);
+  }
+  80% {
+    box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.18);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hotel-intro__stage {
+  .hotel-intro__stage.is-pulling .hotel-intro__sheet {
+    animation-duration: 0.01s;
+  }
+
+  .hotel-intro__stage.is-pulling :is(.hotel-intro__logo, .hotel-intro__brand, .hotel-intro__text) {
     transition: none;
   }
 }

@@ -1,3 +1,8 @@
 .coast-include .coast__tint {
   background: linear-gradient(180deg, #b3a08c 0%, #5b3727 65.3846%, #51605c 100%);
 }
+
+/* 포함사항 목록에서 돌아왔을 때는 패널이 이미 들어와 있는 상태로 보여준다 */
+.coast-include.is-back :is(.coast__frost, .coast__frost-scene, .coast__sheet) {
+  animation: none;
+}

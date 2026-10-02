@@ -102,11 +102,15 @@ function Screen({ backTop, onBack, children }: { backTop: number; onBack: () => 
 
 export default function CoastReadyPage() {
   const navigate = useNavigate();
-  const fadeIn = Boolean((useLocation().state as { fadeIn?: boolean } | null)?.fadeIn);
+  const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean } | null;
+  const fadeIn = Boolean(navState?.fadeIn);
+  const pullIn = Boolean(navState?.pullIn);
   const goBack = () => navigate("/coast");
 
   return (
-    <main className={`vf coast-ready${fadeIn ? " coast-ready--fade-in" : ""}`}>
+    <main
+      className={`vf coast-ready${fadeIn ? " coast-ready--fade-in" : ""}${pullIn ? " coast-ready--pull-in" : ""}`}
+    >
       <div className="vf__stage coast-ready__stage">
         <Screen backTop={28} onBack={goBack}>
           <div className="coast-ready__title" style={{ top: "calc(126 / 850 * 100cqb)" }}>

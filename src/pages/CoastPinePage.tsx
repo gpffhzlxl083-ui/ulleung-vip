@@ -4,6 +4,7 @@ import coastPine from "../assets/coast-pine/coast-pine.mp4";
 import coastPinePoster from "../assets/coast-pine/coast-pine-poster.jpg";
 import logoAube from "../assets/common/logo-aube.svg";
 import brandPlace from "../assets/hotel-intro/brand.svg";
+import { useSwipeNav } from "../hooks/useSwipeNav";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
 import "../styles/coast-pine.css";
@@ -155,8 +156,13 @@ export default function CoastPinePage() {
     };
   }, []);
 
+  const swipe = useSwipeNav({
+    onPrev: () => navigate("/coast"),
+    onNext: () => navigate("/coast/include"),
+  });
+
   return (
-    <main className="vf coast coast-pine">
+    <main {...swipe} className="vf coast coast-pine">
       <div className="vf__stage">
         <img className="vf__img coast__img" src={coastPinePoster} alt="" />
         <video
