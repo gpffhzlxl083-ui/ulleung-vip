@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import dayArrow from "../assets/coast-plan/day-arrow.png";
 import cardFrame from "../assets/coast-plan/card-frame.png";
 import line15 from "../assets/coast-plan/line-15.png";
@@ -18,9 +18,10 @@ const DAYS: { en: string; ko: string; to?: string }[] = [
 
 export default function CoastPlanPage() {
   const navigate = useNavigate();
+  const instant = Boolean((useLocation().state as { instant?: boolean } | null)?.instant);
 
   return (
-    <main className="vf coast coast-plan">
+    <main className={`vf coast coast-plan${instant ? " coast-plan--instant" : ""}`}>
       <div className="vf__stage">
         <img className="vf__img coast-plan__photo" src={coastWavePoster} alt="" />
         <div className="coast__frost" aria-hidden="true">

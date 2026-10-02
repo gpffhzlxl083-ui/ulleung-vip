@@ -28,7 +28,9 @@ const SIDE_SCALE = 0.84;
 const SWIPE_THRESHOLD = 18;
 const FLICK_VELOCITY = 0.28;
 
-export default function CoastPlanDay1Page() {
+type Props = { itinerary?: string };
+
+export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itinerary" }: Props) {
   const navigate = useNavigate();
   const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean } | null;
   const fadeIn = Boolean(navState?.fadeIn);
@@ -236,7 +238,7 @@ export default function CoastPlanDay1Page() {
           <button
             className="coast-plan-day1__more"
             type="button"
-            onClick={() => navigate("/coast/plan/day1/itinerary")}
+            onClick={() => navigate(itinerary)}
           >
             일정표 바로보기
             <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">

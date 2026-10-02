@@ -1,7 +1,7 @@
 .coast-plan {
   --panel-hold: 0s;
   --panel-in: 2.4s;
-  --panel-slide: calc(354 / 434 * 100cqi);
+  --panel-slide: calc(270 / 434 * 100cqi);
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
   text-rendering: auto;
@@ -9,10 +9,10 @@
 }
 
 .coast-plan .coast__frost {
-  --frost-w: 354;
+  --frost-w: 270;
   left: auto;
   right: 0;
-  width: calc(354 / 434 * 100cqi);
+  width: calc(270 / 434 * 100cqi);
   padding: calc(12 / 434 * 100cqi) 0 calc(12 / 434 * 100cqi) calc(12 / 434 * 100cqi);
   border-radius: calc(10 / 434 * 100cqi) 0 0 calc(10 / 434 * 100cqi);
   clip-path: inset(0 0 0 0 round calc(10 / 434 * 100cqi) 0 0 calc(10 / 434 * 100cqi));
@@ -21,7 +21,7 @@
 .coast-plan .coast__sheet {
   left: auto;
   right: 0;
-  width: calc(319 / 434 * 100cqi);
+  width: calc(235 / 434 * 100cqi);
   border: 0;
   border-radius: calc(10 / 434 * 100cqi) 0 0 calc(10 / 434 * 100cqi);
   background: transparent;
@@ -280,6 +280,11 @@
   width: calc(5 / 434 * 100cqi);
   height: calc(10 / 434 * 100cqi);
   object-fit: contain;
+}
+
+/* 일정표의 NEXT로 돌아올 때는 패널이 들어와 있는 완성 화면을 바로 보여준다 */
+.coast-plan--instant :is(.coast__frost, .coast__frost-scene, .coast__sheet, .coast-plan__content) {
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

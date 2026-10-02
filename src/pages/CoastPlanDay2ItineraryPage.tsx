@@ -562,7 +562,7 @@ export default function CoastPlanDay2ItineraryPage() {
               <span>오브, 울릉의 여정에 있어 부족함은 없습니다</span>
             </p>
             <p className="coast-plan-itinerary__outro-cta">Want to check out the 2-day plan?</p>
-            <button className="coast-plan-itinerary__outro-next" type="button" onClick={() => navigate("/coast/plan/day3/itinerary")}>
+            <button className="coast-plan-itinerary__outro-next" type="button" onClick={() => navigate("/coast/plan", { state: { instant: true } })}>
               NEXT
             </button>
           </section>
