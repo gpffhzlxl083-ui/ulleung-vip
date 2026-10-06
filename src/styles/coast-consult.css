@@ -1,0 +1,317 @@
+.coast-consult {
+  background: #cfc2c2;
+  overflow: hidden;
+}
+
+.coast-consult__stage {
+  aspect-ratio: 434 / 850;
+  width: min(100dvw, calc(100dvh * 434 / 850));
+  height: min(100dvh, calc(100dvw * 850 / 434));
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  container-type: size;
+  background: #fff;
+  color: #000;
+  overflow: hidden;
+}
+
+/* 일정표 페이지처럼 본문이 헤더 아래에 위쪽 모서리를 둥글게(10) 겹쳐 올린다 */
+.coast-consult__stage::after {
+  content: "";
+  position: absolute;
+  top: calc((85 - 18) / 850 * 100cqb);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  /* 헤더 끝(85)보다 2 더 내려 소수점 픽셀 경계에서 헤더색 선이 비치지 않게 */
+  height: calc(20 / 850 * 100cqb);
+  background: #fff;
+  border-top-left-radius: calc(10 / 434 * 100cqi);
+  border-top-right-radius: calc(10 / 434 * 100cqi);
+  pointer-events: none;
+}
+
+.coast-consult--fade-in .coast-consult__stage > * {
+  animation: coast-consult-fade-in 0.7s ease both;
+}
+
+@keyframes coast-consult-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* 좌표는 Figma 2011:4577 기준 */
+.coast-consult__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(85 / 850 * 100cqb);
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 헤더 로고는 준비 페이지(coast-ready) 헤더와 같은 103×22: brand.svg 위에 AUBE 글자를 겹친다 */
+.coast-consult__brand {
+  position: absolute;
+  top: calc(22.5 / 850 * 100cqb);
+  left: calc(169 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(103 / 434 * 100cqi);
+  height: calc(22 / 850 * 100cqb);
+  pointer-events: none;
+  user-select: none;
+}
+
+.coast-consult__brand-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.coast-consult__logo {
+  position: absolute;
+  top: calc(1.07 / 850 * 100cqb);
+  left: calc(20.81 / 434 * 100cqi);
+  width: calc(58.7 / 434 * 100cqi);
+  height: auto;
+  aspect-ratio: 233.164 / 42.497;
+  filter: brightness(0) invert(1);
+}
+
+.coast-consult__back {
+  position: absolute;
+  top: calc(22.3 / 850 * 100cqb);
+  left: calc(26 / 434 * 100cqi);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: calc(10.5 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+/* Back 크기는 예약 페이지(coast-reserve__back)와 같게 */
+.coast-consult__back img {
+  display: block;
+  width: calc(3.51893 / 434 * 100cqi);
+  height: auto;
+}
+
+.coast-consult__title {
+  position: absolute;
+  top: calc(155 / 850 * 100cqb);
+  left: calc(169 / 434 * 100cqi);
+  margin: 0;
+  transform: translateY(-50%);
+  font-family: Inter, "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(16 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: calc(28 / 850 * 100cqb);
+  letter-spacing: calc(0.32 / 434 * 100cqi);
+}
+
+.coast-consult__lead {
+  position: absolute;
+  top: calc(184 / 850 * 100cqb);
+  left: calc(67 / 434 * 100cqi);
+  margin: 0;
+  opacity: 0.5;
+  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: calc(0.4 / 434 * 100cqi);
+  white-space: pre;
+}
+
+.coast-consult__code {
+  position: absolute;
+  top: calc(259.5 / 850 * 100cqb);
+  right: calc((434 - 358) / 434 * 100cqi);
+  margin: 0;
+  transform: translateY(-50%);
+  font-family: Inter, "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.coast-consult__rule {
+  position: absolute;
+  left: calc(71 / 434 * 100cqi);
+  width: calc(289 / 434 * 100cqi);
+  height: 1px;
+  background: #000;
+}
+
+.coast-consult__form {
+  margin: 0;
+}
+
+/* 라벨은 x 85에서 글자 중심(y) 기준, 입력칸은 x 221 · 130×27 회색 박스 */
+.coast-consult__label {
+  position: absolute;
+  left: calc(85 / 434 * 100cqi);
+  transform: translateY(-50%);
+  font-family: Inter, "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.coast-consult__box {
+  position: absolute;
+  left: calc(221 / 434 * 100cqi);
+  box-sizing: border-box;
+  width: calc(130 / 434 * 100cqi);
+  height: calc(27 / 850 * 100cqb);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: rgba(217, 217, 217, 0.54);
+  color: #000;
+  text-align: center;
+  font-family: Inter, "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.coast-consult__box::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.coast-consult__box:hover::placeholder,
+.coast-consult__box:focus::placeholder {
+  opacity: 0;
+}
+
+.coast-consult__box:focus-visible {
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.coast-consult__hint {
+  position: absolute;
+  width: calc(116 / 434 * 100cqi);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  color: #696464;
+  text-align: center;
+  font-family: Inter, "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(7 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(14 / 850 * 100cqb);
+}
+
+.coast-consult__step {
+  position: absolute;
+  width: calc(14 / 434 * 100cqi);
+  height: calc(14 / 434 * 100cqi);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: calc(10 / 434 * 100cqi);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.coast-consult__step img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.coast-consult__step span {
+  position: relative;
+}
+
+.coast-consult__step:disabled {
+  cursor: default;
+}
+
+.coast-consult__step--minus {
+  top: calc(6 / 850 * 100cqb);
+  left: calc(20 / 434 * 100cqi);
+}
+
+.coast-consult__step--plus {
+  top: calc(5 / 850 * 100cqb);
+  left: calc(96 / 434 * 100cqi);
+}
+
+.coast-consult__count {
+  position: absolute;
+  top: calc(11 / 850 * 100cqb);
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-family: Inter, sans-serif;
+  font-size: calc(18 / 434 * 100cqi);
+  line-height: 1;
+}
+
+.coast-consult__ask {
+  position: absolute;
+  top: calc(764.5 / 850 * 100cqb);
+  left: calc(217.5 / 434 * 100cqi);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-family: Inter, "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(15 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.coast-consult__answer {
+  position: absolute;
+  top: calc(804.5 / 850 * 100cqb);
+  width: calc(129 / 434 * 100cqi);
+  height: calc(49 / 850 * 100cqb);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-family: var(--font-gujarati), "Noto Sans", sans-serif;
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 600;
+  line-height: calc(28 / 850 * 100cqb);
+  letter-spacing: calc(2.21 / 434 * 100cqi);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.coast-consult__answer--yes {
+  left: calc(153.5 / 434 * 100cqi);
+}
+
+.coast-consult__answer--no {
+  left: calc(265.5 / 434 * 100cqi);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coast-consult--fade-in .coast-consult__stage > * {
+    animation: none;
+  }
+}

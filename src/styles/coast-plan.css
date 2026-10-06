@@ -77,7 +77,6 @@
 
 .coast-plan__head-en,
 .coast-plan__head-ko,
-.coast-plan__label,
 .coast-plan__body {
   position: absolute;
   z-index: 1;
@@ -85,9 +84,10 @@
   margin: 0;
 }
 
+/* 좌표는 Figma 661:4300 기준, 패널(x199) 왼쪽에서 잰 값 */
 .coast-plan__head-en {
-  top: calc(177 / 850 * 100cqb);
-  left: calc(32 / 434 * 100cqi);
+  top: calc(182 / 850 * 100cqb);
+  left: calc(41 / 434 * 100cqi);
   width: auto;
   height: auto;
   color: #fff;
@@ -117,26 +117,9 @@
   font-synthesis: none;
 }
 
-.coast-plan__label {
-  top: calc(208 / 850 * 100cqb);
-  left: calc(32 / 434 * 100cqi);
-  width: auto;
-  height: auto;
-  color: rgba(255, 255, 255, 0.8);
-  opacity: 0.85;
-  font-family: var(--font-gujarati);
-  font-size: calc(13 / 434 * 100cqi);
-  font-weight: 300;
-  font-style: normal;
-  letter-spacing: 0;
-  line-height: 1;
-  text-align: left;
-  font-synthesis: none;
-}
-
 .coast-plan__body {
-  top: calc(245 / 850 * 100cqb);
-  left: calc(32 / 434 * 100cqi);
+  top: calc(220 / 850 * 100cqb);
+  left: calc(41 / 434 * 100cqi);
   width: calc(190 / 434 * 100cqi);
   height: auto;
   color: rgba(232, 232, 232, 0.6);
@@ -178,9 +161,21 @@
   margin: 0;
 }
 
+/* Ready와 Day 1 사이 구분선 (Figma x244 y461.5 w141) */
+.coast-plan__day:nth-child(1)::after {
+  content: "";
+  position: absolute;
+  top: calc(461 / 850 * 100cqb);
+  left: calc(45 / 434 * 100cqi);
+  width: calc(141 / 434 * 100cqi);
+  height: 1px;
+  background: #cac4d0;
+  pointer-events: none;
+}
+
 .coast-plan__day-btn {
   position: absolute;
-  left: calc(33 / 434 * 100cqi);
+  left: calc(44.76 / 434 * 100cqi);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -196,19 +191,20 @@
 }
 
 .coast-plan__day:nth-child(1) .coast-plan__day-btn {
-  top: calc(384 / 850 * 100cqb);
+  top: calc(397 / 850 * 100cqb);
+  left: calc(45 / 434 * 100cqi);
 }
 
 .coast-plan__day:nth-child(2) .coast-plan__day-btn {
-  top: calc(468 / 850 * 100cqb);
+  top: calc(496 / 850 * 100cqb);
 }
 
 .coast-plan__day:nth-child(3) .coast-plan__day-btn {
-  top: calc(552 / 850 * 100cqb);
+  top: calc(563 / 850 * 100cqb);
 }
 
 .coast-plan__day:nth-child(4) .coast-plan__day-btn {
-  top: calc(636 / 850 * 100cqb);
+  top: calc(630 / 850 * 100cqb);
 }
 
 .coast-plan__day-btn:focus-visible {
@@ -235,16 +231,20 @@
 .coast-plan__day-en {
   opacity: 1;
   font-family: var(--font-inter);
+  line-height: calc(15 / 850 * 100cqb);
 }
 
+/* 화살표 꼭짓점 x+2, 한글 x+15 (Figma Ready 244 → 259) */
 .coast-plan__day-ko {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: calc(8 / 434 * 100cqi);
   margin-top: calc(6 / 850 * 100cqb);
+  padding-left: calc(2 / 434 * 100cqi);
   opacity: 0.5;
   font-size: calc(12 / 434 * 100cqi);
+  line-height: normal;
 }
 
 .coast-plan__chevron {
@@ -255,40 +255,18 @@
   object-fit: contain;
 }
 
-.coast-plan__back {
-  position: absolute;
-  left: calc(33 / 434 * 100cqi);
-  top: calc(785 / 850 * 100cqb);
-  display: flex;
-  align-items: center;
-  gap: calc(8 / 434 * 100cqi);
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: var(--font-noto-sans);
-  font-size: calc(13 / 434 * 100cqi);
-  font-weight: 400;
-  font-synthesis: none;
-  font-variation-settings: "wght" 400;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.coast-plan__back-icon {
-  width: calc(5 / 434 * 100cqi);
-  height: calc(10 / 434 * 100cqi);
-  object-fit: contain;
+.coast-plan .coast__top-back {
+  animation: coast-text-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--panel-hold) + 0.7s) both;
 }
 
 /* 일정표의 NEXT로 돌아올 때는 패널이 들어와 있는 완성 화면을 바로 보여준다 */
-.coast-plan--instant :is(.coast__frost, .coast__frost-scene, .coast__sheet, .coast-plan__content) {
+.coast-plan--instant :is(.coast__frost, .coast__frost-scene, .coast__sheet, .coast-plan__content, .coast__top-back) {
   animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coast-plan__content {
+  .coast-plan__content,
+  .coast-plan .coast__top-back {
     animation: none;
   }
 }

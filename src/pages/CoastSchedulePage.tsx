@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import backArrow from "../assets/coast-schedule/schedule-back.svg";
+import backArrow from "../assets/common/back-chevron.svg";
 import scheduleCliff from "../assets/coast-schedule/schedule-cliff.webp";
 import scheduleGlow from "../assets/coast-schedule/schedule-glow.svg";
 import "../styles/viewport-full.css";
@@ -126,22 +126,16 @@ export default function CoastSchedulePage() {
                 </li>
               ))}
             </ul>
-            <button
-              className="coast-schedule__back"
-              type="button"
-              onClick={() => navigate("/coast/include", { state: { restored: true } })}
-            >
-              <img
-                className="coast-schedule__back-icon"
-                src={backArrow}
-                alt=""
-                width={5}
-                height={10}
-              />
-              Back
-            </button>
           </div>
         </div>
+        <button
+          className="coast__top-back"
+          type="button"
+          onClick={() => navigate("/coast/include", { state: { restored: true } })}
+        >
+          <img src={backArrow} alt="" />
+          Back
+        </button>
       </div>
     </main>
   );

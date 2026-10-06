@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import BusinessClassPage from "./pages/BusinessClassPage";
+import CoastConsultPage from "./pages/CoastConsultPage";
 import CoastIncludePage from "./pages/CoastIncludePage";
 import CoastPage from "./pages/CoastPage";
 import CoastPinePage from "./pages/CoastPinePage";
@@ -9,6 +10,7 @@ import CoastPlanDay3ItineraryPage from "./pages/CoastPlanDay3ItineraryPage";
 import CoastPlanItineraryPage from "./pages/CoastPlanItineraryPage";
 import CoastPlanPage from "./pages/CoastPlanPage";
 import CoastReadyPage from "./pages/CoastReadyPage";
+import CoastReservePage from "./pages/CoastReservePage";
 import CoastSchedulePage from "./pages/CoastSchedulePage";
 import FirstClassPage from "./pages/FirstClassPage";
 import HotelIntroPage from "./pages/HotelIntroPage";
@@ -43,6 +45,9 @@ export default function App() {
       <Route path="/coast/first-class" element={<FirstClassPage />} />
       <Route path="/coast/business-class" element={<BusinessClassPage />} />
       <Route path="/coast/pine" element={<CoastPinePage />} />
+      <Route path="/coast/reserve" element={<CoastReservePage />} />
+      <Route path="/coast/reserve/:kind" element={<HotelIntroPage />} />
+      <Route path="/coast/reserve/consult/form" element={<CoastConsultPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

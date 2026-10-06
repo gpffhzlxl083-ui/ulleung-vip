@@ -5,14 +5,25 @@ import base from "../assets/hotel-intro/base.svg";
 import baseTeal from "../assets/hotel-intro/base-teal.svg";
 import brand from "../assets/hotel-intro/brand.svg";
 import coastWavePoster from "../assets/coast/coast-wave-poster.jpg";
+import coastReservePoster from "../assets/coast-reserve/coast-reserve-poster.jpg";
 import "../styles/viewport-full.css";
 import "../styles/hotel-intro.css";
 
 /** edge: 왼쪽 그라데이션 띠만 남김(라마다 레이아웃), top: 위쪽 헤더만 남김(일정 레이아웃) */
 type SheetKind = "edge" | "top";
 
-/** slide: 스케줄 화면의 오른쪽 패널이 늘어나 화면을 덮은 뒤 로고 → 문구 순으로 나타남 */
-type IntroPage = { text: string; next?: string; teal?: boolean; sheet?: SheetKind; slide?: boolean };
+/**
+ * slide: 스케줄 화면의 오른쪽 패널이 늘어나 화면을 덮은 뒤 로고 → 문구 순으로 나타남
+ * stone: 예약 페이지의 베이지 패널 그대로 늘어나 세로 그라데이션으로 끝남
+ */
+type IntroPage = {
+  text: string;
+  next?: string;
+  teal?: boolean;
+  sheet?: SheetKind;
+  slide?: boolean;
+  stone?: boolean;
+};
 
 const PAGES: Record<string, IntroPage> = {
   hotel: { text: "호텔 포함사항입니다", next: "/coast/hotel", sheet: "edge" },
@@ -39,6 +50,8 @@ const PAGES: Record<string, IntroPage> = {
     sheet: "top",
     slide: true,
   },
+  consult: { text: "상담 요청하기입니다", next: "/coast/reserve/consult/form", slide: true, stone: true },
+  booking: { text: "패키지 예약하기입니다", slide: true, stone: true },
 };
 
 const HOLD_MS = 1500;
@@ -73,14 +86,18 @@ export default function HotelIntroPage() {
 
   return (
     <main
-      className={`vf hotel-intro${page.teal ? " hotel-intro--teal" : ""}${page.sheet === "top" ? " hotel-intro--rise" : ""}${slide ? " hotel-intro--slide" : ""}`}
+      className={`vf hotel-intro${page.teal ? " hotel-intro--teal" : ""}${page.sheet === "top" ? " hotel-intro--rise" : ""}${slide ? " hotel-intro--slide" : ""}${page.stone ? " hotel-intro--stone" : ""}`}
     >
       <div className={`vf__stage hotel-intro__stage${leaving ? " is-pulling" : ""}`}>
         {slide ? (
           <>
-            <img className="hotel-intro__photo" src={coastWavePoster} alt="" />
+            <img
+              className="hotel-intro__photo"
+              src={page.stone ? coastReservePoster : coastWavePoster}
+              alt=""
+            />
             <div className="hotel-intro__panel">
-              <img className="hotel-intro__base-teal" src={baseTeal} alt="" />
+              {page.stone ? null : <img className="hotel-intro__base-teal" src={baseTeal} alt="" />}
             </div>
           </>
         ) : page.teal ? (

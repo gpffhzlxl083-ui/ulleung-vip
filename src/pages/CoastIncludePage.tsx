@@ -4,7 +4,7 @@ import coastBrown from "../assets/coast-include/coast-brown.mp4";
 import coastBrownPoster from "../assets/coast-include/coast-brown-poster.jpg";
 import logoAube from "../assets/common/logo-aube.svg";
 import brandPlace from "../assets/hotel-intro/brand.svg";
-import backArrow from "../assets/coast-schedule/schedule-back.svg";
+import backArrow from "../assets/common/back-chevron.svg";
 import { useSwipeNav } from "../hooks/useSwipeNav";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
@@ -198,9 +198,9 @@ export default function CoastIncludePage() {
     };
   }, [restored]);
 
-  const goCoast = () => navigate("/coast");
+  const goReserve = () => navigate("/coast/reserve");
   const goPine = () => navigate("/coast/pine");
-  const swipe = useSwipeNav({ onPrev: goPine, onNext: goCoast, disabled: scheduleOpen });
+  const swipe = useSwipeNav({ onPrev: goPine, onNext: goReserve, disabled: scheduleOpen });
 
   return (
     <main
@@ -304,7 +304,7 @@ export default function CoastIncludePage() {
                     더보기
                   </button>
                 </div>
-                <Arrow dir="next" onClick={goCoast} />
+                <Arrow dir="next" onClick={goReserve} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
@@ -355,12 +355,18 @@ export default function CoastIncludePage() {
                 </li>
               ))}
             </ul>
-            <button className="coast-schedule__back" type="button" onClick={() => setScheduleOpen(false)}>
-              <img className="coast-schedule__back-icon" src={backArrow} alt="" width={5} height={10} />
-              Back
-            </button>
           </div>
         </div>
+        <button
+          className="coast__top-back coast__top-back--overlay coast__top-back--schedule"
+          type="button"
+          aria-hidden={!scheduleOpen}
+          tabIndex={scheduleOpen ? 0 : -1}
+          onClick={() => setScheduleOpen(false)}
+        >
+          <img src={backArrow} alt="" />
+          Back
+        </button>
       </div>
     </main>
   );

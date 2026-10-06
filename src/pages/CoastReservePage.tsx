@@ -1,30 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import coastWave from "../assets/coast/coast-wave.mp4";
-import coastWavePoster from "../assets/coast/coast-wave-poster.jpg";
+import coastReserve from "../assets/coast-reserve/coast-reserve.mp4";
+import coastReservePoster from "../assets/coast-reserve/coast-reserve-poster.jpg";
+import reserveBack from "../assets/common/back-chevron.svg";
+import reserveTagline from "../assets/coast-reserve/reserve-tagline.png";
 import logoAube from "../assets/common/logo-aube.svg";
 import brandPlace from "../assets/hotel-intro/brand.svg";
-import dayArrow from "../assets/coast-plan/day-arrow.png";
-import backArrow from "../assets/common/back-chevron.svg";
 import { useSwipeNav } from "../hooks/useSwipeNav";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
-import "../styles/coast-plan.css";
+import "../styles/coast-reserve.css";
 
-const PLAN_DAYS: { en: string; ko: string; to?: string }[] = [
-  { en: "Ready", ko: "출발 전 계획 보기", to: "/coast/plan/intro/ready" },
-  { en: "Day 1", ko: "1일 계획 보기", to: "/coast/plan/intro/day1" },
-  { en: "Day 2", ko: "2일 계획 보기", to: "/coast/plan/intro/day2" },
-  { en: "Day 3", ko: "3일 계획 보기", to: "/coast/plan/intro/day3" },
-];
-
-function Arrow({
-  dir,
-  onClick,
-}: {
-  dir: "prev" | "next";
-  onClick: () => void;
-}) {
+function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) {
   const label = dir === "prev" ? "이전" : "다음";
   return (
     <button
@@ -85,11 +72,16 @@ function drawVideoCover(canvas: HTMLCanvasElement, video: HTMLVideoElement) {
   ctx.drawImage(video, sx, sy, sw, sh, 0, 0, cw, ch);
 }
 
-export default function CoastPage() {
+const RESERVE_MENU = [
+  { en: "Consulting", ko: "상담요청 하기", to: "/coast/reserve/consult" },
+  { en: "Booking", ko: "패키지 예약하기", to: "/coast/reserve/booking" },
+];
+
+export default function CoastReservePage() {
   const navigate = useNavigate();
   const [videoOn, setVideoOn] = useState(false);
-  const [planOpen, setPlanOpen] = useState(false);
-  const [planSeen, setPlanSeen] = useState(false);
+  const [reserveOpen, setReserveOpen] = useState(false);
+  const [reserveSeen, setReserveSeen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frostCanvasRef = useRef<HTMLCanvasElement>(null);
   const frostSceneRef = useRef<HTMLDivElement>(null);
@@ -124,9 +116,7 @@ export default function CoastPage() {
       raf = requestAnimationFrame(tick);
     };
 
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
       video.pause();
       paint();
@@ -175,21 +165,26 @@ export default function CoastPage() {
     };
   }, []);
 
-  const swipe = useSwipeNav({
-    onPrev: () => navigate("/coast/reserve"),
-    onNext: () => navigate("/coast/pine"),
-    disabled: planOpen,
-  });
+  const goInclude = () => navigate("/coast/include");
+  const goCoast = () => navigate("/coast");
+  const openReserve = () => {
+    setReserveSeen(true);
+    setReserveOpen(true);
+  };
+  const swipe = useSwipeNav({ onPrev: goInclude, onNext: goCoast, disabled: reserveOpen });
 
   return (
-    <main {...swipe} className={`vf coast${planOpen ? " is-plan" : ""}${planSeen && !planOpen ? " is-restored" : ""}`}>
+    <main
+      {...swipe}
+      className={`vf coast coast-reserve${reserveOpen ? " is-reserve" : ""}${reserveSeen && !reserveOpen ? " is-restored" : ""}`}
+    >
       <div className="vf__stage">
-        <img className="vf__img coast__img" src={coastWavePoster} alt="" />
+        <img className="vf__img coast__img" src={coastReservePoster} alt="" />
         <video
           ref={videoRef}
           className={`vf__img coast__img${videoOn ? " coast__img--on" : ""}`}
-          src={coastWave}
-          poster={coastWavePoster}
+          src={coastReserve}
+          poster={coastReservePoster}
           muted
           playsInline
           preload="auto"
@@ -197,14 +192,9 @@ export default function CoastPage() {
           onPlaying={() => setVideoOn(true)}
         />
         <div className="coast__frost" aria-hidden="true">
-          <svg
-            className="coast__frost-defs"
-            width="0"
-            height="0"
-            aria-hidden="true"
-          >
+          <svg className="coast__frost-defs" width="0" height="0" aria-hidden="true">
             <filter
-              id="coast-glass-fx"
+              id="coast-reserve-glass-fx"
               x="-8%"
               y="-8%"
               width="116%"
@@ -255,7 +245,7 @@ export default function CoastPage() {
             <canvas
               ref={frostCanvasRef}
               className="coast__frost-img"
-              style={{ filter: "url(#coast-glass-fx)" }}
+              style={{ filter: "url(#coast-reserve-glass-fx)" }}
             />
           </div>
           <div className="coast__frost-shine" />
@@ -268,75 +258,68 @@ export default function CoastPage() {
               <img className="coast__logo" src={logoAube} alt="AUBE" />
               <img className="coast__place" src={brandPlace} alt="Ulleungdo, Dokdo" />
             </div>
+            <img
+              className="coast-reserve__tagline"
+              src={reserveTagline}
+              alt="Premium Island Journey"
+              width={163}
+              height={15}
+            />
             <div className="coast__mid">
               <div className="coast__nav">
-                <Arrow dir="prev" onClick={() => navigate("/coast/reserve")} />
+                <Arrow dir="prev" onClick={goInclude} />
                 <div className="coast__nav-copy">
-                  <p className="coast__nav-title">2박3일 일정표</p>
+                  <button className="coast__nav-title coast-reserve__open" type="button" onClick={openReserve}>
+                    패키지 예약하기
+                  </button>
                   <span className="coast__nav-line" />
-                  <button
-                    className="coast__nav-more"
-                    type="button"
-                    onClick={() => {
-                      setPlanSeen(true);
-                      setPlanOpen(true);
-                    }}
-                  >
+                  <button className="coast__nav-more" type="button" onClick={openReserve}>
                     더보기
                   </button>
                 </div>
-                <Arrow dir="next" onClick={() => navigate("/coast/pine")} />
+                <Arrow dir="next" onClick={goCoast} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
-            <div className="coast__story">
-              <p className="coast__story-title">바다 해(海)</p>
-              <span className="coast__story-dash">-</span>
-              <p className="coast__story-body">
-                육지의 소음이 닿지 않는 곳,
-                <br />
-                오랜 외로움이 빚어낸
-                <br />
-                깊고 푸른 울릉 앞바다
-              </p>
-            </div>
           </div>
-          <div className="coast__plan" aria-hidden={!planOpen}>
-            <p className="coast-plan__head-en">S&nbsp;&nbsp;C&nbsp;&nbsp;H&nbsp;&nbsp;E&nbsp;&nbsp;D&nbsp;&nbsp;U&nbsp;&nbsp;L&nbsp;&nbsp;E</p>
-            <p className="coast-plan__body">
-              프리미엄 패키지는 준비부터 여정의
+          <div className="coast-reserve__panel" aria-hidden={!reserveOpen}>
+            <p className="coast-reserve__title">R E S E R V A T I O N</p>
+            <p className="coast-reserve__lead">
+              프리미엄 패키지는 전문 MD가 배정
               <br />
-              참여까지 특별하고 차별된 프로그램
+              되어 친절한 상담과 질의응답 관련 등
               <br />
-              서비스로 운영되는 <span className="coast-plan__vip">VIP</span> 일정입니다
+              여행업무를 지원 서비스하고 있습니다
             </p>
-            <ol className="coast-plan__days">
-              {PLAN_DAYS.map((day) => (
-                <li key={day.en} className="coast-plan__day">
+            <ul className="coast-reserve__menu">
+              {RESERVE_MENU.map((item) => (
+                <li key={item.en} className="coast-reserve__item">
                   <button
-                    className="coast-plan__day-btn"
+                    className="coast-reserve__item-btn"
                     type="button"
-                    onClick={() => day.to && navigate(day.to)}
+                    onClick={() => navigate(item.to)}
                   >
-                    <span className="coast-plan__day-en">{day.en}</span>
-                    <span className="coast-plan__day-ko">
-                      <img className="coast-plan__chevron" src={dayArrow} alt="" />
-                      {day.ko}
+                    <span className="coast-reserve__item-en">{item.en}</span>
+                    <span className="coast-reserve__item-ko">
+                      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                        <path d="M10 17V7L15 12L10 17Z" fill="#fff" />
+                      </svg>
+                      {item.ko}
                     </span>
                   </button>
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         </div>
         <button
-          className="coast__top-back coast__top-back--overlay coast__top-back--plan"
+          className="coast-reserve__back"
           type="button"
-          aria-hidden={!planOpen}
-          tabIndex={planOpen ? 0 : -1}
-          onClick={() => setPlanOpen(false)}
+          aria-hidden={!reserveOpen}
+          tabIndex={reserveOpen ? 0 : -1}
+          onClick={() => setReserveOpen(false)}
         >
-          <img src={backArrow} alt="" />
+          <img src={reserveBack} alt="" width={3.51893} height={7.81253} />
           Back
         </button>
       </div>

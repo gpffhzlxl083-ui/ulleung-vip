@@ -1,5 +1,5 @@
-.coast-ready {
-  background: #d9d9d9;
+﻿.coast-ready {
+  background: #cfc2c2;
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
-  background: #27575e;
+  background: #f3f0ec;
 }
 
 .coast-ready__stage::-webkit-scrollbar {
@@ -47,7 +47,7 @@
   }
 }
 
-.coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__base) {
+.coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__header) {
   animation: coast-ready-pull-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -65,7 +65,7 @@
   }
 
   .coast-ready--fade-in .coast-ready__stage,
-  .coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__base) {
+  .coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__header) {
     animation: none;
   }
 }
@@ -84,19 +84,46 @@
 }
 
 /* SVG 그라데이션은 세로로 그려져 있어 Figma처럼 -90.14deg 회전해 좌→우로 깐다 */
-.coast-ready__base {
-  top: calc((-3.3 + 857.537 / 2) / 850 * 100cqb);
-  left: calc((-3.03 + 447.656 / 2) / 434 * 100cqi);
-  width: calc(856.464 / 850 * 100cqb);
-  height: calc(445.591 / 434 * 100cqi);
+.coast-ready__header {
+  top: calc((-1 + 73.055 / 2) / 850 * 100cqb);
+  left: calc((-4 + 437.673 / 2) / 434 * 100cqi);
+  z-index: 1;
+  width: calc(72 / 850 * 100cqb);
+  height: calc(437.5 / 434 * 100cqi);
   transform: translate(-50%, -50%) rotate(-90.14deg);
+}
+
+/* 헤더 로고 103×22: brand.svg(193×41)와 같은 비율로 AUBE 글자를 겹친다 */
+.coast-ready__header-logo {
+  position: absolute;
+  top: calc(28 / 850 * 100cqb);
+  left: calc(169 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(103 / 434 * 100cqi);
+  height: calc(22 / 850 * 100cqb);
+  pointer-events: none;
+}
+
+.coast-ready__screen .coast-ready__header-brand {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.coast-ready__screen .coast-ready__header-aube {
+  top: calc(1.07 / 850 * 100cqb);
+  left: calc(20.81 / 434 * 100cqi);
+  width: calc(58.7 / 434 * 100cqi);
+  height: auto;
+  aspect-ratio: 233.164 / 42.497;
+  filter: brightness(0) invert(1);
 }
 
 .coast-ready__back {
   position: absolute;
   top: calc(24 / 850 * 100cqb);
   left: calc(20 / 434 * 100cqi);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: flex-start;
   height: calc(20 / 850 * 100cqb);
@@ -121,7 +148,7 @@
 .coast-ready__text {
   position: absolute;
   margin: 0;
-  color: #fff;
+  color: #000;
   font-family: var(--font-inter);
   white-space: nowrap;
   line-height: normal;
@@ -139,17 +166,24 @@
 .coast-ready__title {
   position: absolute;
   left: calc(221 / 434 * 100cqi);
+  margin: 0;
   transform: translateX(-50%);
-  color: #fff;
+  color: #302c2c;
   text-align: center;
   white-space: nowrap;
   font-family: var(--font-inter);
   font-size: calc(14 / 434 * 100cqi);
+  font-weight: 600;
   line-height: calc(25 / 850 * 100cqb);
 }
 
 .coast-ready__title p {
   margin: 0;
+}
+
+.coast-ready__title--wide {
+  color: #000;
+  font-weight: 400;
 }
 
 .coast-ready__label {
@@ -158,7 +192,7 @@
 }
 
 .coast-ready__label--dim {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .coast-ready__body {
@@ -166,13 +200,17 @@
 }
 
 .coast-ready__note {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   font-size: calc(11 / 434 * 100cqi);
   letter-spacing: calc(0.22 / 434 * 100cqi);
 }
 
 .coast-ready__note--narrow {
   letter-spacing: calc(0.11 / 434 * 100cqi);
+}
+
+.coast-ready__note--tight {
+  line-height: 100.315%;
 }
 
 .coast-ready__heading {
@@ -195,20 +233,47 @@
   font-weight: 500;
 }
 
+.coast-ready__md-no {
+  color: #434141;
+}
+
+.coast-ready__md-title {
+  color: #383535;
+}
+
+.coast-ready__md-desc {
+  color: rgba(39, 37, 37, 0.8);
+}
+
+.coast-ready__md-step--soft .coast-ready__md-title {
+  color: #434141;
+}
+
+.coast-ready__md-step--soft .coast-ready__md-desc {
+  color: rgba(44, 43, 43, 0.8);
+}
+
+.coast-ready__premium-title {
+  color: #201e1e;
+}
+
+.coast-ready__premium-desc,
 .coast-ready__tag {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(38, 37, 37, 0.8);
+}
+
+.coast-ready__tag {
   font-size: calc(11 / 434 * 100cqi);
 }
 
-.coast-ready__arrow {
-  top: calc(200.45 / 850 * 100cqb);
-  left: calc(216.45 / 434 * 100cqi);
-  width: calc(9.1 / 434 * 100cqi);
-  height: calc(16.1 / 850 * 100cqb);
+.coast-ready__divider {
+  top: calc(223 / 850 * 100cqb);
+  width: calc(362 / 434 * 100cqi);
+  height: 1px;
 }
 
 .coast-ready__route {
-  top: calc(326.8 / 850 * 100cqb);
+  top: calc(362.8 / 850 * 100cqb);
   left: calc(61.8 / 434 * 100cqi);
   width: calc(313.4 / 434 * 100cqi);
   height: calc(330.4 / 850 * 100cqb);
@@ -220,7 +285,7 @@
 }
 
 .coast-ready__md-line {
-  top: calc((291 + 401 / 2) / 850 * 100cqb);
+  top: calc((319 + 401 / 2) / 850 * 100cqb);
   left: calc(68 / 434 * 100cqi);
   width: calc(401 / 850 * 100cqb);
   height: 0.5px;
@@ -234,25 +299,29 @@
 }
 
 .coast-ready__orbit {
-  top: calc(238 / 850 * 100cqb);
-  left: calc(74 / 434 * 100cqi);
-  width: calc(371 / 434 * 100cqi);
-  height: calc(450 / 850 * 100cqb);
-  object-fit: cover;
-}
-
-.coast-ready__brand {
-  top: calc(451 / 850 * 100cqb);
-  left: calc(252 / 434 * 100cqi);
-  width: calc(193 / 434 * 100cqi);
-  height: calc(41 / 850 * 100cqb);
+  top: calc((261 - 0.73) / 850 * 100cqb);
+  left: calc(227 / 434 * 100cqi);
+  width: calc(213 / 434 * 100cqi);
+  height: calc(407.5 / 850 * 100cqb);
 }
 
 .coast-ready__logo {
-  top: calc(453 / 850 * 100cqb);
-  left: calc(291 / 434 * 100cqi);
-  width: calc(110 / 434 * 100cqi);
-  height: auto;
-  aspect-ratio: 233.164 / 42.497;
-  filter: brightness(0) invert(1);
+  top: calc(443 / 850 * 100cqb);
+  left: calc(258 / 434 * 100cqi);
+  width: calc(188.425 / 434 * 100cqi);
+  height: calc(25.365 / 850 * 100cqb);
+}
+
+.coast-ready__logo-sub {
+  position: absolute;
+  top: calc(475 / 850 * 100cqb);
+  left: calc(352.5 / 434 * 100cqi);
+  margin: 0;
+  transform: translateX(-50%);
+  color: #000;
+  font-family: var(--font-myeongjo);
+  font-size: calc(9.625 / 434 * 100cqi);
+  letter-spacing: calc(1.2512 / 434 * 100cqi);
+  line-height: normal;
+  white-space: nowrap;
 }

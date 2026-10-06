@@ -366,13 +366,6 @@ button.coast__nav-more {
   position: absolute;
   inset: 0;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  padding: calc(39 / 850 * 100cqb) calc(22 / 434 * 100cqi) calc(51 / 850 * 100cqb)
-    calc(35 / 434 * 100cqi);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -399,6 +392,50 @@ button.coast__nav-more {
 }
 
 .coast.is-schedule.is-direct .coast__schedule {
+  animation: none;
+  opacity: 1;
+}
+
+/* 패널 밖 화면 왼쪽 위 Back (Figma 26,24) */
+.coast__top-back {
+  position: absolute;
+  top: calc(24 / 850 * 100cqb);
+  left: calc(26 / 434 * 100cqi);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: calc(10.5 / 434 * 100cqi);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.coast__top-back img {
+  width: calc(3.51893 / 434 * 100cqi);
+  height: auto;
+}
+
+/* 같은 패널 안에서 일정·포함사항을 열 때만 보이는 Back */
+.coast__top-back--overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.coast.is-plan .coast__top-back--plan,
+.coast.is-schedule .coast__top-back--schedule {
+  visibility: visible;
+  pointer-events: auto;
+  animation: coast-text-in 0.6s ease 0.28s both;
+}
+
+.coast.is-schedule.is-direct .coast__top-back--schedule {
   animation: none;
   opacity: 1;
 }
@@ -450,7 +487,10 @@ button.coast__nav-more {
   }
 
   .coast.is-plan .coast__plan,
-  .coast.is-schedule .coast__schedule {
+  .coast.is-schedule .coast__schedule,
+  .coast.is-plan .coast__top-back--plan,
+  .coast.is-schedule .coast__top-back--schedule {
+    animation: none;
     opacity: 1;
     visibility: visible;
   }

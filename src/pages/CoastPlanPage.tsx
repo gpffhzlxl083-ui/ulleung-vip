@@ -3,7 +3,7 @@ import dayArrow from "../assets/coast-plan/day-arrow.png";
 import cardFrame from "../assets/coast-plan/card-frame.png";
 import line15 from "../assets/coast-plan/line-15.png";
 import panelBase from "../assets/coast-plan/panel-base.png";
-import backArrow from "../assets/coast-schedule/schedule-back.svg";
+import backArrow from "../assets/common/back-chevron.svg";
 import coastWavePoster from "../assets/coast/coast-wave-poster.jpg";
 import "../styles/viewport-full.css";
 import "../styles/coast.css";
@@ -92,7 +92,6 @@ export default function CoastPlanPage() {
               <div className="coast-plan__head">
                 <p className="coast-plan__head-en">S&nbsp;&nbsp;C&nbsp;&nbsp;H&nbsp;&nbsp;E&nbsp;&nbsp;D&nbsp;&nbsp;U&nbsp;&nbsp;L&nbsp;&nbsp;E</p>
               </div>
-              <p className="coast-plan__label">premium package</p>
               <p className="coast-plan__body">
                 프리미엄 패키지는 준비부터 여정의
                 <br />
@@ -119,22 +118,12 @@ export default function CoastPlanPage() {
                 </li>
               ))}
             </ol>
-            <button
-              className="coast-plan__back"
-              type="button"
-              onClick={() => navigate("/coast")}
-            >
-              <img
-                className="coast-plan__back-icon"
-                src={backArrow}
-                alt=""
-                width={5}
-                height={10}
-              />
-              Back
-            </button>
           </div>
         </div>
+        <button className="coast__top-back" type="button" onClick={() => navigate("/coast")}>
+          <img src={backArrow} alt="" />
+          Back
+        </button>
       </div>
     </main>
   );
