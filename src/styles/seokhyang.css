@@ -1,11 +1,3 @@
-@font-face {
-  font-family: "Noto Sans KR Package";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("/fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
-}
-
 .seokhyang {
   --intro-delay: 0.4s;
   --next-delay: 4.2s;
@@ -15,7 +7,6 @@
   --cap-w: 219;
   --cap-h: 510;
   --glass-bg: rgba(29, 13, 13, 0.15);
-  --glass-border: rgba(255, 255, 255, 0.75);
   --glass-blur: 2.98px;
   --glass-saturate: 130%;
   --glass-light: 135deg;
@@ -242,21 +233,6 @@
     both;
 }
 
-.seokhyang__journey {
-  margin: calc(13 / 850 * 100cqb) 0 0;
-  color: #2b2b2b;
-  text-align: center;
-  font-family: "Noto Sans", "Segoe UI", sans-serif;
-  font-size: calc(5.2 / 434 * 100cqi);
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-  animation: seokhyang-soft-in 4.2s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--landing-delay) + 0.4s)
-    both;
-}
-
 .seokhyang__package {
   position: absolute;
   left: 0;
@@ -278,7 +254,7 @@
   margin: 0;
   color: rgba(255, 255, 255, 0.87);
   text-align: center;
-  font-family: "Noto Sans KR Package", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: calc(13 / 434 * 100cqi);
   font-style: normal;
   font-weight: 400;
@@ -306,7 +282,7 @@
   margin: calc(10 / 850 * 100cqb) 0 0;
   color: rgba(255, 255, 255, 0.87);
   text-align: center;
-  font-family: "Noto Sans KR Package", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: calc(13 / 434 * 100cqi);
   font-style: normal;
   font-weight: 700;
@@ -456,7 +432,6 @@
   .seokhyang__capsule-scene,
   .seokhyang__logo,
   .seokhyang__place,
-  .seokhyang__journey,
   .seokhyang__footer {
     animation: none;
   }

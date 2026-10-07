@@ -76,7 +76,6 @@
 }
 
 .coast-plan__head-en,
-.coast-plan__head-ko,
 .coast-plan__body {
   position: absolute;
   z-index: 1;
@@ -99,21 +98,6 @@
   line-height: calc(31 / 850 * 100cqb);
   text-align: left;
   white-space: nowrap;
-  font-synthesis: none;
-}
-
-.coast-plan__head-ko {
-  top: calc(55 / 850 * 100cqb);
-  left: calc(30 / 434 * 100cqi);
-  width: calc(54 / 434 * 100cqi);
-  height: calc(18 / 850 * 100cqb);
-  color: #fff;
-  font-family: var(--font-noto-sans);
-  font-size: calc(14 / 434 * 100cqi);
-  font-weight: 100;
-  font-style: normal;
-  letter-spacing: 0;
-  line-height: 1;
   font-synthesis: none;
 }
 

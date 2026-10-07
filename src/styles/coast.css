@@ -163,19 +163,6 @@
   height: 100%;
 }
 
-.coast__journey {
-  margin: calc(14 / 850 * 100cqb) 0 0;
-  color: rgba(255, 255, 255, 0.92);
-  text-align: center;
-  font-family: "Noto Sans", "Segoe UI", sans-serif;
-  font-size: calc(5.2 / 434 * 100cqi);
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
 .coast__mid {
   position: absolute;
   top: calc(352 / 850 * 100%);

@@ -1,8 +1,12 @@
+/* public/fonts는 `npm run fonts`(scripts/subset-fonts.mjs)로 만든 글자 범위별 서브셋이다 */
 @font-face {
-  font-family: "NanumBarunGothic";
+  font-family: "NanumMyeongjo YetHangul";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/NanumBarunGothic.otf") format("opentype");
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-yethangul-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF, U+2100-22FF, U+2460-24FF,
+    U+25A0-27BF, U+3000-303F, U+FF00-FFEF;
 }
 
 @font-face {
@@ -10,78 +14,73 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/NanumMyeongjo-YetHangul.ttf") format("truetype");
-}
-
-/* 원본 OTF는 브라우저가 거부해서, 글자 범위별 woff2로 나눠 변환한 파일을 쓴다 */
-@font-face {
-  font-family: "NanumMyeongjoOTF YetHangul";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/nanum-myeongjo-otf-yethangul/latin.woff2?v=2") format("woff2");
-  unicode-range: U+0000-024F, U+2000-2BFF, U+3000-303F, U+FF00-FFEF;
+  src: url("/fonts/nanum-myeongjo-yethangul-hangul.woff2") format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
 }
 
 @font-face {
-  font-family: "NanumMyeongjoOTF YetHangul";
+  font-family: "NanumMyeongjo YetHangul";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/nanum-myeongjo-otf-yethangul/jamo.woff2?v=2") format("woff2");
-  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
-}
-
-@font-face {
-  font-family: "NanumMyeongjoOTF YetHangul";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/nanum-myeongjo-otf-yethangul/hangul.woff2?v=2") format("woff2");
-  unicode-range: U+AC00-D7A3;
-}
-
-@font-face {
-  font-family: "NanumMyeongjoOTF YetHangul";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/nanum-myeongjo-otf-yethangul/hanja.woff2?v=2") format("woff2");
+  src: url("/fonts/nanum-myeongjo-yethangul-hanja.woff2") format("woff2");
   unicode-range: U+4E00-9FFF, U+F900-FAFF;
 }
 
 @font-face {
-  font-family: "NanumMyeongjoOTF YetHangul";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/nanum-myeongjo-otf-yethangul/rest.woff2?v=2") format("woff2");
-  unicode-range: U+02BC, U+02C7, U+02D0, U+02D8-02DD, U+0391-03A9, U+03B1-03C9, U+0401,
-    U+0410-044F, U+0451, U+3041-30F6, U+3200-33DD, U+E0BC-EFFF, U+F100-F66E;
-}
-
-@font-face {
   font-family: "NanumMyeongjo";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/NanumMyeongjo.otf") format("opentype");
+  src: url("/fonts/nanum-myeongjo-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF, U+2100-22FF, U+2460-24FF,
+    U+25A0-27BF, U+3000-303F, U+FF00-FFEF;
 }
 
 @font-face {
   font-family: "NanumMyeongjo";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-display: swap;
-  src: url("/fonts/NanumMyeongjoBold.otf") format("opentype");
+  src: url("/fonts/nanum-myeongjo-hangul.woff2") format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
 }
 
 @font-face {
   font-family: "NanumMyeongjo";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-display: swap;
-  src: url("/fonts/NanumMyeongjoBold.otf") format("opentype");
+  src: url("/fonts/nanum-myeongjo-hanja.woff2") format("woff2");
+  unicode-range: U+4E00-9FFF, U+F900-FAFF;
+}
+
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-bold-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF, U+2100-22FF, U+2460-24FF,
+    U+25A0-27BF, U+3000-303F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-bold-hangul.woff2") format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+}
+
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("/fonts/nanum-myeongjo-bold-hanja.woff2") format("woff2");
+  unicode-range: U+4E00-9FFF, U+F900-FAFF;
 }
 
 @font-face {
@@ -97,18 +96,10 @@
 @font-face {
   font-family: "Noto Sans Gujarati";
   font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/NotoSansGujarati-SemiBold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Noto Sans Gujarati";
-  font-style: normal;
   font-weight: 100 900;
   font-stretch: 62.5% 100%;
   font-display: swap;
-  src: url("/fonts/NotoSansGujarati-Variable.ttf") format("truetype");
+  src: url("/fonts/noto-sans-gujarati-latin.woff2") format("woff2");
 }
 
 @font-face {
@@ -116,15 +107,18 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/Inter-Variable.ttf") format("truetype");
+  src: url("/fonts/inter-latin.woff2") format("woff2");
 }
 
+/* "Noto Sans"도 의도적으로 Noto Sans KR 파일을 쓴다 (라틴 글자 모양을 한글과 맞춤) */
 @font-face {
-  font-family: "Inter";
-  font-style: italic;
+  font-family: "Noto Sans KR";
+  font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/Inter-Italic-Variable.ttf") format("truetype");
+  src: url("/fonts/noto-sans-kr-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF, U+2100-22FF, U+2460-24FF,
+    U+25A0-27BF, U+3000-303F, U+FF00-FFEF;
 }
 
 @font-face {
@@ -132,7 +126,17 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+  src: url("/fonts/noto-sans-kr-hangul.woff2") format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/noto-sans-kr-hanja.woff2") format("woff2");
+  unicode-range: U+4E00-9FFF, U+F900-FAFF;
 }
 
 @font-face {
@@ -140,25 +144,41 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+  src: url("/fonts/noto-sans-kr-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF, U+2100-22FF, U+2460-24FF,
+    U+25A0-27BF, U+3000-303F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/noto-sans-kr-hangul.woff2") format("woff2");
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/noto-sans-kr-hanja.woff2") format("woff2");
+  unicode-range: U+4E00-9FFF, U+F900-FAFF;
 }
 
 :root {
   /* 앱 카드 기준 뷰포트 (브라우저 반응형 426×1098과 맞춤) */
   --app-max-width: 426px;
   --app-max-height: 1098px;
-  --font-nanum-barun: "NanumBarunGothic", "나눔바른고딕 OTF", sans-serif;
   --font-pretendard: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
     sans-serif;
   --font-editors-note: "Editor's Note", "Times New Roman", Times, serif;
   --font-myeongjo: "NanumMyeongjo YetHangul", serif;
-  --font-baskerville-old-face: "Baskerville Old Face", "Libre Baskerville", Georgia, serif;
   --font-gujarati: "Noto Sans Gujarati", "Noto Sans", var(--font-pretendard);
   --font-inter: "Inter", "Noto Sans KR", var(--font-pretendard);
-  --font-noto-sans-kr: "Noto Sans KR", sans-serif;
   --font-noto-sans: "Noto Sans", "Noto Sans KR", sans-serif;
-  --font-nanum-myeongjo: "NanumMyeongjo", serif;
 }
 
 *,

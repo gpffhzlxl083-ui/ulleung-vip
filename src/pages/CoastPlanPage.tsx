@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import dayArrow from "../assets/coast-plan/day-arrow.png";
 import cardFrame from "../assets/coast-plan/card-frame.png";
 import line15 from "../assets/coast-plan/line-15.png";
-import panelBase from "../assets/coast-plan/panel-base.png";
+import panelBase from "../assets/coast-plan/panel-base.webp";
 import backArrow from "../assets/common/back-chevron.svg";
 import coastWavePoster from "../assets/coast/coast-wave-poster.jpg";
 import "../styles/viewport-full.css";
