@@ -198,9 +198,9 @@ export default function CoastIncludePage() {
     };
   }, [restored]);
 
-  const goReserve = () => navigate("/coast/reserve");
+  const goCoast = () => navigate("/coast");
   const goPine = () => navigate("/coast/pine");
-  const swipe = useSwipeNav({ onPrev: goPine, onNext: goReserve, disabled: scheduleOpen });
+  const swipe = useSwipeNav({ onPrev: goPine, onNext: goCoast, disabled: scheduleOpen });
 
   return (
     <main
@@ -304,7 +304,7 @@ export default function CoastIncludePage() {
                     더보기
                   </button>
                 </div>
-                <Arrow dir="next" onClick={goReserve} />
+                <Arrow dir="next" onClick={goCoast} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>

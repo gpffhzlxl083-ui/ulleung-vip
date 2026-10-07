@@ -157,7 +157,7 @@ export default function CoastPinePage() {
   }, []);
 
   const swipe = useSwipeNav({
-    onPrev: () => navigate("/coast"),
+    onPrev: () => navigate("/coast/reserve"),
     onNext: () => navigate("/coast/include"),
   });
 
@@ -245,7 +245,7 @@ export default function CoastPinePage() {
             </div>
             <div className="coast__mid">
               <div className="coast__nav">
-                <Arrow dir="prev" onClick={() => navigate("/coast")} />
+                <Arrow dir="prev" onClick={() => navigate("/coast/reserve")} />
                 <div className="coast__nav-copy">
                   <p className="coast__nav-title">ABOUT US</p>
                   <span className="coast__nav-line" />

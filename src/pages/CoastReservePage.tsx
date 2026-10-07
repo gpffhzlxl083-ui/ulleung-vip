@@ -165,13 +165,13 @@ export default function CoastReservePage() {
     };
   }, []);
 
-  const goInclude = () => navigate("/coast/include");
   const goCoast = () => navigate("/coast");
+  const goPine = () => navigate("/coast/pine");
   const openReserve = () => {
     setReserveSeen(true);
     setReserveOpen(true);
   };
-  const swipe = useSwipeNav({ onPrev: goInclude, onNext: goCoast, disabled: reserveOpen });
+  const swipe = useSwipeNav({ onPrev: goCoast, onNext: goPine, disabled: reserveOpen });
 
   return (
     <main
@@ -267,7 +267,7 @@ export default function CoastReservePage() {
             />
             <div className="coast__mid">
               <div className="coast__nav">
-                <Arrow dir="prev" onClick={goInclude} />
+                <Arrow dir="prev" onClick={goCoast} />
                 <div className="coast__nav-copy">
                   <button className="coast__nav-title coast-reserve__open" type="button" onClick={openReserve}>
                     패키지 예약하기
@@ -277,7 +277,7 @@ export default function CoastReservePage() {
                     더보기
                   </button>
                 </div>
-                <Arrow dir="next" onClick={goCoast} />
+                <Arrow dir="next" onClick={goPine} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>

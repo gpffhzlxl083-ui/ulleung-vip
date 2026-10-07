@@ -176,8 +176,8 @@ export default function CoastPage() {
   }, []);
 
   const swipe = useSwipeNav({
-    onPrev: () => navigate("/coast/reserve"),
-    onNext: () => navigate("/coast/pine"),
+    onPrev: () => navigate("/coast/include"),
+    onNext: () => navigate("/coast/reserve"),
     disabled: planOpen,
   });
 
@@ -270,7 +270,7 @@ export default function CoastPage() {
             </div>
             <div className="coast__mid">
               <div className="coast__nav">
-                <Arrow dir="prev" onClick={() => navigate("/coast/reserve")} />
+                <Arrow dir="prev" onClick={() => navigate("/coast/include")} />
                 <div className="coast__nav-copy">
                   <p className="coast__nav-title">2박3일 일정표</p>
                   <span className="coast__nav-line" />
@@ -285,7 +285,7 @@ export default function CoastPage() {
                     더보기
                   </button>
                 </div>
-                <Arrow dir="next" onClick={() => navigate("/coast/pine")} />
+                <Arrow dir="next" onClick={() => navigate("/coast/reserve")} />
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
