@@ -202,6 +202,11 @@
   background: linear-gradient(180deg, #beafa5 0%, #565a5c 65.385%, #52605d 100%);
 }
 
+/* 상담 폼 본문이 흰색이라 올라오는 시트도 흰색 */
+.hotel-intro--stone .hotel-intro__sheet--top {
+  background: #fff;
+}
+
 /* 다음 화면도 같은 그라데이션이라 로고와 문구만 제자리에서 사라진다 */
 .hotel-intro--stone .hotel-intro__stage.is-pulling :is(.hotel-intro__logo, .hotel-intro__brand, .hotel-intro__text) {
   translate: 0 0;

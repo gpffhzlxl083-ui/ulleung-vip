@@ -1,5 +1,5 @@
 .coast-consult {
-  background: #cfc2c2;
+  background: #d9d9d9;
   overflow: hidden;
 }
 
@@ -32,13 +32,32 @@
   pointer-events: none;
 }
 
-.coast-consult--fade-in .coast-consult__stage > * {
+/* 인트로의 흰 시트가 올라온 직후라 헤더와 흰 바탕은 그대로 두고 내용만 나타난다 */
+.coast-consult--fade-in :is(.coast-consult__brand, .coast-consult__back) {
   animation: coast-consult-fade-in 0.7s ease both;
+}
+
+.coast-consult--fade-in :is(
+    .coast-consult__title,
+    .coast-consult__lead,
+    .coast-consult__code,
+    .coast-consult__stage > .coast-consult__rule,
+    .coast-consult__form > *
+  ) {
+  animation: coast-consult-pull-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes coast-consult-fade-in {
   from {
     opacity: 0;
+  }
+}
+
+/* 기존 transform 배치를 건드리지 않도록 translate 속성으로 움직인다 */
+@keyframes coast-consult-pull-in {
+  from {
+    opacity: 0;
+    translate: 0 calc(28 / 850 * 100cqb);
   }
 }
 
@@ -129,7 +148,7 @@
   left: calc(67 / 434 * 100cqi);
   margin: 0;
   opacity: 0.5;
-  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-family: "Noto Sans KR", var(--font-pretendard);
   font-size: calc(10 / 434 * 100cqi);
   font-weight: 700;
   line-height: normal;
@@ -223,6 +242,9 @@
 
 .coast-consult__step {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: calc(14 / 434 * 100cqi);
   height: calc(14 / 434 * 100cqi);
   padding: 0;
@@ -244,6 +266,8 @@
 
 .coast-consult__step span {
   position: relative;
+  display: block;
+  line-height: 1;
 }
 
 .coast-consult__step:disabled {
@@ -262,7 +286,7 @@
 
 .coast-consult__count {
   position: absolute;
-  top: calc(11 / 850 * 100cqb);
+  top: 50%;
   left: 50%;
   margin: 0;
   transform: translate(-50%, -50%);
@@ -311,7 +335,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coast-consult--fade-in .coast-consult__stage > * {
+  .coast-consult--fade-in :is(
+      .coast-consult__brand,
+      .coast-consult__back,
+      .coast-consult__title,
+      .coast-consult__lead,
+      .coast-consult__code,
+      .coast-consult__stage > .coast-consult__rule,
+      .coast-consult__form > *
+    ) {
     animation: none;
   }
 }

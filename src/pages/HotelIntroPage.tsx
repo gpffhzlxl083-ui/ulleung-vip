@@ -50,7 +50,13 @@ const PAGES: Record<string, IntroPage> = {
     sheet: "top",
     slide: true,
   },
-  consult: { text: "상담 요청하기입니다", next: "/coast/reserve/consult/form", slide: true, stone: true },
+  consult: {
+    text: "상담 요청하기입니다",
+    next: "/coast/reserve/consult/form",
+    sheet: "top",
+    slide: true,
+    stone: true,
+  },
   booking: { text: "패키지 예약하기입니다", slide: true, stone: true },
 };
 
