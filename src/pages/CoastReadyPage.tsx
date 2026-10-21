@@ -9,6 +9,7 @@ import logoBlack from "../assets/coast-ready/ready-logo.png";
 import mdDot from "../assets/coast-ready/ready-md-dot.svg";
 import mdLine from "../assets/coast-ready/ready-md-line.svg";
 import header from "../assets/coast-ready/ready-header.svg";
+import sheet from "../assets/coast-ready/ready-sheet.svg";
 import orbit from "../assets/coast-ready/ready-orbit.svg";
 import route from "../assets/coast-ready/ready-path.svg";
 import brand from "../assets/hotel-intro/brand.svg";
@@ -83,24 +84,11 @@ const PREMIUM_GROUPS = [
   },
 ];
 
-function Screen({ backTop, onBack, children }: { backTop: number; onBack: () => void; children: ReactNode }) {
+function Screen({ sheetSrc, children }: { sheetSrc?: string; children: ReactNode }) {
   return (
     <section className="coast-ready__screen">
+      {sheetSrc ? <img className="coast-ready__sheet" src={sheetSrc} alt="" /> : null}
       {children}
-      <img className="coast-ready__header" src={header} alt="" />
-      <div className="coast-ready__header-logo">
-        <img className="coast-ready__header-brand" src={brand} alt="" />
-        <img className="coast-ready__header-aube" src={logoAube} alt="AUBE" />
-      </div>
-      <button
-        className="coast-ready__back"
-        type="button"
-        style={{ "--back-top": backTop } as CSSProperties}
-        onClick={onBack}
-      >
-        <img className="coast-ready__back-icon" src={backIcon} alt="" />
-        Back
-      </button>
     </section>
   );
 }
@@ -117,7 +105,23 @@ export default function CoastReadyPage() {
       className={`vf coast-ready${fadeIn ? " coast-ready--fade-in" : ""}${pullIn ? " coast-ready--pull-in" : ""}`}
     >
       <div className="vf__stage coast-ready__stage">
-        <Screen backTop={28} onBack={goBack}>
+        <div className="coast-ready__chrome">
+          <img className="coast-ready__header" src={header} alt="" />
+          <div className="coast-ready__header-logo">
+            <img className="coast-ready__header-brand" src={brand} alt="" />
+            <img className="coast-ready__header-aube" src={logoAube} alt="AUBE" />
+          </div>
+          <button
+            className="coast-ready__back"
+            type="button"
+            style={{ "--back-top": 28 } as CSSProperties}
+            onClick={goBack}
+          >
+            <img className="coast-ready__back-icon" src={backIcon} alt="" />
+            Back
+          </button>
+        </div>
+        <Screen sheetSrc={sheet}>
           <div className="coast-ready__title" style={{ top: "calc(129 / 850 * 100cqb)" }}>
             <p>{"<오브,울릉>은 출발 전 부터"}</p>
             <p>전문상담사가 안내를 도와드립니다</p>
@@ -166,7 +170,7 @@ export default function CoastReadyPage() {
           </Text>
         </Screen>
 
-        <Screen backTop={27} onBack={goBack}>
+        <Screen sheetSrc={sheet}>
           <Text top={141} left={68} className="coast-ready__heading" align="mid">MD 전문상담사 서비스</Text>
           <Text top={162} left={68} className="coast-ready__lead">
             {"<오브,울릉>에서는 고객님만을 위한  전용 MD가 다양한 상담을 지원합니다"}
@@ -183,7 +187,7 @@ export default function CoastReadyPage() {
             />
           ))}
           {MD_STEPS.map((step) => (
-            <div key={step.no} className={step.soft ? "coast-ready__md-step--soft" : undefined}>
+            <div key={step.no} className={`coast-ready__layer${step.soft ? " coast-ready__md-step--soft" : ""}`}>
               <Text top={step.mid} left={100} className="coast-ready__step coast-ready__md-no" align="mid">{step.no}</Text>
               <Text top={step.mid} left={180} className="coast-ready__step coast-ready__md-title" align="mid">{step.title}</Text>
               <Text
@@ -199,7 +203,7 @@ export default function CoastReadyPage() {
           ))}
         </Screen>
 
-        <Screen backTop={27} onBack={goBack}>
+        <Screen sheetSrc={sheet}>
           <p className="coast-ready__title coast-ready__title--wide" style={{ top: "calc(122 / 850 * 100cqb)" }}>
             {"<오브,울릉> 프리미엄 패키지입니다"}
           </p>
@@ -207,7 +211,7 @@ export default function CoastReadyPage() {
           <img className="coast-ready__logo" src={logoBlack} alt="AUBE" />
           <p className="coast-ready__logo-sub">Ulleungdo, Dokdo</p>
           {PREMIUM_GROUPS.map((group) => (
-            <div key={group.title}>
+            <div key={group.title} className="coast-ready__layer">
               <Text top={group.mid} left={group.left} className="coast-ready__step coast-ready__premium-title" align="mid">
                 {group.title}
               </Text>

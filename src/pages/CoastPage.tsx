@@ -289,17 +289,6 @@ export default function CoastPage() {
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
-            <div className="coast__story">
-              <p className="coast__story-title">바다 해(海)</p>
-              <span className="coast__story-dash">-</span>
-              <p className="coast__story-body">
-                육지의 소음이 닿지 않는 곳,
-                <br />
-                오랜 외로움이 빚어낸
-                <br />
-                깊고 푸른 울릉 앞바다
-              </p>
-            </div>
           </div>
           <div className="coast__plan" aria-hidden={!planOpen}>
             <p className="coast-plan__head-en">S&nbsp;&nbsp;C&nbsp;&nbsp;H&nbsp;&nbsp;E&nbsp;&nbsp;D&nbsp;&nbsp;U&nbsp;&nbsp;L&nbsp;&nbsp;E</p>

@@ -165,7 +165,7 @@
 
 .coast__mid {
   position: absolute;
-  top: calc(352 / 850 * 100%);
+  top: calc(404 / 850 * 100%);
   left: 0;
   right: 0;
   width: 100%;
@@ -218,13 +218,17 @@
   position: absolute;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(25 / 850 * 100cqb);
   margin: 0;
   color: #fff;
   text-align: center;
   font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
   font-size: calc(11 / 434 * 100cqi);
   font-weight: 400;
-  line-height: normal;
+  line-height: 1;
   letter-spacing: 0;
 }
 
@@ -234,7 +238,6 @@
 
 .coast__nav-more {
   top: calc(32 / 850 * 100cqb);
-  height: calc(25 / 850 * 100cqb);
 }
 
 button.coast__nav-more {
@@ -258,7 +261,7 @@ button.coast__nav-more {
 
 .coast__hint {
   position: absolute;
-  top: calc(112 / 850 * 100cqb);
+  top: calc(232 / 850 * 100cqb);
   left: 0;
   right: 0;
   margin: 0;

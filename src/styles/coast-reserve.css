@@ -13,14 +13,6 @@
   animation: coast-text-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--panel-hold) + 1.2s) both;
 }
 
-.coast-reserve .coast__mid {
-  top: calc(404 / 850 * 100%);
-}
-
-.coast-reserve .coast__hint {
-  top: calc(232 / 850 * 100cqb);
-}
-
 button.coast-reserve__open {
   padding: 0;
   border: 0;

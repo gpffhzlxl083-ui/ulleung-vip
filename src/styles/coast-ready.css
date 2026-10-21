@@ -1,4 +1,4 @@
-﻿.coast-ready {
+.coast-ready {
   background: #d9d9d9;
   overflow: hidden;
 }
@@ -14,27 +14,13 @@
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
-  background: #f3f0ec;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  background: #f0efed;
 }
 
 .coast-ready__stage::-webkit-scrollbar {
-  width: 4px;
-}
-
-.coast-ready__stage::-webkit-scrollbar-track {
-  background: #d6cfc5;
-}
-
-.coast-ready__stage::-webkit-scrollbar-thumb {
-  background: #3f97a8;
-  border-radius: 999px;
-}
-
-@supports (-moz-appearance: none) {
-  .coast-ready__stage {
-    scrollbar-width: thin;
-    scrollbar-color: #3f97a8 #d6cfc5;
-  }
+  display: none;
 }
 
 .coast-ready--fade-in .coast-ready__stage {
@@ -47,7 +33,8 @@
   }
 }
 
-.coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__header) {
+.coast-ready--pull-in .coast-ready__chrome,
+.coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__sheet) {
   animation: coast-ready-pull-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -65,15 +52,30 @@
   }
 
   .coast-ready--fade-in .coast-ready__stage,
-  .coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__header) {
+  .coast-ready--pull-in .coast-ready__chrome,
+  .coast-ready--pull-in .coast-ready__screen:first-child > :not(.coast-ready__sheet) {
     animation: none;
   }
+}
+
+.coast-ready__chrome {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 0;
+  pointer-events: none;
+}
+
+.coast-ready__chrome .coast-ready__back {
+  pointer-events: auto;
 }
 
 .coast-ready__screen {
   position: relative;
   height: 100cqb;
   overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .coast-ready__screen img {
@@ -85,12 +87,33 @@
 
 /* SVG 그라데이션은 세로로 그려져 있어 Figma처럼 -90.14deg 회전해 좌→우로 깐다 */
 .coast-ready__header {
+  position: absolute;
   top: calc((-1 + 73.055 / 2) / 850 * 100cqb);
   left: calc((-4 + 437.673 / 2) / 434 * 100cqi);
   z-index: 1;
   width: calc(72 / 850 * 100cqb);
   height: calc(437.5 / 434 * 100cqi);
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
   transform: translate(-50%, -50%) rotate(-90.14deg);
+}
+
+.coast-ready__sheet {
+  top: calc(67 / 850 * 100cqb);
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: calc(783 / 850 * 100cqb);
+}
+
+.coast-ready__screen > :not(.coast-ready__sheet) {
+  z-index: 2;
+}
+
+.coast-ready__layer {
+  position: relative;
+  z-index: 2;
 }
 
 /* 헤더 로고 103×22: brand.svg(193×41)와 같은 비율로 AUBE 글자를 겹친다 */
@@ -104,13 +127,15 @@
   pointer-events: none;
 }
 
-.coast-ready__screen .coast-ready__header-brand {
+.coast-ready__header-brand {
+  position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.coast-ready__screen .coast-ready__header-aube {
+.coast-ready__header-aube {
+  position: absolute;
   top: calc(1.07 / 850 * 100cqb);
   left: calc(20.81 / 434 * 100cqi);
   width: calc(58.7 / 434 * 100cqi);
@@ -138,11 +163,13 @@
   cursor: pointer;
 }
 
-.coast-ready__screen .coast-ready__back-icon {
+.coast-ready__back-icon {
+  position: absolute;
   top: calc((var(--back-top) - 0.16 - 24) / 850 * 100cqb);
   left: calc(5.68 / 434 * 100cqi);
   width: calc(3.519 / 434 * 100cqi);
   height: calc(7.813 / 850 * 100cqb);
+  pointer-events: none;
 }
 
 .coast-ready__text {
@@ -166,6 +193,8 @@
 .coast-ready__title {
   position: absolute;
   left: calc(221 / 434 * 100cqi);
+  width: calc(206 / 434 * 100cqi);
+  height: calc(50 / 850 * 100cqb);
   margin: 0;
   transform: translateX(-50%);
   color: #302c2c;
@@ -182,6 +211,8 @@
 }
 
 .coast-ready__title--wide {
+  width: auto;
+  height: auto;
   color: #000;
   font-weight: 400;
 }
@@ -267,16 +298,16 @@
 }
 
 .coast-ready__divider {
-  top: calc(223 / 850 * 100cqb);
+  top: calc(224 / 850 * 100cqb);
   width: calc(362 / 434 * 100cqi);
   height: 1px;
 }
 
 .coast-ready__route {
-  top: calc(362.8 / 850 * 100cqb);
-  left: calc(61.8 / 434 * 100cqi);
-  width: calc(313.4 / 434 * 100cqi);
-  height: calc(330.4 / 850 * 100cqb);
+  top: calc(363 / 850 * 100cqb);
+  left: calc(62 / 434 * 100cqi);
+  width: calc(313 / 434 * 100cqi);
+  height: calc(330 / 850 * 100cqb);
 }
 
 .coast-ready__dot {

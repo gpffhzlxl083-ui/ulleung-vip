@@ -255,17 +255,6 @@ export default function CoastPinePage() {
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
-            <div className="coast__story">
-              <p className="coast__story-title">나무 목(木)</p>
-              <span className="coast__story-dash">-</span>
-              <p className="coast__story-body">
-                위태로운 울릉도의 절벽 끝,
-                <br />
-                섬의 기나긴 시간을
-                <br />
-                침묵으로 채우는 울릉해송
-              </p>
-            </div>
           </div>
         </div>
       </div>

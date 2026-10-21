@@ -308,17 +308,6 @@ export default function CoastIncludePage() {
               </div>
               <p className="coast__hint">화면을 좌우로 넘겨보세요</p>
             </div>
-            <div className="coast__story">
-              <p className="coast__story-title">바위 암(岩)</p>
-              <span className="coast__story-dash">-</span>
-              <p className="coast__story-body">
-                파도와 바람이 깎아낸 섬,
-                <br />
-                세상에 남겨진 가장
-                <br />
-                단단한 조각, 주상절리
-              </p>
-            </div>
           </div>
           <div className="coast__schedule" aria-hidden={!scheduleOpen}>
             <div className="coast-schedule__head">

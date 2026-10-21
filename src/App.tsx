@@ -12,10 +12,12 @@ import CoastPlanPage from "./pages/CoastPlanPage";
 import CoastReadyPage from "./pages/CoastReadyPage";
 import CoastReservePage from "./pages/CoastReservePage";
 import CoastSchedulePage from "./pages/CoastSchedulePage";
+import FineDiningPage from "./pages/FineDiningPage";
 import FirstClassPage from "./pages/FirstClassPage";
 import HotelIntroPage from "./pages/HotelIntroPage";
 import RamadaPage from "./pages/RamadaPage";
 import SeokhyangPage from "./pages/SeokhyangPage";
+import VipVanPage from "./pages/VipVanPage";
 
 export default function App() {
   return (
@@ -44,6 +46,8 @@ export default function App() {
       <Route path="/coast/plan/intro/:kind" element={<HotelIntroPage />} />
       <Route path="/coast/first-class" element={<FirstClassPage />} />
       <Route path="/coast/business-class" element={<BusinessClassPage />} />
+      <Route path="/coast/van" element={<VipVanPage />} />
+      <Route path="/coast/dining" element={<FineDiningPage />} />
       <Route path="/coast/pine" element={<CoastPinePage />} />
       <Route path="/coast/reserve" element={<CoastReservePage />} />
       <Route path="/coast/reserve/:kind" element={<HotelIntroPage />} />
