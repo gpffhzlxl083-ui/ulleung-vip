@@ -2,17 +2,6 @@
   background: linear-gradient(180deg, #beafa5 0%, #565a5c 65.3846%, #52605d 100%);
 }
 
-.coast-reserve__tagline {
-  position: absolute;
-  top: calc(236 / 850 * 100%);
-  left: 0;
-  right: 0;
-  width: calc(163 / 434 * 100cqi);
-  height: calc(15 / 850 * 100cqb);
-  margin: 0 auto;
-  animation: coast-text-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--panel-hold) + 1.2s) both;
-}
-
 button.coast-reserve__open {
   padding: 0;
   border: 0;
@@ -30,7 +19,7 @@ button.coast-reserve__open {
   pointer-events: none;
 }
 
-.coast-reserve.is-reserve :is(.coast__brand, .coast-reserve__tagline, .coast__mid) {
+.coast-reserve.is-reserve :is(.coast__brand, .coast__mid) {
   animation: coast-text-out 0.45s ease forwards;
   pointer-events: none;
 }
@@ -41,7 +30,7 @@ button.coast-reserve__open {
   animation: coast-text-in 0.6s ease 0.28s both;
 }
 
-.coast-reserve.is-restored :is(.coast__brand, .coast-reserve__tagline, .coast__mid) {
+.coast-reserve.is-restored :is(.coast__brand, .coast__mid) {
   animation: coast-text-in 0.45s ease both;
 }
 
@@ -155,14 +144,13 @@ button.coast-reserve__open {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coast-reserve__tagline,
-  .coast-reserve.is-reserve :is(.coast__brand, .coast-reserve__tagline, .coast__mid),
+  .coast-reserve.is-reserve :is(.coast__brand, .coast__mid),
   .coast-reserve.is-reserve :is(.coast-reserve__panel, .coast-reserve__back),
-  .coast-reserve.is-restored :is(.coast__brand, .coast-reserve__tagline, .coast__mid) {
+  .coast-reserve.is-restored :is(.coast__brand, .coast__mid) {
     animation: none;
   }
 
-  .coast-reserve.is-reserve :is(.coast__brand, .coast-reserve__tagline, .coast__mid) {
+  .coast-reserve.is-reserve :is(.coast__brand, .coast__mid) {
     opacity: 0;
   }
 

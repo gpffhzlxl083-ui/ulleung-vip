@@ -705,24 +705,19 @@
   z-index: 1;
   top: calc(694 / 850 * 100cqb);
   left: calc(113 / 434 * 100cqi);
-  width: calc(120 / 434 * 100cqi);
+  width: calc(171 / 434 * 100cqi);
   margin: 0;
   padding: 0 0 0 calc(15 / 434 * 100cqi);
   color: rgba(107, 104, 104, 0.6);
   font-family: Inter, "Noto Sans KR", sans-serif;
   font-size: calc(10 / 434 * 100cqi);
   font-weight: 400;
-  line-height: normal;
+  line-height: calc(15 / 850 * 100cqb);
   list-style: disc;
-}
-
-.coast-plan-itinerary__spot-meta li + li {
-  margin-top: calc(15 / 850 * 100cqb);
 }
 
 .coast-plan-itinerary__spot-meta--side {
   left: calc(237 / 434 * 100cqi);
-  width: calc(160 / 434 * 100cqi);
 }
 
 .coast-plan-itinerary__outro-sheet {
@@ -895,22 +890,41 @@
 .coast-plan-itinerary__outro-cta {
   position: absolute;
   z-index: 1;
-  top: calc(791 / 850 * 100cqb);
-  left: calc(156 / 434 * 100cqi);
+  top: calc(784 / 850 * 100cqb);
+  left: calc(48 / 434 * 100cqi);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: calc(228 / 434 * 100cqi);
   height: calc(34 / 850 * 100cqb);
   margin: 0;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
   color: rgba(25, 56, 62, 0.9);
   font-family: Inter, "Noto Sans KR", sans-serif;
   font-size: calc(11 / 434 * 100cqi);
   font-weight: 500;
   letter-spacing: calc(0.22 / 434 * 100cqi);
   line-height: calc(28 / 850 * 100cqb);
-  text-align: center;
+  text-align: left;
+}
+
+.coast-plan-itinerary__outro-ko {
+  position: absolute;
+  z-index: 1;
+  top: calc(799.5 / 850 * 100cqb);
+  left: calc(48 / 434 * 100cqi);
+  display: flex;
+  align-items: center;
+  width: calc(226 / 434 * 100cqi);
+  height: calc(17 / 850 * 100cqb);
+  margin: 0;
+  transform: translateY(-50%);
+  color: rgba(48, 46, 45, 0.9);
+  font-family: Inter, "Noto Sans KR", sans-serif;
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
 }
 
 .coast-plan-itinerary__outro-next {

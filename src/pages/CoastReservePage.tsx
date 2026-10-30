@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import coastReserve from "../assets/coast-reserve/coast-reserve.mp4";
 import coastReservePoster from "../assets/coast-reserve/coast-reserve-poster.jpg";
 import reserveBack from "../assets/common/back-chevron.svg";
-import reserveTagline from "../assets/coast-reserve/reserve-tagline.png";
 import logoAube from "../assets/common/logo-aube.svg";
 import brandPlace from "../assets/hotel-intro/brand.svg";
 import { useSwipeNav } from "../hooks/useSwipeNav";
@@ -258,13 +257,6 @@ export default function CoastReservePage() {
               <img className="coast__logo" src={logoAube} alt="AUBE" />
               <img className="coast__place" src={brandPlace} alt="Ulleungdo, Dokdo" />
             </div>
-            <img
-              className="coast-reserve__tagline"
-              src={reserveTagline}
-              alt="Premium Island Journey"
-              width={163}
-              height={15}
-            />
             <div className="coast__mid">
               <div className="coast__nav">
                 <Arrow dir="prev" onClick={goCoast} />

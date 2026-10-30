@@ -475,11 +475,12 @@ export default function CoastPlanDay3ItineraryPage() {
               <span>{"<오브,울릉>은 고객의 만족을 위해 끊임없는 노력과 끝없는 책임을 다하며 여정이 끝난"}</span>
               <span>후에도 고객의 찬란했던 추억을 간직하기 위해 다양한 서비스를 제공하고 있습니다</span>
             </p>
-            <p className="coast-plan-itinerary__outro-cta">Shall we move to the reservation page?</p>
+            <p className="coast-plan-itinerary__outro-cta coast-plan-day3__cta">Shall we move to the reservation page?</p>
+            <p className="coast-plan-itinerary__outro-ko">예약페이지로 이동하시겠습니까?</p>
             <button
               className="coast-plan-itinerary__outro-next"
               type="button"
-              onClick={() => navigate("/coast/plan", { state: { instant: true } })}
+              onClick={() => navigate("/coast/reserve")}
             >
               NEXT
             </button>

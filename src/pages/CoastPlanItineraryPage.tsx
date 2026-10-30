@@ -609,7 +609,8 @@ export default function CoastPlanItineraryPage() {
             <span>웰컴키트와 스낵박스 그리고 나이트투어와 힐링</span>
             <span>트래킹 투어를 통해서 마음이 즐거운 여정입니다</span>
           </p>
-          <p className="coast-plan-itinerary__outro-cta">Want to check out the 2-day plan?</p>
+          <p className="coast-plan-itinerary__outro-cta">Want to check out the 3-day plan?</p>
+          <p className="coast-plan-itinerary__outro-ko">3일 일정 계획으로 이동 하시겠습니까?</p>
           <button className="coast-plan-itinerary__outro-next" type="button" onClick={() => navigate("/coast/plan", { state: { instant: true } })}>
             NEXT
           </button>

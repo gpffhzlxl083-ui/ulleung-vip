@@ -30,6 +30,7 @@ import stem237 from "../assets/coast-plan/day2-stem-237.svg";
 import stem159 from "../assets/coast-plan/day2-stem-159.svg";
 import stem405 from "../assets/coast-plan/day2-stem-405.svg";
 import benefits from "../assets/coast-plan/day2-benefits.svg";
+import outroCard from "../assets/coast-plan/day2-outro-card.webp";
 import "../styles/viewport-full.css";
 import "../styles/coast-plan-day1.css";
 import "../styles/coast-plan-itinerary.css";
@@ -556,12 +557,16 @@ export default function CoastPlanDay2ItineraryPage() {
               <span>포함한 특별한 여정</span>
             </p>
             <img className="coast-plan-itinerary__outro-line coast-plan-day2__rule" src={outroLine} alt="" />
+            <div className="coast-plan-day2__card">
+              <img src={outroCard} alt="" />
+            </div>
             <p className="coast-plan-itinerary__outro-q coast-plan-day2__q">{`<오브, 울릉>의 두번째 여정은?`}</p>
             <p className="coast-plan-itinerary__outro-copy coast-plan-day2__body">
               <span>모든 입장료와 투어 그리고 커피와 디저트까지</span>
               <span>오브, 울릉의 여정에 있어 부족함은 없습니다</span>
             </p>
-            <p className="coast-plan-itinerary__outro-cta">Want to check out the 2-day plan?</p>
+            <p className="coast-plan-itinerary__outro-cta">Want to check out the 3-day plan?</p>
+            <p className="coast-plan-itinerary__outro-ko">3일 일정 계획으로 이동 하시겠습니까?</p>
             <button className="coast-plan-itinerary__outro-next" type="button" onClick={() => navigate("/coast/plan", { state: { instant: true } })}>
               NEXT
             </button>

@@ -131,3 +131,25 @@
 .coast-plan-day2__rule {
   top: calc(609 / 850 * 100cqb);
 }
+
+.coast-plan-day2__card {
+  position: absolute;
+  z-index: 1;
+  top: calc(628 / 850 * 100cqb);
+  left: calc(29 / 434 * 100cqi);
+  width: calc(147 / 434 * 100cqi);
+  height: calc(98 / 850 * 100cqb);
+  overflow: hidden;
+  border-radius: calc(6 / 434 * 100cqi);
+  pointer-events: none;
+}
+
+.coast-plan-day2__card img {
+  position: absolute;
+  top: 0.42%;
+  left: -139.76%;
+  width: 269.69%;
+  height: 302.63%;
+  max-width: none;
+}
+

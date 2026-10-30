@@ -147,3 +147,10 @@
 .coast-plan-day3__close-rule {
   top: calc(609 / 850 * 100cqb);
 }
+
+.coast-plan-day3__cta {
+  left: calc(156 / 434 * 100cqi);
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
