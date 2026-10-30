@@ -159,7 +159,7 @@
   flex-direction: column;
   align-items: stretch;
   min-height: 0;
-  padding: calc(51 / 850 * 100cqb) 0 calc(36 / 850 * 100cqb);
+  padding: calc(41 / 850 * 100cqb) 0 calc(36 / 850 * 100cqb);
 }
 
 .coast-plan-day1__body h1 {
@@ -182,7 +182,7 @@
   align-items: center;
   justify-content: center;
   height: calc(17 / 850 * 100cqb);
-  margin: calc(12 / 850 * 100cqb) 0 0;
+  margin: calc(9 / 850 * 100cqb) 0 0;
   color: rgba(11, 11, 11, 0.5);
   font-family: "NanumMyeongjo", var(--font-myeongjo);
   font-size: calc(13 / 434 * 100cqi);
@@ -195,7 +195,8 @@
 .coast-plan-day1__carousel {
   position: relative;
   width: 100%;
-  margin-top: calc(56 / 850 * 100cqb);
+  margin-top: calc(49 / 850 * 100cqb);
+  padding-bottom: calc(8 / 850 * 100cqb);
   overflow: hidden;
   touch-action: none;
   cursor: grab;
@@ -232,6 +233,7 @@
   object-fit: cover;
   object-position: center;
   border-radius: calc(8 / 434 * 100cqi);
+  box-shadow: 0 calc(4 / 850 * 100cqb) calc(4 / 434 * 100cqi) rgba(0, 0, 0, 0.25);
   pointer-events: none;
   -webkit-user-drag: none;
 }
@@ -261,7 +263,7 @@
 
 .coast-plan-day1__hint {
   position: absolute;
-  top: calc((543 - 70) / 850 * 100cqb);
+  top: calc((543 - 85) / 850 * 100cqb);
   left: calc(154 / 434 * 100cqi);
   width: calc(129 / 434 * 100cqi);
   margin: 0;
@@ -276,10 +278,10 @@
 
 .coast-plan-day1__meta {
   position: absolute;
-  top: calc((584 - 70) / 850 * 100cqb);
+  top: calc((606 - 85) / 850 * 100cqb);
   left: calc(82 / 434 * 100cqi);
   width: calc(272 / 434 * 100cqi);
-  height: calc((702 - 584) / 850 * 100cqb);
+  height: calc((724 - 606) / 850 * 100cqb);
   margin: 0;
 }
 
@@ -300,7 +302,7 @@
 
 .coast-plan-day1__row {
   position: absolute;
-  top: calc((610 - 584) / 850 * 100cqb);
+  top: calc((632 - 606) / 850 * 100cqb);
   left: calc(6 / 434 * 100cqi);
   display: grid;
   grid-template-columns: calc(107 / 434 * 100cqi) minmax(0, 1fr);
@@ -310,7 +312,7 @@
 }
 
 .coast-plan-day1__row--safety {
-  top: calc((639 - 584) / 850 * 100cqb);
+  top: calc((661 - 606) / 850 * 100cqb);
   align-items: start;
 }
 
@@ -349,7 +351,8 @@
 
 .coast-plan-day1__more {
   position: absolute;
-  top: calc((801 - 70) / 850 * 100cqb);
+  top: calc((801 - 85) / 850 * 100cqb);
+  white-space: nowrap;
   right: calc((434 - 380) / 434 * 100cqi);
   display: flex;
   align-items: center;

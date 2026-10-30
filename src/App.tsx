@@ -32,12 +32,12 @@ export default function App() {
       <Route path="/coast/plan/day1/itinerary" element={<CoastPlanItineraryPage />} />
       <Route
         path="/coast/plan/day2"
-        element={<CoastPlanDay1Page key="day2" itinerary="/coast/plan/day2/itinerary" />}
+        element={<CoastPlanDay1Page key="day2" day={2} itinerary="/coast/plan/day2/itinerary" />}
       />
       <Route path="/coast/plan/day2/itinerary" element={<CoastPlanDay2ItineraryPage />} />
       <Route
         path="/coast/plan/day3"
-        element={<CoastPlanDay1Page key="day3" itinerary="/coast/plan/day3/itinerary" />}
+        element={<CoastPlanDay1Page key="day3" day={3} itinerary="/coast/plan/day3/itinerary" />}
       />
       <Route path="/coast/plan/day3/itinerary" element={<CoastPlanDay3ItineraryPage />} />
       <Route path="/coast/hotel" element={<RamadaPage />} />

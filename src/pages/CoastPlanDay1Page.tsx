@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logoAube from "../assets/common/logo-aube.svg";
 import day1Sheet from "../assets/coast-plan/day1-sheet.svg";
@@ -24,19 +24,27 @@ const IMAGES = [
   ramadaHousekeeping,
 ];
 
+const SLIDES = [...IMAGES, ...IMAGES, ...IMAGES];
+const COUNT = IMAGES.length;
+const MIDDLE = COUNT;
+
 const SIDE_SCALE = 0.84;
 const SWIPE_THRESHOLD = 18;
 const FLICK_VELOCITY = 0.28;
+const SLIDE_EASE = "transform 0.32s cubic-bezier(0.22, 1, 0.36, 1)";
 
-type Props = { itinerary?: string };
+type Props = { itinerary?: string; day?: number };
 
-export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itinerary" }: Props) {
+export default function CoastPlanDay1Page({
+  itinerary = "/coast/plan/day1/itinerary",
+  day = 1,
+}: Props) {
   const navigate = useNavigate();
   const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean } | null;
   const fadeIn = Boolean(navState?.fadeIn);
   const pullIn = Boolean(navState?.pullIn);
   const frameRef = useRef<HTMLDivElement>(null);
-  const indexRef = useRef(0);
+  const posRef = useRef(MIDDLE);
   const dragRef = useRef({
     startX: 0,
     lastX: 0,
@@ -45,18 +53,21 @@ export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itiner
     width: 0,
     moved: false,
   });
-  const [index, setIndex] = useState(0);
+  const [pos, setPos] = useState(MIDDLE);
   const [dragX, setDragX] = useState(0);
   const [dragging, setDragging] = useState(false);
+  const [instant, setInstant] = useState(false);
   const [step, setStep] = useState(0);
 
-  indexRef.current = index;
+  posRef.current = pos;
+  const realIndex = ((pos % COUNT) + COUNT) % COUNT;
 
   const goTo = useCallback((next: number) => {
-    setIndex(Math.min(IMAGES.length - 1, Math.max(0, next)));
+    const target = ((next % COUNT) + COUNT) % COUNT;
+    setPos(MIDDLE + target);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = frameRef.current;
     if (!el) return;
     const measure = () => {
@@ -72,15 +83,32 @@ export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itiner
   }, []);
 
   useEffect(() => {
+    if (!instant) return;
+    setInstant(false);
+  }, [instant]);
+
+  useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight") goTo(index + 1);
-      if (event.key === "ArrowLeft") goTo(index - 1);
+      if (event.key === "ArrowRight") setPos((current) => Math.min(SLIDES.length - 1, current + 1));
+      if (event.key === "ArrowLeft") setPos((current) => Math.max(0, current - 1));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [goTo, index]);
+  }, []);
 
-  const x = -index * step + dragX;
+  const x = -pos * step + dragX;
+
+  const onTrackTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget || event.propertyName !== "transform") return;
+    const current = posRef.current;
+    if (current < COUNT) {
+      setInstant(true);
+      setPos(current + COUNT);
+    } else if (current >= COUNT * 2) {
+      setInstant(true);
+      setPos(current - COUNT);
+    }
+  };
 
   const finishDrag = (clientX: number) => {
     const drag = dragRef.current;
@@ -91,11 +119,10 @@ export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itiner
     const width = drag.width || 1;
     const elapsed = Math.max(performance.now() - drag.startTime, 1);
     const flicked = Math.abs(dx) / elapsed >= FLICK_VELOCITY && Math.abs(dx) > 8;
-    const current = indexRef.current;
     if (dx < 0 && (flicked || dx <= -SWIPE_THRESHOLD || dx <= -width * 0.08)) {
-      goTo(current + 1);
+      setPos((current) => Math.min(SLIDES.length - 1, current + 1));
     } else if (dx > 0 && (flicked || dx >= SWIPE_THRESHOLD || dx >= width * 0.08)) {
-      goTo(current - 1);
+      setPos((current) => Math.max(0, current - 1));
     }
     setDragX(0);
   };
@@ -115,11 +142,8 @@ export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itiner
 
     const onMove = (ev: PointerEvent) => {
       dragRef.current.lastX = ev.clientX;
-      let dx = ev.clientX - startX;
+      const dx = ev.clientX - startX;
       if (Math.abs(dx) > 6) dragRef.current.moved = true;
-      const current = indexRef.current;
-      if (current === 0 && dx > 0) dx *= 0.28;
-      if (current === IMAGES.length - 1 && dx < 0) dx *= 0.28;
       setDragX(dx);
     };
     const onUp = (ev: PointerEvent) => {
@@ -173,35 +197,37 @@ export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itiner
               className="coast-plan-day1__track"
               style={{
                 transform: step ? `translateX(${x}px)` : undefined,
-                transition: dragging ? "none" : "transform 0.32s cubic-bezier(0.22, 1, 0.36, 1)",
+                transition: dragging || instant || !step ? "none" : SLIDE_EASE,
               }}
+              onTransitionEnd={onTrackTransitionEnd}
             >
-              {IMAGES.map((src, imageIndex) => {
-                const offset = step ? imageIndex - index - dragX / step : imageIndex - index;
+              {SLIDES.map((src, imageIndex) => {
+                const offset = step ? imageIndex - pos - dragX / step : imageIndex - pos;
                 const distance = Math.min(Math.abs(offset), 1);
                 const scale = 1 - (1 - SIDE_SCALE) * distance;
                 const origin =
                   offset < -0.02 ? "right center" : offset > 0.02 ? "left center" : "center center";
+                const active = imageIndex === pos;
                 return (
                   <div
-                    key={src}
-                    className={`coast-plan-day1__slide${imageIndex === index ? " is-active" : ""}`}
+                    key={`${src}-${imageIndex}`}
+                    className={`coast-plan-day1__slide${active ? " is-active" : ""}`}
                     style={{
                       transform: `scale(${scale})`,
                       transformOrigin: origin,
-                      transition: dragging ? "none" : "transform 0.32s cubic-bezier(0.22, 1, 0.36, 1)",
+                      transition: dragging || instant || !step ? "none" : SLIDE_EASE,
                     }}
                   >
                     <img src={src} alt="" draggable={false} />
-                    {imageIndex === index ? (
+                    {active ? (
                       <div className="coast-plan-day1__dots">
                         {IMAGES.map((_, dotIndex) => (
                           <button
                             key={dotIndex}
                             type="button"
-                            className={dotIndex === index ? "is-active" : undefined}
+                            className={dotIndex === realIndex ? "is-active" : undefined}
                             aria-label={`${dotIndex + 1}번째 사진`}
-                            aria-current={dotIndex === index ? "true" : undefined}
+                            aria-current={dotIndex === realIndex ? "true" : undefined}
                             onClick={() => {
                               if (dragRef.current.moved) return;
                               goTo(dotIndex);
@@ -240,7 +266,7 @@ export default function CoastPlanDay1Page({ itinerary = "/coast/plan/day1/itiner
             type="button"
             onClick={() => navigate(itinerary)}
           >
-            일정표 바로보기
+            {`제${day}일 일정표 바로보기`}
             <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
               <path d="M10 17V7L15 12L10 17Z" fill="#595655" />
             </svg>
