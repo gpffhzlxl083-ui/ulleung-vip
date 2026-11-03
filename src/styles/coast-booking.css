@@ -1,0 +1,842 @@
+/* 패키지 예약 신청. 좌표는 Figma 1261:8451 (434 × 2847) */
+.coast-booking {
+  background: #d9d9d9;
+  overflow: hidden;
+}
+
+.coast-booking__stage {
+  aspect-ratio: 434 / 850;
+  width: min(100dvw, calc(100dvh * 434 / 850));
+  height: min(100dvh, calc(100dvw * 850 / 434));
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #f8f6f1;
+  overscroll-behavior: contain;
+  container-type: inline-size;
+  scrollbar-width: thin;
+  scrollbar-color: #52605d #e4ddd4;
+}
+
+.coast-booking__stage::-webkit-scrollbar {
+  width: 4px;
+}
+
+.coast-booking__stage::-webkit-scrollbar-track {
+  background: #e4ddd4;
+}
+
+.coast-booking__stage::-webkit-scrollbar-thumb {
+  background: #52605d;
+  border-radius: 999px;
+}
+
+.coast-booking__canvas {
+  position: relative;
+  width: 100%;
+  height: calc(2380 / 434 * 100cqi);
+  container-type: inline-size;
+  container-name: booking;
+  background: #f8f6f1;
+  overflow: hidden;
+  color: #5c5c5c;
+}
+
+.coast-booking--fade-in .coast-booking__canvas {
+  animation: coast-booking-in 0.7s ease both;
+}
+
+@keyframes coast-booking-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.coast-booking__header {
+  position: absolute;
+  top: calc(-1 / 434 * 100cqi);
+  left: calc(-1 / 434 * 100cqi);
+  z-index: 0;
+  width: calc(435.299 / 434 * 100cqi);
+  height: calc(78.177 / 434 * 100cqi);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.coast-booking__header-base {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(77.127 / 434 * 100cqi);
+  height: auto;
+  aspect-ratio: 77.1273 / 435.114;
+  transform: translate(-50%, -50%) rotate(-90.14deg);
+}
+
+.coast-booking__sheet {
+  position: absolute;
+  top: calc(67 / 434 * 100cqi);
+  left: 0;
+  z-index: 1;
+  width: calc(434 / 434 * 100cqi);
+  height: auto;
+  aspect-ratio: 434 / 3190;
+  pointer-events: none;
+  user-select: none;
+}
+
+.coast-booking__back {
+  position: absolute;
+  top: calc(25.33 / 434 * 100cqi);
+  left: calc(19 / 434 * 100cqi);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: calc(10.5 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Noto Sans", "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.coast-booking__back img {
+  display: block;
+  width: calc(3.51893 / 434 * 100cqi);
+  height: auto;
+}
+
+.coast-booking__brand {
+  position: absolute;
+  top: calc(24.33 / 434 * 100cqi);
+  left: calc(153 / 434 * 100cqi);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(117 / 434 * 100cqi);
+  pointer-events: none;
+  user-select: none;
+}
+
+.coast-booking__logo {
+  display: block;
+  width: calc(117 / 434 * 100cqi);
+  height: auto;
+}
+
+.coast-booking__place {
+  margin: calc(2.8 / 434 * 100cqi) 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-myeongjo);
+  font-size: calc(5.414 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: calc(0.704 / 434 * 100cqi);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.coast-booking__title {
+  position: absolute;
+  top: calc(100 / 434 * 100cqi);
+  left: calc(26 / 434 * 100cqi);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: calc(206 / 434 * 100cqi);
+  height: calc(72 / 434 * 100cqi);
+  margin: 0;
+  color: #535750;
+  font-family: var(--font-gujarati);
+  font-size: calc(20 / 434 * 100cqi);
+  font-weight: 600;
+  letter-spacing: calc(-0.6 / 434 * 100cqi);
+  line-height: calc(28 / 434 * 100cqi);
+}
+
+.coast-booking__lead {
+  position: absolute;
+  top: calc(155 / 434 * 100cqi);
+  left: calc(26 / 434 * 100cqi);
+  z-index: 2;
+  margin: 0;
+  color: rgba(56, 54, 54, 0.7);
+  font-family: var(--font-inter);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.85;
+}
+
+.coast-booking__intro-title {
+  position: absolute;
+  top: calc(186.67 / 434 * 100cqi);
+  left: calc(27 / 434 * 100cqi);
+  z-index: 2;
+  margin: 0;
+  color: #555a5c;
+  font-family: var(--font-inter);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: normal;
+}
+
+.coast-booking__intro-copy {
+  position: absolute;
+  top: calc(230.67 / 434 * 100cqi);
+  left: calc(27 / 434 * 100cqi);
+  z-index: 2;
+  margin: 0;
+  color: #555a5c;
+  font-family: var(--font-pretendard);
+  font-size: calc(9 / 434 * 100cqi);
+  font-weight: 300;
+  line-height: calc(15 / 434 * 100cqi);
+}
+
+.coast-booking__section {
+  position: absolute;
+  left: calc(24 / 434 * 100cqi);
+  z-index: 2;
+  margin: 0;
+  color: #5c5c5c;
+  font-family: var(--font-pretendard);
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 700;
+  line-height: calc(24.5 / 434 * 100cqi);
+  white-space: nowrap;
+}
+
+.coast-booking__status {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  color: #818387;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(18 / 434 * 100cqi);
+  white-space: nowrap;
+}
+
+.coast-booking__rule {
+  position: absolute;
+  left: calc(24 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(387 / 434 * 100cqi);
+  height: 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.coast-booking__range {
+  position: absolute;
+  top: calc(420 / 434 * 100cqi);
+  left: calc(25 / 434 * 100cqi);
+  z-index: 2;
+  margin: 0;
+  color: #5c5c5c;
+  font-family: var(--font-pretendard);
+  font-size: calc(17 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: calc(-0.21 / 434 * 100cqi);
+  line-height: calc(23.5 / 434 * 100cqi);
+  white-space: nowrap;
+}
+
+.coast-booking__note {
+  position: absolute;
+  left: calc(25 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(349 / 434 * 100cqi);
+  margin: 0;
+  color: #818387;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(18.7 / 434 * 100cqi);
+}
+
+.coast-booking__dates,
+.coast-booking__people {
+  position: absolute;
+  top: calc(466 / 434 * 100cqi);
+  left: calc(23 / 434 * 100cqi);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: calc(385 / 434 * 100cqi);
+  height: calc(35 / 434 * 100cqi);
+  border: 1px solid #b4b6b8;
+  border-radius: calc(10 / 434 * 100cqi);
+  background: transparent;
+}
+
+.coast-booking__people {
+  top: calc(709.67 / 434 * 100cqi);
+  width: calc(388 / 434 * 100cqi);
+}
+
+.coast-booking__dates.is-invalid,
+.coast-booking__box.is-invalid {
+  border-color: #e5222b;
+}
+
+.coast-booking__date {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+  padding: 0 calc(18 / 434 * 100cqi) 0 calc(13 / 434 * 100cqi);
+}
+
+.coast-booking__date input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #5c5c5c;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(18 / 434 * 100cqi);
+  outline: none;
+}
+
+.coast-booking__date input.is-empty {
+  color: transparent;
+}
+
+.coast-booking__date input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.coast-booking__date-placeholder {
+  position: absolute;
+  left: calc(13 / 434 * 100cqi);
+  color: #818387;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  line-height: calc(18 / 434 * 100cqi);
+  pointer-events: none;
+}
+
+.coast-booking__date-caret {
+  position: absolute;
+  right: calc(8 / 434 * 100cqi);
+  width: calc(8.93 / 434 * 100cqi);
+  height: auto;
+  pointer-events: none;
+}
+
+.coast-booking__slash {
+  flex: none;
+  color: #818387;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  line-height: calc(18 / 434 * 100cqi);
+}
+
+.coast-booking__count {
+  position: absolute;
+  top: calc(664.58 / 434 * 100cqi);
+  left: calc(23 / 434 * 100cqi);
+  z-index: 2;
+  margin: 0;
+  color: #5c5c5c;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-weight: 400;
+  line-height: calc(22.3 / 434 * 100cqi);
+  white-space: nowrap;
+}
+
+.coast-booking__count-who {
+  font-size: calc(15.2 / 434 * 100cqi);
+}
+
+.coast-booking__count-sum {
+  font-size: calc(15.7 / 434 * 100cqi);
+}
+
+.coast-booking__stepper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  height: 100%;
+  padding: 0 calc(8 / 434 * 100cqi);
+  color: #5c5c5c;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(12.8 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.coast-booking__stepper + .coast-booking__stepper {
+  border-left: 1px solid #494949;
+}
+
+.coast-booking__stepper-label {
+  font-size: calc(11 / 434 * 100cqi);
+}
+
+.coast-booking__stepper button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(16 / 434 * 100cqi);
+  height: calc(18 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.coast-booking__stepper button:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.coast-booking__stepper-value {
+  min-width: calc(10 / 434 * 100cqi);
+  text-align: center;
+}
+
+.coast-booking__control {
+  position: absolute;
+  left: calc(25.13 / 434 * 100cqi);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: calc(7.67 / 434 * 100cqi);
+  width: calc(383 / 434 * 100cqi);
+}
+
+.coast-booking__label {
+  display: flex;
+  align-items: center;
+  gap: calc(4.3 / 434 * 100cqi);
+  margin: 0;
+  color: #34383a;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(18 / 434 * 100cqi);
+}
+
+.coast-booking__req {
+  color: #e5222b;
+  font-size: calc(12.8 / 434 * 100cqi);
+  font-style: normal;
+  line-height: 1;
+}
+
+.coast-booking__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: calc(30 / 434 * 100cqi);
+  padding: 0 calc(12.8 / 434 * 100cqi);
+  border: 1px solid #b4b6b8;
+  border-radius: calc(5.865 / 434 * 100cqi);
+  background: transparent;
+}
+
+.coast-booking__box input,
+.coast-booking__box select {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #34383a;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: calc(18 / 434 * 100cqi);
+  outline: none;
+  appearance: none;
+}
+
+.coast-booking__box select {
+  padding-right: calc(18 / 434 * 100cqi);
+  cursor: pointer;
+}
+
+.coast-booking__box select.is-empty {
+  color: #818387;
+}
+
+.coast-booking__box input::placeholder {
+  color: #818387;
+  opacity: 1;
+}
+
+.coast-booking__select-caret {
+  position: absolute;
+  right: calc(14 / 434 * 100cqi);
+  width: calc(9.53 / 434 * 100cqi);
+  height: auto;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+
+.coast-booking__inclusions {
+  position: absolute;
+  top: calc(1394 / 434 * 100cqi);
+  left: calc(25 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(382 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coast-booking__inclusion {
+  display: grid;
+  grid-template-columns: calc(25 / 434 * 100cqi) 1fr auto;
+  align-items: center;
+  column-gap: calc(8 / 434 * 100cqi);
+  height: calc(32 / 434 * 100cqi);
+  padding: 0 calc(14 / 434 * 100cqi) 0 calc(14 / 434 * 100cqi);
+}
+
+.coast-booking__inclusion:nth-child(even) {
+  background: #e9e7e2;
+}
+
+.coast-booking__inclusion-no {
+  color: #777;
+  font-family: var(--font-pretendard);
+  font-size: calc(11 / 434 * 100cqi);
+  font-weight: 400;
+  letter-spacing: calc(-0.44 / 434 * 100cqi);
+  line-height: 1;
+}
+
+.coast-booking__inclusion-en {
+  display: block;
+  color: #333631;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(10 / 434 * 100cqi);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.coast-booking__inclusion-ko {
+  display: block;
+  margin-top: calc(1 / 434 * 100cqi);
+  color: #5e6061;
+  font-family: "Noto Sans KR", var(--font-pretendard);
+  font-size: calc(8 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.coast-booking__inclusion-chevron {
+  display: block;
+  width: calc(6 / 434 * 100cqi);
+  height: auto;
+}
+
+.coast-booking__photo {
+  position: absolute;
+  z-index: 2;
+  object-fit: cover;
+  border-radius: calc(15 / 434 * 100cqi);
+  box-shadow: 0 calc(4 / 434 * 100cqi) calc(4 / 434 * 100cqi) rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  user-select: none;
+}
+
+.coast-booking__photo--back {
+  top: calc(1820 / 434 * 100cqi);
+  left: calc(248 / 434 * 100cqi);
+  z-index: 1;
+  width: calc(168 / 434 * 100cqi);
+  height: calc(200 / 434 * 100cqi);
+  opacity: 0.6;
+}
+
+.coast-booking__photo--front {
+  top: calc(1848 / 434 * 100cqi);
+  left: calc(214 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(200 / 434 * 100cqi);
+  height: calc(250 / 434 * 100cqi);
+  transform-origin: center center;
+}
+
+.coast-booking__photo--front.is-leaving {
+  z-index: 4;
+  animation: coast-booking-pull 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes coast-booking-pull {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(calc(-48 / 434 * 100cqi)) scale(1.14);
+    opacity: 0;
+  }
+}
+
+.coast-booking__care-title {
+  position: absolute;
+  top: calc(1864 / 434 * 100cqi);
+  left: calc(24 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(150 / 434 * 100cqi);
+  margin: 0;
+  color: #4a4848;
+  font-family: var(--font-inter);
+  font-size: calc(16 / 434 * 100cqi);
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+}
+
+.coast-booking__care-kicker {
+  position: absolute;
+  top: calc(1896 / 434 * 100cqi);
+  left: calc(16 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(166 / 434 * 100cqi);
+  margin: 0;
+  color: #515151;
+  font-family: var(--font-inter);
+  font-size: calc(7 / 434 * 100cqi);
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.coast-booking__care-copy {
+  position: absolute;
+  top: calc(1928 / 434 * 100cqi);
+  left: calc(16 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(166 / 434 * 100cqi);
+  margin: 0;
+  color: #5c5858;
+  font-family: var(--font-inter);
+  font-size: calc(6 / 434 * 100cqi);
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.coast-booking__perks {
+  position: absolute;
+  top: calc(1996 / 434 * 100cqi);
+  left: calc(20 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(155 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.coast-booking__perks li {
+  color: #413c3c;
+  font-family: var(--font-pretendard);
+  font-size: calc(8 / 434 * 100cqi);
+  font-weight: 800;
+  line-height: calc(22 / 434 * 100cqi);
+}
+
+.coast-booking__pager {
+  position: absolute;
+  top: calc(2148 / 434 * 100cqi);
+  left: calc(89 / 434 * 100cqi);
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: calc(257 / 434 * 100cqi);
+}
+
+.coast-booking__pager-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(22 / 434 * 100cqi);
+  height: calc(22 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.coast-booking__pager-btn:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.coast-booking__pager-btn img {
+  display: block;
+  width: calc(5 / 434 * 100cqi);
+  height: auto;
+}
+
+.coast-booking__pager-btn--prev img {
+  transform: rotate(180deg);
+}
+
+.coast-booking__fraction {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  color: #494949;
+  font-family: var(--font-gujarati);
+  line-height: calc(28 / 434 * 100cqi);
+}
+
+.coast-booking__fraction-n,
+.coast-booking__fraction-d {
+  font-size: calc(13 / 434 * 100cqi);
+  font-weight: 200;
+}
+
+.coast-booking__fraction-d {
+  margin-top: calc(12 / 434 * 100cqi);
+}
+
+.coast-booking__fraction-slash {
+  margin-top: calc(5 / 434 * 100cqi);
+  font-size: calc(16 / 434 * 100cqi);
+  font-weight: 100;
+}
+
+.coast-booking__confirm-rule {
+  position: absolute;
+  top: calc(2210 / 434 * 100cqi);
+  left: calc(28 / 434 * 100cqi);
+  z-index: 2;
+  width: calc(378 / 434 * 100cqi);
+  height: auto;
+  pointer-events: none;
+}
+
+.coast-booking__agree {
+  position: absolute;
+  top: calc(2244 / 434 * 100cqi);
+  left: calc(103 / 434 * 100cqi);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: calc(10 / 434 * 100cqi);
+  margin: 0;
+  color: #4a4848;
+  font-family: var(--font-pretendard);
+  font-size: calc(12 / 434 * 100cqi);
+  font-weight: 300;
+  line-height: normal;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.coast-booking__agree input {
+  position: absolute;
+  z-index: 1;
+  width: calc(14 / 434 * 100cqi);
+  height: calc(14 / 434 * 100cqi);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.coast-booking__check {
+  box-sizing: border-box;
+  flex: none;
+  width: calc(14 / 434 * 100cqi);
+  height: calc(14 / 434 * 100cqi);
+  border: 1px solid #767676;
+  background: transparent;
+}
+
+.coast-booking__agree input:checked + .coast-booking__check {
+  border-color: #707070;
+  background-color: #707070;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3 7.2 5.6 10 11 4' fill='none' stroke='%23fff' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 78%;
+}
+
+.coast-booking__agree input:focus-visible + .coast-booking__check,
+.coast-booking__agree.is-invalid .coast-booking__check {
+  border-color: #e5222b;
+}
+
+.coast-booking__submit {
+  position: absolute;
+  top: calc(2290 / 434 * 100cqi);
+  left: calc(35 / 434 * 100cqi);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(8 / 434 * 100cqi);
+  width: calc(364 / 434 * 100cqi);
+  height: calc(55 / 434 * 100cqi);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: calc(10 / 434 * 100cqi);
+  background: #707070;
+  color: #fff;
+  font-family: var(--font-pretendard);
+  font-size: calc(16 / 434 * 100cqi);
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.coast-booking__submit img {
+  display: block;
+  width: calc(5.315 / 434 * 100cqi);
+  height: auto;
+}
+
+.coast-booking__submit:disabled {
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coast-booking--fade-in .coast-booking__canvas,
+  .coast-booking__photo--front.is-leaving {
+    animation: none;
+  }
+}

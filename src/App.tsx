@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import BusinessClassPage from "./pages/BusinessClassPage";
+import CoastBookingPage from "./pages/CoastBookingPage";
 import CoastConsultPage from "./pages/CoastConsultPage";
 import CoastIncludePage from "./pages/CoastIncludePage";
 import CoastPage from "./pages/CoastPage";
@@ -52,6 +53,7 @@ export default function App() {
       <Route path="/coast/reserve" element={<CoastReservePage />} />
       <Route path="/coast/reserve/:kind" element={<HotelIntroPage />} />
       <Route path="/coast/reserve/consult/form" element={<CoastConsultPage />} />
+      <Route path="/coast/reserve/booking/form" element={<CoastBookingPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

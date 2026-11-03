@@ -57,7 +57,12 @@ const PAGES: Record<string, IntroPage> = {
     slide: true,
     stone: true,
   },
-  booking: { text: "패키지 예약하기입니다", slide: true, stone: true },
+  booking: {
+    text: "패키지 예약하기입니다",
+    next: "/coast/reserve/booking/form",
+    slide: true,
+    stone: true,
+  },
 };
 
 const HOLD_MS = 1500;
