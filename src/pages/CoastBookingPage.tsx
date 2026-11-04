@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import type { CSSProperties, FormEvent } from "react";
+import { useRef, useState } from "react";
+import type { AnimationEvent, CSSProperties, FormEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import backChevron from "../assets/coast-booking/back.svg";
 import headerBase from "../assets/coast-booking/header-base.svg";
@@ -20,6 +20,8 @@ import "../styles/coast-booking.css";
 const at = (y: number): CSSProperties => ({ top: `calc(${y} / 434 * 100cqi)` });
 
 const SLIDES = 8;
+const PHOTOS = [serviceFront, serviceBack];
+const photoFor = (id: number) => PHOTOS[(id - 1) % PHOTOS.length];
 
 const INCLUSIONS = [
   { no: "01", en: "Ocean View Suite", ko: "프리미엄 호텔" },
@@ -95,31 +97,52 @@ export default function CoastBookingPage() {
   const [time, setTime] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [slide, setSlide] = useState(1);
-  const [pullDir, setPullDir] = useState<1 | -1>(1);
-  const [leaving, setLeaving] = useState(false);
+  const [flowDir, setFlowDir] = useState<1 | -1 | 0>(0);
+  const flowing = useRef(false);
+  const flowDirRef = useRef<1 | -1>(1);
   const [tried, setTried] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (!leaving) return;
-    const id = window.setTimeout(() => {
-      setSlide((current) => current + pullDir);
-      setLeaving(false);
-    }, 480);
-    return () => window.clearTimeout(id);
-  }, [leaving, pullDir]);
-
   const pullCard = (dir: 1 | -1) => {
-    if (leaving) return;
+    if (flowing.current) return;
     const next = slide + dir;
     if (next < 1 || next > SLIDES) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setSlide(next);
       return;
     }
-    setPullDir(dir);
-    setLeaving(true);
+    flowing.current = true;
+    flowDirRef.current = dir;
+    setFlowDir(dir);
   };
+
+  const finishFlow = (event: AnimationEvent<HTMLImageElement>) => {
+    if (event.target !== event.currentTarget) return;
+    if (!event.animationName.startsWith("coast-booking-card-")) return;
+    if (!flowing.current) return;
+    flowing.current = false;
+    const dir = flowDirRef.current;
+    setFlowDir(0);
+    setSlide((current) => current + dir);
+  };
+
+  const cards =
+    flowDir === 1
+      ? [
+          { id: slide, role: "leave" },
+          { id: slide + 1, role: "promote" },
+          { id: slide + 2, role: "enter" },
+        ]
+      : flowDir === -1
+        ? [
+            { id: slide - 1, role: "arrive" },
+            { id: slide, role: "retreat" },
+            { id: slide + 1, role: "sink" },
+          ]
+        : [
+            { id: slide, role: "front" },
+            { id: slide + 1, role: "back" },
+          ];
 
   const total = adults + children + infants;
   const range =
@@ -358,10 +381,10 @@ export default function CoastBookingPage() {
             </span>
           </label>
 
-          <h2 className="coast-booking__section" style={at(1332)}>
+          <h2 className="coast-booking__section" style={at(1358)}>
             PREMIUM INCLUSIONS
           </h2>
-          <hr className="coast-booking__rule" style={at(1366)} />
+          <hr className="coast-booking__rule" style={at(1392)} />
           <ul className="coast-booking__inclusions">
             {INCLUSIONS.map((item) => (
               <li key={item.no} className="coast-booking__inclusion">
@@ -375,17 +398,22 @@ export default function CoastBookingPage() {
             ))}
           </ul>
 
-          <h2 className="coast-booking__section" style={at(1748)}>
+          <h2 className="coast-booking__section" style={at(1946)}>
             PREMIUM SERVICE
           </h2>
-          <hr className="coast-booking__rule" style={at(1782)} />
+          <hr className="coast-booking__rule" style={at(1980)} />
 
-          <img className="coast-booking__photo coast-booking__photo--back" src={serviceBack} alt="" />
-          <img
-            className={`coast-booking__photo coast-booking__photo--front${leaving ? " is-leaving" : ""}`}
-            src={serviceFront}
-            alt="퍼스널 케어"
-          />
+          <div className={`coast-booking__deck${flowDir === 0 ? "" : " is-flowing"}`}>
+            {cards.map((card) => (
+              <img
+                key={card.id}
+                className={`coast-booking__photo coast-booking__photo--${card.role}`}
+                src={photoFor(card.id)}
+                alt={card.role === "front" || card.role === "promote" || card.role === "arrive" ? "퍼스널 케어" : ""}
+                onAnimationEnd={card.role === "leave" || card.role === "arrive" ? finishFlow : undefined}
+              />
+            ))}
+          </div>
           <p className="coast-booking__care-title">Personal Care</p>
           <p className="coast-booking__care-kicker">[ 편안한 휴식까지 배려하는 여행 ]</p>
           <p className="coast-booking__care-copy">
@@ -406,7 +434,7 @@ export default function CoastBookingPage() {
               className="coast-booking__pager-btn coast-booking__pager-btn--prev"
               type="button"
               aria-label="이전 서비스"
-              disabled={slide <= 1 || leaving}
+              disabled={slide <= 1 || flowDir !== 0}
               onClick={() => pullCard(-1)}
             >
               <img src={pagerPrev} alt="" />
@@ -420,7 +448,7 @@ export default function CoastBookingPage() {
               className="coast-booking__pager-btn"
               type="button"
               aria-label="다음 서비스"
-              disabled={slide >= SLIDES || leaving}
+              disabled={slide >= SLIDES || flowDir !== 0}
               onClick={() => pullCard(1)}
             >
               <img src={pagerNext} alt="" />

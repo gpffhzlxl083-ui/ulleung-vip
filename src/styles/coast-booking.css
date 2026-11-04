@@ -36,7 +36,7 @@
 .coast-booking__canvas {
   position: relative;
   width: 100%;
-  height: calc(2380 / 434 * 100cqi);
+  height: calc(2847 / 434 * 100cqi);
   container-type: inline-size;
   container-name: booking;
   background: #f8f6f1;
@@ -508,7 +508,7 @@
 
 .coast-booking__inclusions {
   position: absolute;
-  top: calc(1394 / 434 * 100cqi);
+  top: calc(1420 / 434 * 100cqi);
   left: calc(25 / 434 * 100cqi);
   z-index: 2;
   width: calc(382 / 434 * 100cqi);
@@ -521,9 +521,8 @@
   display: grid;
   grid-template-columns: calc(25 / 434 * 100cqi) 1fr auto;
   align-items: center;
-  column-gap: calc(8 / 434 * 100cqi);
-  height: calc(32 / 434 * 100cqi);
-  padding: 0 calc(14 / 434 * 100cqi) 0 calc(14 / 434 * 100cqi);
+  height: calc(45 / 434 * 100cqi);
+  padding: 0 calc(20 / 434 * 100cqi) 0 calc(14 / 434 * 100cqi);
 }
 
 .coast-booking__inclusion:nth-child(even) {
@@ -545,17 +544,17 @@
   font-family: "Noto Sans KR", var(--font-pretendard);
   font-size: calc(10 / 434 * 100cqi);
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1;
 }
 
 .coast-booking__inclusion-ko {
   display: block;
-  margin-top: calc(1 / 434 * 100cqi);
+  margin-top: calc(7 / 434 * 100cqi);
   color: #5e6061;
   font-family: "Noto Sans KR", var(--font-pretendard);
   font-size: calc(8 / 434 * 100cqi);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1;
 }
 
 .coast-booking__inclusion-chevron {
@@ -575,43 +574,151 @@
 }
 
 .coast-booking__photo--back {
-  top: calc(1820 / 434 * 100cqi);
-  left: calc(248 / 434 * 100cqi);
+  top: calc(2016.3 / 434 * 100cqi);
+  left: calc(214 / 434 * 100cqi);
   z-index: 1;
-  width: calc(168 / 434 * 100cqi);
-  height: calc(200 / 434 * 100cqi);
+  width: calc(227 / 434 * 100cqi);
+  height: calc(368 / 434 * 100cqi);
   opacity: 0.6;
 }
 
 .coast-booking__photo--front {
-  top: calc(1848 / 434 * 100cqi);
-  left: calc(214 / 434 * 100cqi);
+  top: calc(2052 / 434 * 100cqi);
+  left: calc(183 / 434 * 100cqi);
   z-index: 2;
-  width: calc(200 / 434 * 100cqi);
-  height: calc(250 / 434 * 100cqi);
+  width: calc(258 / 434 * 100cqi);
+  height: calc(431 / 434 * 100cqi);
   transform-origin: center center;
 }
 
-.coast-booking__photo--front.is-leaving {
-  z-index: 4;
-  animation: coast-booking-pull 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.coast-booking__deck {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
-@keyframes coast-booking-pull {
+.coast-booking__deck.is-flowing {
+  z-index: 4;
+}
+
+.coast-booking__photo--leave,
+.coast-booking__photo--arrive {
+  top: calc(2052 / 434 * 100cqi);
+  left: calc(183 / 434 * 100cqi);
+  z-index: 4;
+  width: calc(258 / 434 * 100cqi);
+  height: calc(431 / 434 * 100cqi);
+}
+
+.coast-booking__photo--leave {
+  animation: coast-booking-card-leave 0.9s cubic-bezier(0.22, 0.68, 0.24, 1) forwards;
+}
+
+.coast-booking__photo--promote {
+  z-index: 3;
+  top: calc(2052 / 434 * 100cqi);
+  left: calc(183 / 434 * 100cqi);
+  width: calc(258 / 434 * 100cqi);
+  height: calc(431 / 434 * 100cqi);
+  opacity: 1;
+  transition:
+    top 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    left 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    width 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    height 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    opacity 0.55s ease;
+}
+
+.coast-booking__photo--enter,
+.coast-booking__photo--sink {
+  top: calc(2016.3 / 434 * 100cqi);
+  left: calc(214 / 434 * 100cqi);
+  z-index: 1;
+  width: calc(227 / 434 * 100cqi);
+  height: calc(368 / 434 * 100cqi);
+}
+
+.coast-booking__photo--enter {
+  animation: coast-booking-card-enter 0.9s cubic-bezier(0.22, 0.68, 0.24, 1) both;
+}
+
+.coast-booking__photo--arrive {
+  animation: coast-booking-card-arrive 0.9s cubic-bezier(0.22, 0.68, 0.24, 1) both;
+}
+
+.coast-booking__photo--retreat {
+  z-index: 2;
+  top: calc(2016.3 / 434 * 100cqi);
+  left: calc(214 / 434 * 100cqi);
+  width: calc(227 / 434 * 100cqi);
+  height: calc(368 / 434 * 100cqi);
+  opacity: 0.6;
+  transition:
+    top 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    left 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    width 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    height 0.9s cubic-bezier(0.22, 0.68, 0.24, 1),
+    opacity 0.9s ease;
+}
+
+.coast-booking__photo--sink {
+  z-index: 1;
+  animation: coast-booking-card-sink 0.35s ease forwards;
+}
+
+@keyframes coast-booking-card-leave {
   0% {
-    transform: none;
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  55% {
     opacity: 1;
   }
 
   100% {
-    transform: translateY(calc(-48 / 434 * 100cqi)) scale(1.14);
+    transform: translate3d(calc(280 / 434 * 100cqi), 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes coast-booking-card-enter {
+  0%,
+  28% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes coast-booking-card-arrive {
+  0% {
+    transform: translate3d(calc(280 / 434 * 100cqi), 0, 0);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes coast-booking-card-sink {
+  to {
     opacity: 0;
   }
 }
 
 .coast-booking__care-title {
   position: absolute;
-  top: calc(1864 / 434 * 100cqi);
+  top: calc(2069.3 / 434 * 100cqi);
   left: calc(24 / 434 * 100cqi);
   z-index: 2;
   width: calc(150 / 434 * 100cqi);
@@ -626,7 +733,7 @@
 
 .coast-booking__care-kicker {
   position: absolute;
-  top: calc(1896 / 434 * 100cqi);
+  top: calc(2109.3 / 434 * 100cqi);
   left: calc(16 / 434 * 100cqi);
   z-index: 2;
   width: calc(166 / 434 * 100cqi);
@@ -642,7 +749,7 @@
 
 .coast-booking__care-copy {
   position: absolute;
-  top: calc(1928 / 434 * 100cqi);
+  top: calc(2151.3 / 434 * 100cqi);
   left: calc(16 / 434 * 100cqi);
   z-index: 2;
   width: calc(166 / 434 * 100cqi);
@@ -657,7 +764,7 @@
 
 .coast-booking__perks {
   position: absolute;
-  top: calc(1996 / 434 * 100cqi);
+  top: calc(2236.3 / 434 * 100cqi);
   left: calc(20 / 434 * 100cqi);
   z-index: 2;
   width: calc(155 / 434 * 100cqi);
@@ -672,12 +779,12 @@
   font-family: var(--font-pretendard);
   font-size: calc(8 / 434 * 100cqi);
   font-weight: 800;
-  line-height: calc(22 / 434 * 100cqi);
+  line-height: calc(37 / 434 * 100cqi);
 }
 
 .coast-booking__pager {
   position: absolute;
-  top: calc(2148 / 434 * 100cqi);
+  top: calc(2508.3 / 434 * 100cqi);
   left: calc(89 / 434 * 100cqi);
   z-index: 3;
   display: flex;
@@ -706,12 +813,8 @@
 
 .coast-booking__pager-btn img {
   display: block;
-  width: calc(5 / 434 * 100cqi);
-  height: auto;
-}
-
-.coast-booking__pager-btn--prev img {
-  transform: rotate(180deg);
+  width: calc(7 / 434 * 100cqi);
+  height: calc(12 / 434 * 100cqi);
 }
 
 .coast-booking__fraction {
@@ -741,7 +844,7 @@
 
 .coast-booking__confirm-rule {
   position: absolute;
-  top: calc(2210 / 434 * 100cqi);
+  top: calc(2590 / 434 * 100cqi);
   left: calc(28 / 434 * 100cqi);
   z-index: 2;
   width: calc(378 / 434 * 100cqi);
@@ -751,7 +854,7 @@
 
 .coast-booking__agree {
   position: absolute;
-  top: calc(2244 / 434 * 100cqi);
+  top: calc(2628 / 434 * 100cqi);
   left: calc(103 / 434 * 100cqi);
   z-index: 2;
   display: flex;
@@ -802,7 +905,7 @@
 
 .coast-booking__submit {
   position: absolute;
-  top: calc(2290 / 434 * 100cqi);
+  top: calc(2680 / 434 * 100cqi);
   left: calc(35 / 434 * 100cqi);
   z-index: 2;
   display: flex;
@@ -836,7 +939,15 @@
 
 @media (prefers-reduced-motion: reduce) {
   .coast-booking--fade-in .coast-booking__canvas,
-  .coast-booking__photo--front.is-leaving {
+  .coast-booking__photo--leave,
+  .coast-booking__photo--enter,
+  .coast-booking__photo--arrive,
+  .coast-booking__photo--sink {
     animation: none;
+  }
+
+  .coast-booking__photo--promote,
+  .coast-booking__photo--retreat {
+    transition: none;
   }
 }
