@@ -256,3 +256,31 @@
     animation: none;
   }
 }
+
+/* 예약 인트로가 위로 빠지고 신청 화면이 아래에서 이어 올라온다 */
+html.booking-rise::view-transition-group(root) {
+  animation: none;
+  overflow: hidden;
+}
+
+html.booking-rise::view-transition-old(root) {
+  z-index: 2;
+  animation: booking-rise-out 0.9s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+html.booking-rise::view-transition-new(root) {
+  z-index: 1;
+  animation: booking-rise-in 0.9s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+@keyframes booking-rise-out {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes booking-rise-in {
+  from {
+    transform: translateY(100%);
+  }
+}

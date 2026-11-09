@@ -1,6 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { AnimationEvent, CSSProperties, FormEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import logoAube from "../assets/common/logo-aube.svg";
+import brand from "../assets/hotel-intro/brand.svg";
 import backChevron from "../assets/coast-booking/back.svg";
 import headerBase from "../assets/coast-booking/header-base.svg";
 import dateCaret from "../assets/coast-booking/calendar.svg";
@@ -84,7 +86,8 @@ function Stepper({
 
 export default function CoastBookingPage() {
   const navigate = useNavigate();
-  const fadeIn = Boolean((useLocation().state as { pullIn?: boolean } | null)?.pullIn);
+  const liftIn = Boolean((useLocation().state as { lift?: boolean } | null)?.lift);
+  const [lift, setLift] = useState(liftIn);
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [adults, setAdults] = useState(2);
@@ -102,6 +105,12 @@ export default function CoastBookingPage() {
   const flowDirRef = useRef<1 | -1>(1);
   const [tried, setTried] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!liftIn) return;
+    const timer = window.setTimeout(() => setLift(false), 900);
+    return () => window.clearTimeout(timer);
+  }, [liftIn]);
 
   const pullCard = (dir: 1 | -1) => {
     if (flowing.current) return;
@@ -185,7 +194,7 @@ export default function CoastBookingPage() {
   };
 
   return (
-    <main className={`vf coast-booking${fadeIn ? " coast-booking--fade-in" : ""}`}>
+    <main className={`vf coast-booking${lift ? " coast-booking--lift" : ""}`}>
       <div className="vf__stage coast-booking__stage">
         <form className="coast-booking__canvas" onSubmit={onSubmit} noValidate>
           <div className="coast-booking__header" aria-hidden="true">
@@ -207,6 +216,7 @@ export default function CoastBookingPage() {
           <p className="coast-booking__intro-title">소수만을 위한, 특별한 여정</p>
           <p className="coast-booking__intro-copy">
             한정된 인원, 섬세한 케어
+            <br />
             <br />
             오직 당신을 위해 준비한
             <br />
@@ -251,17 +261,17 @@ export default function CoastBookingPage() {
               <img className="coast-booking__date-caret" src={dateCaret} alt="" />
             </label>
           </div>
-          <p className="coast-booking__note" style={at(523.2)}>
+          <p className="coast-booking__note" style={at(555.2)}>
             출발 희망일은 현지 예약 상황에 따라 최종 일정이 일부 조정될 수 있습니다.
           </p>
 
-          <h2 className="coast-booking__section" style={at(590.86)}>
+          <h2 className="coast-booking__section" style={at(632.86)}>
             PERSON
           </h2>
-          <p className="coast-booking__status" style={{ ...at(596.93), left: "calc(391 / 434 * 100cqi)" }}>
+          <p className="coast-booking__status" style={{ ...at(638.93), left: "calc(391 / 434 * 100cqi)" }}>
             완료
           </p>
-          <hr className="coast-booking__rule" style={at(626)} />
+          <hr className="coast-booking__rule" style={at(668)} />
           <p className="coast-booking__count">
             <span className="coast-booking__count-who">성인</span>
             <span className="coast-booking__count-sum">{` ${adults} · 총 ${total}명`}</span>
@@ -271,19 +281,19 @@ export default function CoastBookingPage() {
             <Stepper label="소아" value={children} onChange={setChildren} />
             <Stepper label="유아" value={infants} onChange={setInfants} />
           </div>
-          <p className="coast-booking__note" style={at(768)}>
+          <p className="coast-booking__note" style={at(844)}>
             인원은 현지 예약 상황에 따라 일부 변동될 수 있습니다.
           </p>
 
-          <h2 className="coast-booking__section" style={at(862.7)}>
+          <h2 className="coast-booking__section" style={at(950.7)}>
             APPLICANT INFROMATION
           </h2>
-          <p className="coast-booking__status" style={{ ...at(869.07), left: "calc(382 / 434 * 100cqi)" }}>
+          <p className="coast-booking__status" style={{ ...at(957.07), left: "calc(382 / 434 * 100cqi)" }}>
             {applicantDone ? "완료" : "작성중"}
           </p>
-          <hr className="coast-booking__rule" style={at(898.14)} />
+          <hr className="coast-booking__rule" style={at(986.14)} />
 
-          <label className="coast-booking__control" style={at(936.04)}>
+          <label className="coast-booking__control" style={at(1024.04)}>
             <span className="coast-booking__label">
               NAME <i className="coast-booking__req">*</i>
             </span>
@@ -300,7 +310,7 @@ export default function CoastBookingPage() {
             </span>
           </label>
 
-          <label className="coast-booking__control" style={at(1015.04)}>
+          <label className="coast-booking__control" style={at(1125.04)}>
             <span className="coast-booking__label">
               CONTACT <i className="coast-booking__req">*</i>
             </span>
@@ -318,7 +328,7 @@ export default function CoastBookingPage() {
             </span>
           </label>
 
-          <label className="coast-booking__control" style={at(1088.7)}>
+          <label className="coast-booking__control" style={at(1220.7)}>
             <span className="coast-booking__label">
               E-MAIL <i className="coast-booking__req">*</i>
             </span>
@@ -335,7 +345,7 @@ export default function CoastBookingPage() {
             </span>
           </label>
 
-          <label className="coast-booking__control" style={at(1172.04)}>
+          <label className="coast-booking__control" style={at(1326.04)}>
             <span className="coast-booking__label">
               CONTACT METHOD <i className="coast-booking__req">*</i>
             </span>
@@ -358,7 +368,7 @@ export default function CoastBookingPage() {
             </span>
           </label>
 
-          <label className="coast-booking__control" style={at(1250.04)}>
+          <label className="coast-booking__control" style={at(1426.04)}>
             <span className="coast-booking__label">
               CONTACT AVAILABLE TIME <i className="coast-booking__req">*</i>
             </span>
@@ -381,10 +391,10 @@ export default function CoastBookingPage() {
             </span>
           </label>
 
-          <h2 className="coast-booking__section" style={at(1358)}>
+          <h2 className="coast-booking__section" style={at(1534)}>
             PREMIUM INCLUSIONS
           </h2>
-          <hr className="coast-booking__rule" style={at(1392)} />
+          <hr className="coast-booking__rule" style={at(1568)} />
           <ul className="coast-booking__inclusions">
             {INCLUSIONS.map((item) => (
               <li key={item.no} className="coast-booking__inclusion">
@@ -398,10 +408,10 @@ export default function CoastBookingPage() {
             ))}
           </ul>
 
-          <h2 className="coast-booking__section" style={at(1946)}>
+          <h2 className="coast-booking__section" style={at(2122)}>
             PREMIUM SERVICE
           </h2>
-          <hr className="coast-booking__rule" style={at(1980)} />
+          <hr className="coast-booking__rule" style={at(2156)} />
 
           <div className={`coast-booking__deck${flowDir === 0 ? "" : " is-flowing"}`}>
             {cards.map((card) => (
@@ -473,6 +483,13 @@ export default function CoastBookingPage() {
           </button>
         </form>
       </div>
+      {lift ? (
+        <div className="coast-booking__lift" aria-hidden="true">
+          <img className="coast-booking__lift-logo" src={logoAube} alt="" />
+          <img className="coast-booking__lift-brand" src={brand} alt="" />
+          <p className="coast-booking__lift-text">패키지 예약하기입니다</p>
+        </div>
+      ) : null}
     </main>
   );
 }

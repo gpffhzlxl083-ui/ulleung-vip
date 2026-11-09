@@ -1,4 +1,4 @@
-/* 패키지 예약 신청. 좌표는 Figma 1261:8451 (434 × 2847) */
+/* 패키지 예약 신청. 좌표는 Figma 1261:8451 (434 × 2847), 입력 구간 세로 간격만 늘림 */
 .coast-booking {
   background: #d9d9d9;
   overflow: hidden;
@@ -36,7 +36,7 @@
 .coast-booking__canvas {
   position: relative;
   width: 100%;
-  height: calc(2847 / 434 * 100cqi);
+  height: calc(2935 / 434 * 100cqi);
   container-type: inline-size;
   container-name: booking;
   background: #f8f6f1;
@@ -46,6 +46,78 @@
 
 .coast-booking--fade-in .coast-booking__canvas {
   animation: coast-booking-in 0.7s ease both;
+}
+
+/* 뷰 전환을 지원하지 않을 때: 인트로가 위로 빠지고 신청 화면이 아래에서 올라온다 */
+.coast-booking--lift .coast-booking__stage {
+  animation: coast-booking-rise 0.9s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.coast-booking__lift {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 8;
+  aspect-ratio: 434 / 850;
+  width: min(100dvw, calc(100dvh * 434 / 850));
+  height: min(100dvh, calc(100dvw * 850 / 434));
+  overflow: hidden;
+  pointer-events: none;
+  container-type: size;
+  background: linear-gradient(180deg, #beafa5 0%, #565a5c 65.385%, #52605d 100%);
+  animation: coast-booking-lift 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.coast-booking__lift-logo {
+  position: absolute;
+  top: calc(351 / 850 * 100cqb);
+  left: calc(163 / 434 * 100cqi);
+  width: calc(110 / 434 * 100cqi);
+  height: auto;
+  aspect-ratio: 233.164 / 42.497;
+  filter: brightness(0) invert(1);
+}
+
+.coast-booking__lift-brand {
+  position: absolute;
+  top: calc(349 / 850 * 100cqb);
+  left: calc(124 / 434 * 100cqi);
+  width: calc(193 / 434 * 100cqi);
+  height: calc(41 / 850 * 100cqb);
+}
+
+.coast-booking__lift-text {
+  position: absolute;
+  top: calc(418 / 850 * 100cqb);
+  left: calc(220 / 434 * 100cqi);
+  width: calc(206 / 434 * 100cqi);
+  margin: 0;
+  transform: translateX(-50%);
+  color: #fff;
+  text-align: center;
+  font-family: var(--font-inter);
+  font-size: calc(15 / 434 * 100cqi);
+  font-weight: 200;
+  line-height: calc(20 / 850 * 100cqb);
+  letter-spacing: calc(0.45 / 434 * 100cqi);
+}
+
+@keyframes coast-booking-lift {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-50%, -150%);
+  }
+}
+
+@keyframes coast-booking-rise {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes coast-booking-in {
@@ -267,7 +339,7 @@
 .coast-booking__dates,
 .coast-booking__people {
   position: absolute;
-  top: calc(466 / 434 * 100cqi);
+  top: calc(484 / 434 * 100cqi);
   left: calc(23 / 434 * 100cqi);
   z-index: 2;
   display: flex;
@@ -281,7 +353,7 @@
 }
 
 .coast-booking__people {
-  top: calc(709.67 / 434 * 100cqi);
+  top: calc(771.67 / 434 * 100cqi);
   width: calc(388 / 434 * 100cqi);
 }
 
@@ -358,7 +430,7 @@
 
 .coast-booking__count {
   position: absolute;
-  top: calc(664.58 / 434 * 100cqi);
+  top: calc(706.58 / 434 * 100cqi);
   left: calc(23 / 434 * 100cqi);
   z-index: 2;
   margin: 0;
@@ -431,7 +503,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: calc(7.67 / 434 * 100cqi);
+  gap: calc(12 / 434 * 100cqi);
   width: calc(383 / 434 * 100cqi);
 }
 
@@ -508,7 +580,7 @@
 
 .coast-booking__inclusions {
   position: absolute;
-  top: calc(1420 / 434 * 100cqi);
+  top: calc(1596 / 434 * 100cqi);
   left: calc(25 / 434 * 100cqi);
   z-index: 2;
   width: calc(382 / 434 * 100cqi);
@@ -574,7 +646,7 @@
 }
 
 .coast-booking__photo--back {
-  top: calc(2016.3 / 434 * 100cqi);
+  top: calc(2192.3 / 434 * 100cqi);
   left: calc(214 / 434 * 100cqi);
   z-index: 1;
   width: calc(227 / 434 * 100cqi);
@@ -583,7 +655,7 @@
 }
 
 .coast-booking__photo--front {
-  top: calc(2052 / 434 * 100cqi);
+  top: calc(2228 / 434 * 100cqi);
   left: calc(183 / 434 * 100cqi);
   z-index: 2;
   width: calc(258 / 434 * 100cqi);
@@ -604,7 +676,7 @@
 
 .coast-booking__photo--leave,
 .coast-booking__photo--arrive {
-  top: calc(2052 / 434 * 100cqi);
+  top: calc(2228 / 434 * 100cqi);
   left: calc(183 / 434 * 100cqi);
   z-index: 4;
   width: calc(258 / 434 * 100cqi);
@@ -617,7 +689,7 @@
 
 .coast-booking__photo--promote {
   z-index: 3;
-  top: calc(2052 / 434 * 100cqi);
+  top: calc(2228 / 434 * 100cqi);
   left: calc(183 / 434 * 100cqi);
   width: calc(258 / 434 * 100cqi);
   height: calc(431 / 434 * 100cqi);
@@ -632,7 +704,7 @@
 
 .coast-booking__photo--enter,
 .coast-booking__photo--sink {
-  top: calc(2016.3 / 434 * 100cqi);
+  top: calc(2192.3 / 434 * 100cqi);
   left: calc(214 / 434 * 100cqi);
   z-index: 1;
   width: calc(227 / 434 * 100cqi);
@@ -649,7 +721,7 @@
 
 .coast-booking__photo--retreat {
   z-index: 2;
-  top: calc(2016.3 / 434 * 100cqi);
+  top: calc(2192.3 / 434 * 100cqi);
   left: calc(214 / 434 * 100cqi);
   width: calc(227 / 434 * 100cqi);
   height: calc(368 / 434 * 100cqi);
@@ -718,7 +790,7 @@
 
 .coast-booking__care-title {
   position: absolute;
-  top: calc(2069.3 / 434 * 100cqi);
+  top: calc(2245.3 / 434 * 100cqi);
   left: calc(24 / 434 * 100cqi);
   z-index: 2;
   width: calc(150 / 434 * 100cqi);
@@ -733,7 +805,7 @@
 
 .coast-booking__care-kicker {
   position: absolute;
-  top: calc(2109.3 / 434 * 100cqi);
+  top: calc(2285.3 / 434 * 100cqi);
   left: calc(16 / 434 * 100cqi);
   z-index: 2;
   width: calc(166 / 434 * 100cqi);
@@ -749,7 +821,7 @@
 
 .coast-booking__care-copy {
   position: absolute;
-  top: calc(2151.3 / 434 * 100cqi);
+  top: calc(2327.3 / 434 * 100cqi);
   left: calc(16 / 434 * 100cqi);
   z-index: 2;
   width: calc(166 / 434 * 100cqi);
@@ -764,7 +836,7 @@
 
 .coast-booking__perks {
   position: absolute;
-  top: calc(2236.3 / 434 * 100cqi);
+  top: calc(2412.3 / 434 * 100cqi);
   left: calc(20 / 434 * 100cqi);
   z-index: 2;
   width: calc(155 / 434 * 100cqi);
@@ -784,7 +856,7 @@
 
 .coast-booking__pager {
   position: absolute;
-  top: calc(2508.3 / 434 * 100cqi);
+  top: calc(2684.3 / 434 * 100cqi);
   left: calc(89 / 434 * 100cqi);
   z-index: 3;
   display: flex;
@@ -844,7 +916,7 @@
 
 .coast-booking__confirm-rule {
   position: absolute;
-  top: calc(2590 / 434 * 100cqi);
+  top: calc(2766 / 434 * 100cqi);
   left: calc(28 / 434 * 100cqi);
   z-index: 2;
   width: calc(378 / 434 * 100cqi);
@@ -854,7 +926,7 @@
 
 .coast-booking__agree {
   position: absolute;
-  top: calc(2628 / 434 * 100cqi);
+  top: calc(2804 / 434 * 100cqi);
   left: calc(103 / 434 * 100cqi);
   z-index: 2;
   display: flex;
@@ -905,7 +977,7 @@
 
 .coast-booking__submit {
   position: absolute;
-  top: calc(2680 / 434 * 100cqi);
+  top: calc(2856 / 434 * 100cqi);
   left: calc(35 / 434 * 100cqi);
   z-index: 2;
   display: flex;
@@ -939,6 +1011,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .coast-booking--fade-in .coast-booking__canvas,
+  .coast-booking--lift .coast-booking__stage,
+  .coast-booking__lift,
   .coast-booking__photo--leave,
   .coast-booking__photo--enter,
   .coast-booking__photo--arrive,

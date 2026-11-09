@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import logoAube from "../assets/common/logo-aube.svg";
 import base from "../assets/hotel-intro/base.svg";
@@ -82,6 +83,27 @@ export default function HotelIntroPage() {
     if (!next) return;
     setLeaving(false);
     const hold = HOLD_MS + (slide ? SLIDE_IN_MS : 0);
+    if (kind === "booking") {
+      const go = window.setTimeout(() => {
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const doc = document as Document & {
+          startViewTransition?: (callback: () => void) => { finished: Promise<void> };
+        };
+        if (reduced || typeof doc.startViewTransition !== "function") {
+          navigate(next, { replace: true, state: { pullIn: true, lift: !reduced } });
+          return;
+        }
+        document.documentElement.classList.add("booking-rise");
+        const transition = doc.startViewTransition(() => {
+          flushSync(() => {
+            navigate(next, { replace: true, state: { pullIn: true } });
+          });
+        });
+        const clear = () => document.documentElement.classList.remove("booking-rise");
+        transition.finished.then(clear, clear);
+      }, hold);
+      return () => window.clearTimeout(go);
+    }
     const pull = window.setTimeout(() => setLeaving(true), hold);
     const go = window.setTimeout(
       () => navigate(next, { replace: true, state: { pullIn: true } }),
@@ -91,7 +113,7 @@ export default function HotelIntroPage() {
       window.clearTimeout(pull);
       window.clearTimeout(go);
     };
-  }, [navigate, next, slide]);
+  }, [kind, navigate, next, slide]);
 
   if (!page) return <Navigate to="/coast/include" replace />;
 
