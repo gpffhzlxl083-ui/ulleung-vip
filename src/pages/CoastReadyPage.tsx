@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties, ReactNode, Ref } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logoAube from "../assets/common/logo-aube.svg";
 import backIcon from "../assets/coast-ready/ready-back.svg";
@@ -21,15 +22,16 @@ type TextProps = {
   left: number;
   className?: string;
   align?: "mid" | "right";
+  style?: CSSProperties;
   children: ReactNode;
 };
 
-function Text({ top, left, className = "", align, children }: TextProps) {
+function Text({ top, left, className = "", align, style, children }: TextProps) {
   const alignClass = align ? ` coast-ready__text--${align}` : "";
   return (
     <p
       className={`coast-ready__text ${className}${alignClass}`}
-      style={{ top: `calc(${top} / 850 * 100cqb)`, left: `calc(${left} / 434 * 100cqi)` }}
+      style={{ top: `calc(${top} / 850 * 100cqb)`, left: `calc(${left} / 434 * 100cqi)`, ...style }}
     >
       {children}
     </p>
@@ -53,6 +55,12 @@ const MD_STEPS = [
 ];
 
 const MD_DOT_TOPS = [315, 415, 515, 615, 715];
+
+const ORBIT_DOTS = [
+  { top: 291.52, left: 310.5 },
+  { top: 454.52, left: 227.5 },
+  { top: 604.52, left: 291.5 },
+];
 
 const PREMIUM_GROUPS = [
   {
@@ -84,9 +92,19 @@ const PREMIUM_GROUPS = [
   },
 ];
 
-function Screen({ sheetSrc, children }: { sheetSrc?: string; children: ReactNode }) {
+function Screen({
+  sheetSrc,
+  className = "",
+  screenRef,
+  children,
+}: {
+  sheetSrc?: string;
+  className?: string;
+  screenRef?: Ref<HTMLElement>;
+  children: ReactNode;
+}) {
   return (
-    <section className="coast-ready__screen">
+    <section ref={screenRef} className={`coast-ready__screen${className ? ` ${className}` : ""}`}>
       {sheetSrc ? <img className="coast-ready__sheet" src={sheetSrc} alt="" /> : null}
       {children}
     </section>
@@ -95,16 +113,55 @@ function Screen({ sheetSrc, children }: { sheetSrc?: string; children: ReactNode
 
 export default function CoastReadyPage() {
   const navigate = useNavigate();
-  const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean } | null;
+  const navState = useLocation().state as { fadeIn?: boolean; pullIn?: boolean; lift?: boolean } | null;
   const fadeIn = Boolean(navState?.fadeIn);
   const pullIn = Boolean(navState?.pullIn);
+  const liftIn = Boolean(navState?.lift);
+  const [lift, setLift] = useState(liftIn);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const mdRef = useRef<HTMLElement>(null);
   const goBack = () => navigate("/coast");
+
+  useEffect(() => {
+    if (!liftIn) return;
+    const timer = window.setTimeout(() => setLift(false), 900);
+    return () => window.clearTimeout(timer);
+  }, [liftIn]);
+
+  useEffect(() => {
+    const root = stageRef.current;
+    const target = mdRef.current;
+    if (!root || !target) return;
+    let shown = false;
+    const restart = () => {
+      target
+        .querySelectorAll(
+          ".coast-ready__spark--md .coast-ready__dot, .coast-ready__spark--md .coast-ready__spark-glow, .coast-ready__md-pop",
+        )
+        .forEach((node) => {
+          node.getAnimations().forEach((anim) => {
+            anim.currentTime = 0;
+            anim.play();
+          });
+        });
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.intersectionRatio >= 0.6;
+        if (visible && !shown) restart();
+        shown = visible || (shown && entry.intersectionRatio >= 0.2);
+      },
+      { root, threshold: [0, 0.2, 0.6, 1] },
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <main
-      className={`vf coast-ready${fadeIn ? " coast-ready--fade-in" : ""}${pullIn ? " coast-ready--pull-in" : ""}`}
+      className={`vf coast-ready${fadeIn ? " coast-ready--fade-in" : ""}${pullIn ? " coast-ready--pull-in" : ""}${lift ? " coast-ready--lift" : ""}`}
     >
-      <div className="vf__stage coast-ready__stage">
+      <div ref={stageRef} className="vf__stage coast-ready__stage">
         <div className="coast-ready__chrome">
           <img className="coast-ready__header" src={header} alt="" />
           <div className="coast-ready__header-logo">
@@ -128,14 +185,19 @@ export default function CoastReadyPage() {
           </div>
           <img className="coast-ready__divider" src={divider} alt="" style={{ left: "calc(34 / 434 * 100cqi)" }} />
           <img className="coast-ready__route" src={route} alt="" />
-          {D_DAY_DOTS.map((item) => (
-            <img
+          {D_DAY_DOTS.map((item, index) => (
+            <span
               key={`${item.top}-${item.left}`}
-              className="coast-ready__dot"
-              src={item.src}
-              alt=""
-              style={{ top: `calc(${item.top} / 850 * 100cqb)`, left: `calc(${item.left} / 434 * 100cqi)` }}
-            />
+              className="coast-ready__spark"
+              style={{
+                top: `calc(${item.top} / 850 * 100cqb)`,
+                left: `calc(${item.left} / 434 * 100cqi)`,
+                "--spark-delay": `${index * 0.75}s`,
+              } as CSSProperties}
+            >
+              <img className="coast-ready__dot" src={item.src} alt="" />
+              <span className="coast-ready__spark-glow" aria-hidden="true" />
+            </span>
           ))}
 
           <Text top={287.5} left={56} className="coast-ready__label" align="mid">D-15</Text>
@@ -170,30 +232,53 @@ export default function CoastReadyPage() {
           </Text>
         </Screen>
 
-        <Screen sheetSrc={sheet}>
+        <Screen sheetSrc={sheet} screenRef={mdRef}>
           <Text top={141} left={68} className="coast-ready__heading" align="mid">MD 전문상담사 서비스</Text>
           <Text top={162} left={68} className="coast-ready__lead">
             {"<오브,울릉>에서는 고객님만을 위한  전용 MD가 다양한 상담을 지원합니다"}
           </Text>
           <img className="coast-ready__divider" src={divider} alt="" style={{ left: "calc(40 / 434 * 100cqi)" }} />
           <img className="coast-ready__md-line" src={mdLine} alt="" />
-          {MD_DOT_TOPS.map((top) => (
-            <img
+          {MD_DOT_TOPS.map((top, index) => (
+            <span
               key={top}
-              className="coast-ready__md-dot"
-              src={mdDot}
-              alt=""
-              style={{ top: `calc(${top} / 850 * 100cqb)` }}
-            />
+              className="coast-ready__spark coast-ready__spark--md"
+              style={
+                {
+                  top: `calc(${top} / 850 * 100cqb)`,
+                  "--spark-delay": `${index * 0.9}s`,
+                } as CSSProperties
+              }
+            >
+              <img className="coast-ready__dot" src={mdDot} alt="" />
+              <span className="coast-ready__spark-glow" aria-hidden="true" />
+            </span>
           ))}
-          {MD_STEPS.map((step) => (
+          {MD_STEPS.map((step, index) => (
             <div key={step.no} className={`coast-ready__layer${step.soft ? " coast-ready__md-step--soft" : ""}`}>
-              <Text top={step.mid} left={100} className="coast-ready__step coast-ready__md-no" align="mid">{step.no}</Text>
-              <Text top={step.mid} left={180} className="coast-ready__step coast-ready__md-title" align="mid">{step.title}</Text>
+              <Text
+                top={step.mid}
+                left={100}
+                className="coast-ready__step coast-ready__md-no coast-ready__md-pop"
+                align="mid"
+                style={{ "--spark-delay": `${index * 0.9}s` } as CSSProperties}
+              >
+                {step.no}
+              </Text>
+              <Text
+                top={step.mid}
+                left={180}
+                className="coast-ready__step coast-ready__md-title coast-ready__md-pop"
+                align="mid"
+                style={{ "--spark-delay": `${index * 0.9}s` } as CSSProperties}
+              >
+                {step.title}
+              </Text>
               <Text
                 top={step.desc}
                 left={180}
-                className={`coast-ready__note coast-ready__md-desc${step.tight ? " coast-ready__note--tight" : ""}`}
+                className={`coast-ready__note coast-ready__md-desc coast-ready__md-pop${step.tight ? " coast-ready__note--tight" : ""}`}
+                style={{ "--spark-delay": `${index * 0.9}s` } as CSSProperties}
               >
                 {step.lines[0]}
                 <br />
@@ -208,6 +293,18 @@ export default function CoastReadyPage() {
             {"<오브,울릉> 프리미엄 패키지입니다"}
           </p>
           <img className="coast-ready__orbit" src={orbit} alt="" />
+          {ORBIT_DOTS.map((item) => (
+            <span
+              key={`${item.top}-${item.left}`}
+              className="coast-ready__spark coast-ready__spark--orbit"
+              style={{
+                top: `calc(${item.top} / 850 * 100cqb)`,
+                left: `calc(${item.left} / 434 * 100cqi)`,
+              }}
+            >
+              <span className="coast-ready__spark-glow" aria-hidden="true" />
+            </span>
+          ))}
           <img className="coast-ready__logo" src={logoBlack} alt="AUBE" />
           <p className="coast-ready__logo-sub">Ulleungdo, Dokdo</p>
           {PREMIUM_GROUPS.map((group) => (
@@ -235,6 +332,13 @@ export default function CoastReadyPage() {
           ))}
         </Screen>
       </div>
+      {lift ? (
+        <div className="coast-ready__lift" aria-hidden="true">
+          <img className="coast-ready__lift-logo" src={logoAube} alt="" />
+          <img className="coast-ready__lift-brand" src={brand} alt="" />
+          <p className="coast-ready__lift-text">출발 전 서비스입니다</p>
+        </div>
+      ) : null}
     </main>
   );
 }

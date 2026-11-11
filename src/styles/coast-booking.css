@@ -288,6 +288,7 @@
 
 .coast-booking__status {
   position: absolute;
+  right: calc(23 / 434 * 100cqi);
   z-index: 2;
   margin: 0;
   color: #818387;

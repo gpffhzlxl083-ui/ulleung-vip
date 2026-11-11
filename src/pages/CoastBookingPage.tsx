@@ -93,6 +93,7 @@ export default function CoastBookingPage() {
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
+  const [peopleChosen, setPeopleChosen] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -157,6 +158,20 @@ export default function CoastBookingPage() {
   const range =
     start && end ? `${formatDot(start)} – ${formatDot(end)}` : "2026.11.08 – 2026.11.10";
   const datesInvalid = Boolean(start && end && end < start);
+  const scheduleDone = Boolean(start && end && !datesInvalid);
+  const personDone = peopleChosen && total > 0;
+  const chooseAdults = (next: number) => {
+    setPeopleChosen(true);
+    setAdults(next);
+  };
+  const chooseChildren = (next: number) => {
+    setPeopleChosen(true);
+    setChildren(next);
+  };
+  const chooseInfants = (next: number) => {
+    setPeopleChosen(true);
+    setInfants(next);
+  };
   const applicantDone =
     name.trim().length > 0 && phone.length >= 10 && email.includes("@") && method !== "" && time !== "";
   const nameInvalid = tried && name.trim().length === 0;
@@ -226,8 +241,8 @@ export default function CoastBookingPage() {
           <h2 className="coast-booking__section" style={at(345)}>
             SCHEDULE
           </h2>
-          <p className="coast-booking__status" style={{ ...at(352), left: "calc(391 / 434 * 100cqi)" }}>
-            완료
+          <p className="coast-booking__status" style={at(352)}>
+            {scheduleDone ? "완료" : "작성중"}
           </p>
           <hr className="coast-booking__rule" style={at(380)} />
           <p className="coast-booking__range">{range}</p>
@@ -268,8 +283,8 @@ export default function CoastBookingPage() {
           <h2 className="coast-booking__section" style={at(632.86)}>
             PERSON
           </h2>
-          <p className="coast-booking__status" style={{ ...at(638.93), left: "calc(391 / 434 * 100cqi)" }}>
-            완료
+          <p className="coast-booking__status" style={at(638.93)}>
+            {personDone ? "완료" : "작성중"}
           </p>
           <hr className="coast-booking__rule" style={at(668)} />
           <p className="coast-booking__count">
@@ -277,9 +292,9 @@ export default function CoastBookingPage() {
             <span className="coast-booking__count-sum">{` ${adults} · 총 ${total}명`}</span>
           </p>
           <div className="coast-booking__people">
-            <Stepper label="성인" value={adults} onChange={setAdults} />
-            <Stepper label="소아" value={children} onChange={setChildren} />
-            <Stepper label="유아" value={infants} onChange={setInfants} />
+            <Stepper label="성인" value={adults} onChange={chooseAdults} />
+            <Stepper label="소아" value={children} onChange={chooseChildren} />
+            <Stepper label="유아" value={infants} onChange={chooseInfants} />
           </div>
           <p className="coast-booking__note" style={at(844)}>
             인원은 현지 예약 상황에 따라 일부 변동될 수 있습니다.
@@ -288,7 +303,7 @@ export default function CoastBookingPage() {
           <h2 className="coast-booking__section" style={at(950.7)}>
             APPLICANT INFROMATION
           </h2>
-          <p className="coast-booking__status" style={{ ...at(957.07), left: "calc(382 / 434 * 100cqi)" }}>
+          <p className="coast-booking__status" style={at(957.07)}>
             {applicantDone ? "완료" : "작성중"}
           </p>
           <hr className="coast-booking__rule" style={at(986.14)} />

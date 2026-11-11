@@ -1,4 +1,4 @@
-import { useRef, useState, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import logoAube from "../assets/common/logo-aube.svg";
 import day1Sheet from "../assets/coast-plan/day1-sheet.svg";
@@ -105,8 +105,18 @@ const INCLUSION_DETAIL = [
   { top: 507, left: 30, text: "•Premium Tour  5h / night tour 1h / spa 1회" },
 ];
 
+const RING_STOPS = [
+  { top: 229.89, left: 133.22, labelTop: 224, labelLeft: 92, en: "special", ko: "특별한 투어" },
+  { top: 313.74, left: 143.44, labelTop: 305, labelLeft: 92, en: "mamber", ko: "소수 단독행사" },
+  { top: 346.8, left: 210.17, labelTop: 362, labelLeft: 215, en: "dilicious", ko: "제철음식 제공", active: true },
+  { top: 313.74, left: 277.19, labelTop: 305, labelLeft: 338, en: "service", ko: "전문적 서비스" },
+  { top: 229.89, left: 287.1, labelTop: 221, labelLeft: 338, en: "goods", ko: "다양한 선물" },
+];
+
 export default function CoastPlanItineraryPage() {
   const navigate = useNavigate();
+  const stageRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLElement>(null);
   const [hotelIndex, setHotelIndex] = useState(0);
   const [spotIndex, setSpotIndex] = useState(0);
   const spotDragX = useRef<number | null>(null);
@@ -128,9 +138,34 @@ export default function CoastPlanItineraryPage() {
     else if (delta >= 30) stepSpot(-1);
   };
 
+  useEffect(() => {
+    const root = stageRef.current;
+    const target = ringRef.current;
+    if (!root || !target) return;
+    let shown = false;
+    const restart = () => {
+      target.querySelectorAll(".coast-plan-itinerary__orbit-glow, .coast-plan-itinerary__orbit").forEach((node) => {
+        node.getAnimations().forEach((anim) => {
+          anim.currentTime = 0;
+          anim.play();
+        });
+      });
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.intersectionRatio >= 0.6;
+        if (visible && !shown) restart();
+        shown = visible || (shown && entry.intersectionRatio >= 0.2);
+      },
+      { root, threshold: [0, 0.2, 0.6, 1] },
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="vf coast-plan-day1 coast-plan-itinerary">
-      <div className="vf__stage coast-plan-day1__stage">
+      <div ref={stageRef} className="vf__stage coast-plan-day1__stage">
         <header
           className="coast-plan-day1__top coast-plan-itinerary__header"
           style={{ background: "linear-gradient(90deg, #74A7B5 0%, #27575E 42.3077%, #0E1F24 100%)" }}
@@ -559,38 +594,45 @@ export default function CoastPlanItineraryPage() {
           />
         </section>
 
-        <section className="coast-plan-itinerary__screen">
+        <section ref={ringRef} className="coast-plan-itinerary__screen">
           <img className="coast-plan-itinerary__outro-sheet" src={outroSheet} alt="" />
           <h2 className="coast-plan-itinerary__outro-title">
             <span>{`<오브, 울릉>의  첫번째 여정은`}</span>
             <span>남들과 다른 울릉도입니다</span>
           </h2>
           <img className="coast-plan-itinerary__ring" src={processRing} alt="" />
-          <img className="coast-plan-itinerary__orbit-dot" style={{ top: "calc(229.89 / 850 * 100cqb)", left: "calc(133.22 / 434 * 100cqi)" }} src={orbitDot} alt="" />
-          <img className="coast-plan-itinerary__orbit-dot" style={{ top: "calc(313.74 / 850 * 100cqb)", left: "calc(143.44 / 434 * 100cqi)" }} src={orbitDot} alt="" />
-          <img className="coast-plan-itinerary__orbit-dot" style={{ top: "calc(346.8 / 850 * 100cqb)", left: "calc(210.17 / 434 * 100cqi)" }} src={orbitDotActive} alt="" />
-          <img className="coast-plan-itinerary__orbit-dot" style={{ top: "calc(313.74 / 850 * 100cqb)", left: "calc(277.19 / 434 * 100cqi)" }} src={orbitDot} alt="" />
-          <img className="coast-plan-itinerary__orbit-dot" style={{ top: "calc(229.89 / 850 * 100cqb)", left: "calc(287.1 / 434 * 100cqi)" }} src={orbitDot} alt="" />
-          <p className="coast-plan-itinerary__orbit" style={{ top: "calc(224 / 850 * 100cqb)", left: "calc(92 / 434 * 100cqi)" }}>
-            <span>special</span>
-            <span>특별한 투어</span>
-          </p>
-          <p className="coast-plan-itinerary__orbit" style={{ top: "calc(305 / 850 * 100cqb)", left: "calc(92 / 434 * 100cqi)" }}>
-            <span>mamber</span>
-            <span>소수 단독행사</span>
-          </p>
-          <p className="coast-plan-itinerary__orbit" style={{ top: "calc(362 / 850 * 100cqb)", left: "calc(215 / 434 * 100cqi)" }}>
-            <span>dilicious</span>
-            <span>제철음식 제공</span>
-          </p>
-          <p className="coast-plan-itinerary__orbit" style={{ top: "calc(221 / 850 * 100cqb)", left: "calc(338 / 434 * 100cqi)" }}>
-            <span>goods</span>
-            <span>다양한 선물</span>
-          </p>
-          <p className="coast-plan-itinerary__orbit" style={{ top: "calc(305 / 850 * 100cqb)", left: "calc(338 / 434 * 100cqi)" }}>
-            <span>service</span>
-            <span>전문적 서비스</span>
-          </p>
+          {RING_STOPS.map((stop, index) => (
+            <span
+              key={stop.en}
+              className="coast-plan-itinerary__orbit-spark"
+              style={
+                {
+                  top: `calc(${stop.top} / 850 * 100cqb)`,
+                  left: `calc(${stop.left} / 434 * 100cqi)`,
+                  "--orbit-delay": `${index}s`,
+                } as CSSProperties
+              }
+            >
+              <img className="coast-plan-itinerary__orbit-dot" src={stop.active ? orbitDotActive : orbitDot} alt="" />
+              <span className="coast-plan-itinerary__orbit-glow" aria-hidden="true" />
+            </span>
+          ))}
+          {RING_STOPS.map((stop, index) => (
+            <p
+              key={`${stop.en}-label`}
+              className="coast-plan-itinerary__orbit"
+              style={
+                {
+                  top: `calc(${stop.labelTop} / 850 * 100cqb)`,
+                  left: `calc(${stop.labelLeft} / 434 * 100cqi)`,
+                  "--orbit-delay": `${index}s`,
+                } as CSSProperties
+              }
+            >
+              <span>{stop.en}</span>
+              <span>{stop.ko}</span>
+            </p>
+          ))}
           <div className="coast-plan-itinerary__ring-logo">
             <img src={ringLogo} alt="AUBE" />
           </div>

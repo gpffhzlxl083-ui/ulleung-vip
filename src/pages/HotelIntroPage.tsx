@@ -83,20 +83,21 @@ export default function HotelIntroPage() {
     if (!next) return;
     setLeaving(false);
     const hold = HOLD_MS + (slide ? SLIDE_IN_MS : 0);
-    if (kind === "booking") {
+    if (kind === "booking" || kind === "ready") {
       const go = window.setTimeout(() => {
         const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const doc = document as Document & {
           startViewTransition?: (callback: () => void) => { finished: Promise<void> };
         };
+        const kept = kind === "booking" ? { pullIn: true } : undefined;
         if (reduced || typeof doc.startViewTransition !== "function") {
-          navigate(next, { replace: true, state: { pullIn: true, lift: !reduced } });
+          navigate(next, { replace: true, state: { ...kept, lift: !reduced } });
           return;
         }
         document.documentElement.classList.add("booking-rise");
         const transition = doc.startViewTransition(() => {
           flushSync(() => {
-            navigate(next, { replace: true, state: { pullIn: true } });
+            navigate(next, { replace: true, state: kept });
           });
         });
         const clear = () => document.documentElement.classList.remove("booking-rise");
